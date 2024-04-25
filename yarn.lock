@@ -3765,7 +3765,7 @@ check-types@^11.2.3:
   resolved "https://registry.npmjs.org/check-types/-/check-types-11.2.3.tgz"
   integrity sha512-+67P1GkJRaxQD6PKK0Et9DhwQB+vGg3PM5+aavopCpZT1lj9jeqfvpgTLAWErNj8qApkkmXlu/Ug74kmhagkXg==
 
-chokidar@^3.4.2, chokidar@^3.5.3:
+chokidar@^3.0.2, chokidar@^3.4.2, chokidar@^3.5.2, chokidar@^3.5.3:
   version "3.6.0"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz"
   integrity sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==
@@ -4715,6 +4715,13 @@ ejs@^3.1.6:
   dependencies:
     jake "^10.8.5"
 
+electron-hot-reload@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.npmjs.org/electron-hot-reload/-/electron-hot-reload-0.1.4.tgz"
+  integrity sha512-D1BFhNgLgpHl7lPHMKr+0BGF0X1DFzQAxz/5uZRY7xo0NxB2PxzjdUaGtCmIITV8oR1GxKN+o3DzVCUEQ53b+w==
+  dependencies:
+    chokidar "^3.0.2"
+
 electron-installer-common@^0.10.2:
   version "0.10.3"
   resolved "https://registry.npmjs.org/electron-installer-common/-/electron-installer-common-0.10.3.tgz"
@@ -4758,6 +4765,13 @@ electron-installer-redhat@^3.2.0:
     lodash "^4.17.15"
     word-wrap "^1.2.3"
     yargs "^16.0.2"
+
+electron-reload@^2.0.0-alpha.1:
+  version "2.0.0-alpha.1"
+  resolved "https://registry.npmjs.org/electron-reload/-/electron-reload-2.0.0-alpha.1.tgz"
+  integrity sha512-hTde7gv0TEqxbxlB3pj2CwoyCQ9sdiQrcP8GkpzhosxyVeYM3mZbMEVKCZK3L0fED7Mz5A9IWmK7zEvi4H3P1g==
+  dependencies:
+    chokidar "^3.5.2"
 
 electron-squirrel-startup@^1.0.0:
   version "1.0.0"
