@@ -4,7 +4,6 @@ import React from "react";
 import { Button } from "@mui/material";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
 
 export const AddBtn = ({ btnName, to }) => {
 	const theme = useTheme();
@@ -21,7 +20,6 @@ export const AddBtn = ({ btnName, to }) => {
                 fontWeight: "bold",
 			}}>
 			{btnName}
-            <Link to={to} />
 		</Button>
 	);
 };
