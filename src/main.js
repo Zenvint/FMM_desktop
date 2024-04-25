@@ -1,5 +1,17 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, screen } = require('electron');
 const path = require('node:path');
+const {mainReloader, rendererReloader} = require('electron-hot-reload')
+
+const mainFile = path.join(app.getAppPath(), 'dist', 'main.js');
+const rendererFile = path.join(app.getAppPath(), 'dist', 'renderer.js');
+
+mainReloader(mainFile, undefined, (error, path) => {
+  console.log("It is a main's process hook!");
+});
+
+rendererReloader(rendererFile, undefined, (error, path) => {
+  console.log("It is a renderer's process hook!");
+});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -7,12 +19,15 @@ if (require('electron-squirrel-startup')) {
 }
 
 const createWindow = () => {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: width,
+    height: height,
     webPreferences: {
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      webPreferences: {
+        enableBlinkFeatures: 'ExecCommandInJavaScript'
+      }
     },
     autoHideMenuBar: true
   });
