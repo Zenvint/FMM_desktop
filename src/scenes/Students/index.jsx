@@ -128,10 +128,6 @@ const Students = () => {
 					columns={columns}
 					components={{ Toolbar: GridToolbar }}
 					checkboxSelection
-					sx={{
-						backgroundColor: colors.primary[400],
-						color: colors.grey[100]
-					}}
 				/>
 			</Box>
 		</Box>

@@ -57,7 +57,7 @@ const Staff = () => {
 	return (
 		<Box m="8px">
 			<Header
-				title="STUDENTS"
+				title="STAFF"
 				subtitle="List of all staff."
 			/>
 			<Box display={"flex"}>
@@ -105,10 +105,6 @@ const Staff = () => {
 					columns={columns}
 					components={{ Toolbar: GridToolbar }}
 					checkboxSelection
-					sx={{
-						backgroundColor: colors.primary[400],
-						color: colors.grey[100]
-					}}
 				/>
 			</Box>
 		</Box>
