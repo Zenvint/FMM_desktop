@@ -58,7 +58,7 @@ const Staff = () => {
 		<Box m="8px">
 			<Header
 				title="STUDENTS"
-				subtitle="List of all students."
+				subtitle="List of all staff."
 			/>
 			<Box display={"flex"}>
 				<Link to="/StaffForm">
