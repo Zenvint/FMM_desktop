@@ -6,18 +6,29 @@ import { tokens } from "../../theme";
 import { studentList } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
-import { AddBtn } from "../../components/Butthons";
-import { Link } from "react-router-dom";
-
+import Form from "../../components/form";
 
 const Students = () => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
+	const [selectedRowIds, setSelectedRowIds] = React.useState([]);
+	const [additionalRow, setAdditionalRow] = React.useState(null);
+	const [students, setStudents] = React.useState([...studentList]);
 
+
+	const handleSelectionModelChange = (ids) => {
+	  setSelectedRowIds(ids);
+	  console.log(selectedRowIds);
+	};
+
+	const addStudent = (newStudent) => {
+		setStudents((prevStudents) => [...prevStudents, newStudent]);
+	  };
+	
 	const columns = [
 		{ field: "id", headerName: "ID", flex: 0.5 },
 		{
-			field: "name",
+			field: "studentName",
 			headerName: "NAME",
 			flex: 1,
 			cellClassName: "name-column--cell"
@@ -78,18 +89,10 @@ const Students = () => {
 	];
 
 	return (
-		<Box m="8px">
-			<Header
-				title="STUDENTS"
-				subtitle="List of all students."
-			/>
-			<Box display={"flex"}>
-				<Link to="/StudentForm">
-					<AddBtn btnName="+ Add Student"/>
-				</Link>
-				<AddBtn btnName="Edit" />
-				<AddBtn btnName="dismiss" />
-				<AddBtn btnName="import" />
+		<Box m="10px">
+			<Header title="STUDENTS" subtitle="List of all students." />
+			<Box display={"flex"} poainter={"absolute"}>
+				<Form addStudent={addStudent} btn={" Add Student"} />
 			</Box>
 			<Box
 				m="0 0 0"
@@ -123,11 +126,11 @@ const Students = () => {
 					}
 				}}>
 				<DataGrid
-					marginTop={"5rem"}
-					rows={studentList}
+					rows={(students)}
 					columns={columns}
 					components={{ Toolbar: GridToolbar }}
 					checkboxSelection
+					onRowSelectionModelChange={handleSelectionModelChange}
 				/>
 			</Box>
 		</Box>

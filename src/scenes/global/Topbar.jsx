@@ -13,6 +13,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import MenuItem from "@mui/material/MenuItem";
 import Logout from "@mui/icons-material/Logout";
+import ModalList from "../../components/ModalList";
+import { classList } from "../../data/mockData";
+import { sectionList } from "../../data/mockData";
+import { schoolList } from "../../data/mockData";
 
 const Topbar = () => {
 	const theme = useTheme();
@@ -81,7 +85,7 @@ const Topbar = () => {
 				id="settingsMenu"
 				open={open}
 				onClose={handleClose}
-				onClick={handleClose}
+				// onClick={handleClose}
 				PaperProps={{
 					elevation: 0,
 					sx: {
@@ -111,9 +115,9 @@ const Topbar = () => {
 				transformOrigin={{ horizontal: "right", vertical: "top" }}
 				anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
 				<MenuItem onClick={handleClose}>New academic year</MenuItem>
-				<MenuItem onClick={handleClose}>+ Add school</MenuItem>
-				<MenuItem onClick={handleClose}>+ Add section</MenuItem>
-				<MenuItem onClick={handleClose}>+ Add class</MenuItem>
+				<ModalList btnName={"School"} items={schoolList} header={"List of schools"} />
+				<ModalList btnName={"Section"} items={sectionList} header={"List of sections"} />
+				<ModalList btnName={"Classes"} items={classList} header={"List of classes"} />
 				<Divider />
 				<MenuItem onClick={handleClose}>
 					<ListItemIcon>
