@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 
-export const AddBtn = ({ btnName, to }) => {
+export const CustomBtn = ({ btnName, }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 

@@ -44,13 +44,6 @@ body,
 	height: 3vh;
 	margin-top: 5px;
 }
-.btn{
-        margin-Left: -4px;
-        font-Size: 11px;
-        font-Weight: 600;
-        height: 20px;
-        align-Items: center;
-}
 .btn:hover{
         color: #9cf4d1;
 }
@@ -112,4 +105,7 @@ body,
 	font-weight: bold;
 	align-self: end;
 	cursor: pointer;
+}
+.submit-button :hover{
+	background-color: #468665;
 }

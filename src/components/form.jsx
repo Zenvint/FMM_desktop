@@ -1,7 +1,6 @@
 /** @format */
 
 import * as React from "react";
-import { useState } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -10,14 +9,13 @@ import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import CloseIcon from "@mui/icons-material/Close";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import AddIcon from "@mui/icons-material/Add";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import { useHistory } from "react-router-dom";
-import { studentList } from "../data/mockData";
+import { classList } from "../data/mockData";
+import { sectionList } from "../data/mockData";
+import { schoolList } from "../data/mockData";
 
-export default function Form({btn, studentName, image, gender, school, section, classs, DoB, PoB, nationality, parents, phone}) {
+
+export default function Form({btn}) {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const [open, setOpen] = React.useState(false);
@@ -25,40 +23,7 @@ export default function Form({btn, studentName, image, gender, school, section, 
 	const handleClose = () => setOpen(false);
 
 	const handleSubmit = () => {
-		const requiredFields = [ 
-            "image","gender", "studentName","school", "section", "class", "DoB", "PoB", "nationality", "parents", "phone"
-		];
-		let isFormValid = true;
-
-		requiredFields.forEach((field) => {
-			const element = document.getElementById(field);
-			if (!element.value) {
-				isFormValid = false;
-			} else {
-				element.style.border = "none";
-			}
-		});
-
-		if (!isFormValid) {
-			alert("Please fill in all required fields.");
-			return;
-		}
-
-		const studentData = {
-			name: document.getElementById("studentName").value,
-			school: document.getElementById("school").value,
-			section: document.getElementById("section").value,
-			class: document.getElementById("class").value,
-			gender: document.querySelector('input[name="gender"]:checked').value,
-			dob: document.getElementById("DoB").value,
-			pob: document.getElementById("PoB").value,
-			nationality: document.getElementById("nationality").value,
-			parents: document.getElementById("parents").value,
-			phone: document.getElementById("phone").value
-		};
-
 		handleClose();
-		console.log("Student Data:", studentData);
 	};
 
 
@@ -77,7 +42,7 @@ export default function Form({btn, studentName, image, gender, school, section, 
 
 	return (
 		<div className="form">
-			<Button className="btn" onClick={handleOpen} style={{ color: colors.grey[100] }}>
+			<Button className="btn" onClick={handleOpen} sx={{ mt: 0, ml: 0, color: colors.grey[100], fontSize: "12px",  padding: "10px 3px" }}>
 				<PersonAddIcon/> {btn}
 			</Button>
 			<Modal
@@ -98,36 +63,34 @@ export default function Form({btn, studentName, image, gender, school, section, 
 						<form action="#" class="form-container" id="form">
 							<div class="input-container">
 								<label for="studentName">Full Name:</label>
-								<input id="studentName" type="text" placeholder="Enter the student name" value={studentName} required/>
+								<input id="studentName" type="text" placeholder="Enter the student name" required/>
 							</div>
 
 							<div className="class_container">
 								<div class="input-container">
 									<label for="school" className="dropdown"> School: </label>
-									<select id="school" placeholder="Select the school" value={school} required>
-										<option value="Nursery">Nursery</option>
-										<option value="Primary">Primary</option>
-										<option value="Secondary">Secondary</option>
+									<select id="school" placeholder="Select the school" required>
+										{schoolList.map((item) => (
+											<option value={item.id}>{item.Name}</option>
+										))}
 									</select>
 								</div>
 
 								<div class="input-container">
 									<label for="section" className="dropdown"> Section: </label>
-									<select id="section" placeholder="Select the section" value={section} required>
-										<option value="Anglophone">Anglophone</option>
-										<option value="Francophone">Francophone</option>
+									<select id="section" placeholder="Select the section" required>
+										{sectionList.map((item) => (
+											<option value={item.id}>{item.Name}</option>
+										))}
 									</select>
 								</div>
 
 								<div class="input-container">
 									<label for="class" className="dropdown"> Class: </label>
-									<select id="class" placeholder="Select the class" value={classs} required>
-										<option value="class 1">Class 1</option>
-										<option value="class 2">Class 2</option>
-										<option value="class 3">Class 3</option>
-										<option value="class 4">Class 4</option>
-										<option value="class 5">Class 5</option>
-										<option value="class 6">Class 6</option>
+									<select id="class" placeholder="Select the class" required>
+										{classList.map((item) => (
+											<option value={item.id}>{item.Name}</option>
+										))}
 									</select>
 								</div>
 							</div>
@@ -135,17 +98,17 @@ export default function Form({btn, studentName, image, gender, school, section, 
 							<div className="class_container">
 								<div class="input-container">
 									<label for="DoB" className="dropdown"> Date of birth: </label>
-									<input id="DoB" type="date" placeholder="Enter date of birth" value={DoB} required/>
+									<input id="DoB" type="date" placeholder="Enter date of birth" required/>
 								</div>
 
 								<div class="input-container">
 									<label for="PoB">Place of birth:</label>
-									<input id="PoB" type="text" placeholder="Enter place of birth" value={PoB} required/>
+									<input id="PoB" type="text" placeholder="Enter place of birth" required/>
 								</div>
 
 								<div class="input-container">
 									<label for="nationality">Nationality:</label>
-									<input id="nationality" type="text" placeholder="Enter nationality" value={nationality} required/>
+									<input id="nationality" type="text" placeholder="Enter nationality" required/>
 								</div>
 							</div>
 
@@ -165,19 +128,19 @@ export default function Form({btn, studentName, image, gender, school, section, 
 
 							<div class="input-container">
 								<label for="parents">Parent Name:</label>
-								<input id="parents" type="text" placeholder="Enter the parent name" value={parents} required/>
+								<input id="parents" type="text" placeholder="Enter the parent name" required/>
 
 							</div>
 
 							<div className="class_container">
 								<div class="input-container">
 									<label for="phone">Parent phone number:</label>
-									<input id="phone" type="text" placeholder="Enter phone number" value={phone} required/>
+									<input id="phone" type="text" placeholder="Enter phone number" required/>
 								</div>
 
 								<div class="input-container">
 									<label for="image">Student image:</label>
-									<input id="image" type="file" accept="image/*" value={image}/>
+									<input id="image" type="file" accept="image/*"/>
 								</div>
 							</div>
 

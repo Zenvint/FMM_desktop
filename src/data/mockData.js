@@ -86,6 +86,64 @@ export const studentList = [
 	}
 ];
 
+export const staffList = [
+	{
+	  id: 1,
+	  name: "John Doe",
+	  gender: "Male",
+	  role: "Teacher",
+	  salary: 50000,
+	  email: "johndoe@example.com",
+	  phone: "1234567890"
+	},
+	{
+	  id: 2,
+	  name: "Jane Smith",
+	  gender: "Female",
+	  role: "Principal",
+	  salary: 80000,
+	  email: "janesmith@example.com",
+	  phone: "9876543210"
+	},
+	{
+	  id: 3,
+	  name: "Michael Johnson",
+	  gender: "Male",
+	  role: "Librarian",
+	  salary: 45000,
+	  email: "michaeljohnson@example.com",
+	  phone: "4567891230"
+	},
+	{
+	  id: 4,
+	  name: "Emily Davis",
+	  gender: "Female",
+	  role: "Counselor",
+	  salary: 55000,
+	  email: "emilydavis@example.com",
+	  phone: "7894561230"
+	},
+	{
+	  id: 5,
+	  name: "David Wilson",
+	  gender: "Male",
+	  role: "Administrator",
+	  salary: 70000,
+	  email: "davidwilson@example.com",
+	  phone: "3216549870"
+	},
+	{
+	  id: 6,
+	  name: "Sarah Thompson",
+	  gender: "Female",
+	  role: "Teacher",
+	  salary: 60000,
+	  email: "sarahthompson@example.com",
+	  phone: "9087654321"
+	}
+  ];
+  
+
 export const schoolList = [
 	{
 		id: 1,

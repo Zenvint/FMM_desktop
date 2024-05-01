@@ -17,6 +17,8 @@ import ModalList from "../../components/ModalList";
 import { classList } from "../../data/mockData";
 import { sectionList } from "../../data/mockData";
 import { schoolList } from "../../data/mockData";
+import SessionForm from "../../components/createSession";
+
 
 const Topbar = () => {
 	const theme = useTheme();
@@ -41,22 +43,29 @@ const Topbar = () => {
 				backgroundColor={colors.primary[400]}
 				borderRadius="5px"
 				height={"30px"}
-				width={"125px"}
+				width={"160px"}
 				justifyContent={"space-between"}
 				alignItems={"center"}
 				marginLeft={"10px"}>
-				<h5 style={{ marginLeft: "10px" }} id="academic_year">
-					2023/2024
-				</h5>
-				<p
-					id="academic_status"
+				<select
 					style={{
-						marginRight: "10px",
-						fontWeight: "bold",
-						color: "green"
+						border: "none",
+						backgroundColor: colors.primary[400],
+						color: colors.grey[100],
+						width: "100%",
+						height: "100%",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "space-between",
+						outline: "none",
+						gap: "25px",
 					}}>
-					Active
-				</p>
+					<option value="2023/2024">
+						<p style={{ marginLeft: "10px",  }}>2023/2024</p>
+						<p style={{ marginLeft: "10px", color: colors.greenAccent[500] }}>Active</p>
+					</option>
+					<option value="offline">Offline</option>
+				</select>
 			</Box>
 
 			{/* ICONS */}
@@ -85,7 +94,6 @@ const Topbar = () => {
 				id="settingsMenu"
 				open={open}
 				onClose={handleClose}
-				// onClick={handleClose}
 				PaperProps={{
 					elevation: 0,
 					sx: {
@@ -114,10 +122,24 @@ const Topbar = () => {
 				}}
 				transformOrigin={{ horizontal: "right", vertical: "top" }}
 				anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-				<MenuItem onClick={handleClose}>New academic year</MenuItem>
-				<ModalList btnName={"School"} items={schoolList} header={"List of schools"} />
-				<ModalList btnName={"Section"} items={sectionList} header={"List of sections"} />
-				<ModalList btnName={"Classes"} items={classList} header={"List of classes"} />
+				<SessionForm 
+					year="new academic year"
+				/>
+				<ModalList
+					btnName={"School"}
+					items={schoolList}
+					header={"List of schools"}
+				/>
+				<ModalList
+					btnName={"Section"}
+					items={sectionList}
+					header={"List of sections"}
+				/>
+				<ModalList
+					btnName={"Classes"}
+					items={classList}
+					header={"List of classes"}
+				/>
 				<Divider />
 				<MenuItem onClick={handleClose}>
 					<ListItemIcon>

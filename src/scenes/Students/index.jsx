@@ -7,24 +7,19 @@ import { studentList } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import Form from "../../components/form";
+import EditForm from "../../components/editForm";
+import DismissForm from "../../components/dismissForm";
 
 const Students = () => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const [selectedRowIds, setSelectedRowIds] = React.useState([]);
-	const [additionalRow, setAdditionalRow] = React.useState(null);
-	const [students, setStudents] = React.useState([...studentList]);
-
 
 	const handleSelectionModelChange = (ids) => {
-	  setSelectedRowIds(ids);
-	  console.log(selectedRowIds);
+		setSelectedRowIds(ids);
+		console.log(selectedRowIds);
 	};
 
-	const addStudent = (newStudent) => {
-		setStudents((prevStudents) => [...prevStudents, newStudent]);
-	  };
-	
 	const columns = [
 		{ field: "id", headerName: "ID", flex: 0.5 },
 		{
@@ -91,9 +86,6 @@ const Students = () => {
 	return (
 		<Box m="10px">
 			<Header title="STUDENTS" subtitle="List of all students." />
-			<Box display={"flex"} poainter={"absolute"}>
-				<Form addStudent={addStudent} btn={" Add Student"} />
-			</Box>
 			<Box
 				m="0 0 0"
 				height="73vh"
@@ -125,8 +117,13 @@ const Students = () => {
 						color: `${colors.grey[100]}`
 					}
 				}}>
+				<Box display={"flex"}>
+					<Form btn={" Add Student"} />
+					<EditForm btn={" Edit"} />
+					<DismissForm btn={" Dismiss"} />
+				</Box>
 				<DataGrid
-					rows={(students)}
+					rows={studentList}
 					columns={columns}
 					components={{ Toolbar: GridToolbar }}
 					checkboxSelection

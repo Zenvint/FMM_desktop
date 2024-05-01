@@ -3,12 +3,12 @@ import * as React from "react";
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { studentList } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
-import { AddBtn } from "../../components/Butthons";
-import { Link } from "react-router-dom";
-
+import StaffForm from "../../components/staffForm";
+import EditStaff from "../../components/editStaff";
+import DismissForm from "../../components/dismissForm";
+import { staffList } from "../../data/mockData";
 
 const Staff = () => {
 	const theme = useTheme();
@@ -51,23 +51,12 @@ const Staff = () => {
 			headerName: "PHONE No",
 			flex: 1,
 			cellClassName: "name-column--cell"
-		},
+		}
 	];
 
 	return (
 		<Box m="8px">
-			<Header
-				title="STAFF"
-				subtitle="List of all staff."
-			/>
-			<Box display={"flex"}>
-				<Link to="/StaffForm">
-					<AddBtn btnName="+ Add Staff"/>
-				</Link>
-				<AddBtn btnName="Edit" />
-				<AddBtn btnName="dismiss" />
-				<AddBtn btnName="import" />
-			</Box>
+			<Header title="STAFF" subtitle="List of all staff." />
 			<Box
 				m="0 0 0"
 				height="73vh"
@@ -99,9 +88,15 @@ const Staff = () => {
 						color: `${colors.grey[100]}`
 					}
 				}}>
+				<Box display={"flex"} >
+					<StaffForm btn={"add staff"}  />
+					<EditStaff btn={"edit"} />
+					<DismissForm btn={"dismiss"} />
+				</Box>
+
 				<DataGrid
 					marginTop={"5rem"}
-					rows={studentList}
+					rows={staffList}
 					columns={columns}
 					components={{ Toolbar: GridToolbar }}
 					checkboxSelection
