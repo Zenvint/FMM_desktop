@@ -24,6 +24,9 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: width,
     height: height,
+    minHeight: 600,
+    minWidth: 800,
+    resizable: true,
     webPreferences: {
       webPreferences: {
         enableBlinkFeatures: 'ExecCommandInJavaScript'

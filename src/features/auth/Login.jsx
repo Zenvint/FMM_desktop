@@ -92,7 +92,7 @@ const Login = () => {
             <input type="checkbox" id="persist" checked={persist} onChange={handleToggle} />
             <label htmlFor="persist">Remember Me</label>
           </div>
-          <button type="submit">Login</button>
+          <button className="login_button" type="submit">Login</button>
         </form>
       </div>
     </main>
