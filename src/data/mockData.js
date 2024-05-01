@@ -1,0 +1,87 @@
+/** @format */
+export const studentList = [
+    {
+        id: 1,
+        image: "student1.jpg",
+        name: "John sama",
+        gender: "male",
+        school: "secondery",
+        section: "anglophone",
+        class: "form 2",
+        DoB: "22/12/2000",
+        PoB: "Bamenda",
+        nationality: "camerounais",
+        parents: "sangare",
+        phone: "123456789"
+    },
+    {
+        id: 2,
+        image: "student2.jpg",
+        name: "Jane mballa",
+        gender: "female",
+        school: "secondery",
+        section: "anglophone",
+        class: "form 3",
+        DoB: "22/12/2002",
+        PoB: "Yaoundé",
+        nationality: "camerounais",
+        parents: "mary",
+        phone: "153452789"
+    },
+    {
+        id: 3,
+        image: "student3.jpg",
+        name: "sangare hamad",
+        gender: "male",
+        school: "secondery",
+        section: "anglophone",
+        class: "form 1",
+        DoB: "22/12/2005",
+        PoB: "garoua",
+        nationality: "camerounais",
+        parents: "ben ali",
+        phone: "123456789"
+    },
+    {
+        id: 4,
+        image: "student4.jpg",
+        name: "abou sangare",
+        gender: "female",
+        school: "primary",
+        section: "anglophone",
+        class: "class 1",
+        DoB: "22/12/2005",
+        PoB: "garoua",
+        nationality: "camerounais",
+        parents: "ben ali",
+        phone: "123456789"
+    },
+    {
+        id: 5,
+        image: "student5.jpg",
+        name: "billa wiil",
+        gender: "male",
+        school: "secondery",
+        section: "frncophone",
+        class: "4e",
+        DoB: "22/12/2005",
+        PoB: "Douala",
+        nationality: "camerounais",
+        parents: "ndoume edward",
+        phone: "123456299"
+    },
+    {
+        id: 6,
+        image: "student6.jpg",
+        name: "defo brice",
+        gender: "male",
+        school: "primary",
+        section: "frncophone",
+        class: "cm1",
+        DoB: "22/12/2005",
+        PoB: "Yaoundé",
+        nationality: "camerounais",
+        parents: "defo arman",
+        phone: "123456299"
+    }
+];
