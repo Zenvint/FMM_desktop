@@ -7,8 +7,12 @@ import { studentList } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import Form from "../../components/form";
-import EditForm from "../../components/editForm";
 import DismissForm from "../../components/dismissForm";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+
+
 
 const Students = () => {
 	const theme = useTheme();
@@ -118,9 +122,9 @@ const Students = () => {
 					}
 				}}>
 				<Box display={"flex"}>
-					<Form btn={" Add Student"} />
-					<EditForm btn={" Edit"} />
-					<DismissForm btn={" Dismiss"} />
+					< Form btn={" Add Student"} icon={<PersonAddIcon />} title={"Add Student"}  />
+					< Form btn={" Edit"} icon={<DriveFileRenameOutlineIcon sx={{ ml: "-190px"}}/>} title={"Edit Student"} />
+					< DismissForm btn={" Dismiss"} icon={<PersonRemoveIcon sx={{ ml: "-370px"}} />} title={"Dismiss Student"} />
 				</Box>
 				<DataGrid
 					rows={studentList}

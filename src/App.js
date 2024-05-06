@@ -6,6 +6,9 @@ import { Route, Routes } from "react-router-dom";
 import Sidebar from "./scenes/global/sidebar";
 import Students from "./scenes/Students";
 import Staff from "./scenes/Staff";
+import { Session } from "./scenes/Settings/session";
+import { Settings } from "./scenes/Settings";
+import { School } from "./scenes/Settings/school";
 
 function App() {
 	const [theme, colorMode] = useMode();
@@ -22,6 +25,10 @@ function App() {
 							<Route path="/" element={<Dashboard />} />
 							<Route path="/students" element={<Students />} />
 							<Route path="/staff" element={<Staff />} />
+							<Route path="/settings" element={<Settings />} />
+							<Route path="/settings/session" element={<Session />} />
+							<Route path="/settings/school" element={<School />} />
+
 						</Routes>
 					</main>
 				</div>

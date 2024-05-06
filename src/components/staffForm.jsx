@@ -9,10 +9,9 @@ import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import CloseIcon from "@mui/icons-material/Close";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 
-export default function StaffForm({btn}) {
+export default function StaffForm({btn, icon, title}) {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const [open, setOpen] = React.useState(false);
@@ -41,7 +40,7 @@ export default function StaffForm({btn}) {
 	return (
 		<div className="form">
 			<Button className="btn" onClick={handleOpen} sx={{ mt: 0, ml: 0, color: colors.grey[100], fontSize: "12px",  padding: "10px 3px" }}>
-				<PersonAddIcon/> {btn}
+				{icon} {btn}
 			</Button>
 			<Modal
 				aria-labelledby="transition-modal-title"
@@ -53,7 +52,7 @@ export default function StaffForm({btn}) {
 				<Fade in={open}>
 					<Box sx={style}>
 						<header className="header">
-							Staff Registration Form
+							{title}
 							<div className="close" onClick={handleClose}>
 								<CloseIcon />
 							</div>
@@ -93,7 +92,6 @@ export default function StaffForm({btn}) {
 							<div class="input-container">
 								<label for="staffEmail">Email:</label>
 								<input id="staffEmail" type="text" placeholder="Enter email" value={""} required/>
-
 							</div>
 
 							<div className="class_container">

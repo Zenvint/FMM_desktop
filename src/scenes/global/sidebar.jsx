@@ -7,11 +7,12 @@ import { Menu, MenuItem, ProSidebar } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
-import { HomeRounded, MonetizationOnRounded, SchoolRounded } from "@mui/icons-material";
+import { HomeRounded, LogoutOutlined, MonetizationOnRounded, SchoolRounded, Settings } from "@mui/icons-material";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import WcOutlinedIcon from "@mui/icons-material/WcOutlined";
 import GroupsIcon from "@mui/icons-material/Groups";
 import PersonIcon from "@mui/icons-material/Person";
+import Warnimg from "../../components/warning";
 
 
 // Item component to display each menu item in the sidebar
@@ -160,6 +161,21 @@ const Sidebar = () => {
 							selected={selected}
 							setSelected={setSelected}
 						/>
+						<Item
+							title={"Settings"}
+							to="/Settings"
+							icon={<Settings />}
+							selected={selected}
+							setSelected={setSelected}
+						/>
+						<Box mt="50px" display="flex" justifyContent="center" mr={5} se>
+							<Warnimg
+								btn={"Logout"}
+								icon={<LogoutOutlined sx={{ marginRight: "10px" }} />}
+								title={"Logout"}
+								message={"Are you sure you want to logout?"}
+							/>
+						</Box>
 					</Box>
 				</Menu>
 			</ProSidebar>

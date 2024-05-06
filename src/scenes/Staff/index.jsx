@@ -6,9 +6,13 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import StaffForm from "../../components/staffForm";
-import EditStaff from "../../components/editStaff";
 import DismissForm from "../../components/dismissForm";
 import { staffList } from "../../data/mockData";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+
+
 
 const Staff = () => {
 	const theme = useTheme();
@@ -89,9 +93,9 @@ const Staff = () => {
 					}
 				}}>
 				<Box display={"flex"} >
-					<StaffForm btn={"add staff"}  />
-					<EditStaff btn={"edit"} />
-					<DismissForm btn={"dismiss"} />
+					<StaffForm btn={"add staff"} icon={<PersonAddIcon />} title={"Staff Registration"} />
+					<StaffForm btn={"edit"} icon={<DriveFileRenameOutlineIcon sx={{ ml: "-190px"}} />} title={"Edit Staff"} />
+					<DismissForm btn={"dismiss"} icon={<PersonRemoveIcon sx={{ ml: "-370px"}} />} title={"Dismiss Staff"} />
 				</Box>
 
 				<DataGrid

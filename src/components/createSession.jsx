@@ -19,7 +19,7 @@ const style = {
     pb: 3,
   };
   
-export default  function SessionForm({year}) {
+export default  function SessionForm({icon, title}) {
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -32,30 +32,59 @@ export default  function SessionForm({year}) {
     };
   
     return (
-      <React.Fragment>
-        <Button onClick={handleOpen} sx={{color: colors.grey[100], borderRadius: '10px', fontWeight: 'bold',  alignItems: 'center', marginTop: '20px',  ":hover": { color: colors.greenAccent[500], backgroundColor: colors.blueAccent[800] } }}>{year}</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-        >
-          <Box sx={{ ...style, width: 250, backgroundColor: colors.primary[400] }}>
-            <h2 id="child-modal-title" style={{textAlign: 'center'}}>Mew Academic Year</h2>
-            <div>
-              <label>Name:</label>
-              <input type="text" placeholder='Enter the name' />
-            </div>
-            <div>
-              <label>Starting date:</label>
-              <input type="date" />
-            </div>
-            <div>
-              <label>Ending date:</label>
-              <input type="date" />
-            </div>
-            <Button onClick={handleClose} sx={{ color: colors.grey[100], borderRadius: '10px', fontWeight: 'bold', margin: '15px 0', ":hover": { backgroundColor: colors.blueAccent[800], color: colors.greenAccent[500] }, width: '75px',  left: '125px', marginTop: '25px' }} >Save</Button>
-          </Box>
-        </Modal>
-      </React.Fragment>
-    );
+			<React.Fragment>
+				<Button
+					onClick={handleOpen}
+					sx={{
+						color: colors.grey[100],
+						borderRadius: "10px",
+						fontWeight: "bold",
+						alignItems: "center",
+						marginTop: "20px",
+						":hover": { color: colors.greenAccent[500] }
+					}}>
+					{icon} {title}
+				</Button>
+				<Modal open={open} onClose={handleClose}>
+					<Box
+						sx={{ ...style, width: 255, borderRadius: "25px", backgroundColor: colors.primary[400] }}>
+						<h3 id="child-modal-title" style={{ textAlign: "center" }}>
+							Mew Academic Year
+						</h3>
+						<div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+							<div>
+								<label>Name:</label>
+								<input type="text" placeholder="Enter the name" />
+							</div>
+							<div>
+								<label>Starting date:</label>
+								<input type="date" />
+							</div>
+							<div>
+								<label>Ending date:</label>
+								<input type="date" />
+							</div>
+						</div>
+            <Button
+							onClick={handleClose}
+							sx={{
+								color: colors.grey[100],
+								borderRadius: "10px",
+								fontWeight: "bold",
+								margin: "15px 0",
+								":hover": {
+									backgroundColor: colors.blueAccent[800],
+									color: colors.greenAccent[500]
+								},
+								width: "75px",
+								left: "125px",
+								marginTop: "25px"
+							}}>
+							Create
+						</Button>
+					</Box>
+				</Modal>
+			</React.Fragment>
+		);
   }
   

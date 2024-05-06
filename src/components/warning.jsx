@@ -8,18 +8,13 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import CloseIcon from "@mui/icons-material/Close";
 
-export default function DismissForm({btn, icon, title}) {
+export default function Warnimg({btn, icon, title, message}) {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
-
-	const handleFormSubmit = () => {
-		handleClose();
-	};
 
 	const style = {
 		position: "absolute",
@@ -27,8 +22,8 @@ export default function DismissForm({btn, icon, title}) {
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 		borderRadius: "15px",
-		width: 600,
-		height: 475,
+		width: 300,
+		height: 200,
 		bgcolor: { xs: colors.primary[400]},
 		boxShadow: 24,
 		p: 3
@@ -50,33 +45,24 @@ export default function DismissForm({btn, icon, title}) {
 					<Box sx={style}>
 						<header className="header">
 							{title}
-							<div className="close" onClick={handleClose}>
-								<CloseIcon />
-							</div>
 						</header>
-						<form action="#" class="form-container" id="form">
-							<div class="input-container">
-								<label for="studentName">Full Name:</label>
-								<input id="studentName" type="text" value={""} required/>
-							</div>
-
-							<div class="input-container">
-								<label for="parents">Matricul:</label>
-								<input id="id" type="text" value={""}  required/>
-							</div>
-
-								<div class="input-container">
-									<label for="phone">Reason for dismissal:</label>
-									<input id="dismissMessage" type="text" value={""}  placeholder="Reason for dismissal" required style={{border: "none", outline: "none", width: "100%", height: "25vh", resize: "none", padding: "10px", borderRadius: "5px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)", fontSize: "14px", fontFamily: "Arial, sans-serif", color: "black"}}/>
-								</div>
-
-							<button onClick={handleFormSubmit} class="submit-button" form="form" style={{marginTop: "25px"}}>
-								Dismiss
+                        <div style={{marginTop: "25px", textAlign: "center", fontSize: "15px"}}>
+                            <label>{message}</label>
+                        </div>
+                        <div style={{marginTop: "25px", textAlign: "center",}}>
+                            <button onClick={handleClose} class="submit-button" style={{background: "none", marginRight: "10px"}}>
+								Yes
 							</button>
-						</form>
+                            <button onClick={handleClose} class="submit-button" style={{background: "none", marginLeft: "10px"}}>
+								No
+							</button>
+                        </div>
 					</Box>
 				</Fade>
 			</Modal>
 		</div>
 	);
 };
+
+
+

@@ -9,13 +9,12 @@ import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import CloseIcon from "@mui/icons-material/Close";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { classList } from "../data/mockData";
 import { sectionList } from "../data/mockData";
 import { schoolList } from "../data/mockData";
 
 
-export default function Form({btn}) {
+export default function Form({btn, icon, title}) {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const [open, setOpen] = React.useState(false);
@@ -43,7 +42,7 @@ export default function Form({btn}) {
 	return (
 		<div className="form">
 			<Button className="btn" onClick={handleOpen} sx={{ mt: 0, ml: 0, color: colors.grey[100], fontSize: "12px",  padding: "10px 3px" }}>
-				<PersonAddIcon/> {btn}
+				{icon}, {btn}
 			</Button>
 			<Modal
 				aria-labelledby="transition-modal-title"
@@ -55,7 +54,7 @@ export default function Form({btn}) {
 				<Fade in={open}>
 					<Box sx={style}>
 						<header className="header">
-							Student Registration Form
+							{title}
 							<div className="close" onClick={handleClose}>
 								<CloseIcon />
 							</div>
@@ -129,7 +128,6 @@ export default function Form({btn}) {
 							<div class="input-container">
 								<label for="parents">Parent Name:</label>
 								<input id="parents" type="text" placeholder="Enter the parent name" required/>
-
 							</div>
 
 							<div className="class_container">
@@ -137,7 +135,6 @@ export default function Form({btn}) {
 									<label for="phone">Parent phone number:</label>
 									<input id="phone" type="text" placeholder="Enter phone number" required/>
 								</div>
-
 								<div class="input-container">
 									<label for="image">Student image:</label>
 									<input id="image" type="file" accept="image/*"/>

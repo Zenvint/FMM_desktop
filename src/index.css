@@ -109,3 +109,46 @@ body,
 .submit-button :hover{
 	background-color: #468665;
 }
+
+
+.box {
+	width: 50rem;
+	height: 25rem;
+	padding: 10px;
+  }
+  .box ul {
+	position: relative;
+	background: "none";
+  }
+  .box ul:hover li {
+	opacity: 0.5;
+  }
+  .box ul li {
+	display: flex; 
+	align-items: center;
+	flex-direction: row	;
+	gap: 30px;
+	list-style: none;
+	margin-top: 3px;
+	padding: 7px;
+	width: 95%;
+	height: 4rem;
+	font-size: 14px;
+	font-weight: 400;
+	background: "none";
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+	transition: transform 0.5s;
+  }
+  .box ul li:hover {
+	transform: scale(1.1);
+	z-index: 5;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+	opacity: 1;
+	font-size: 18px;
+	font-weight: 600;
+  }
+  .li_icon {
+	margin: 10px; 
+	height: 30px; 
+	width: 30px
+  }
