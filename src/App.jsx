@@ -11,6 +11,10 @@ import Users from './features/users/Users.jsx'
 import NewUserForm from './features/users/NewUserForm.jsx'
 import NewStudentForm from './features/students/NewStudentForm.jsx'
 import EditUserForm from './features/users/EditUserForm.jsx'
+import Sections from './features/sections/Sections.jsx'
+import NewSectionForm from './features/sections/NewSectionForm.jsx'
+import EditSectionForm from './features/sections/EditSectionForm.jsx'
+import Settings from './features/settings/Settings.jsx'
 
 const App = () => {
   return (
@@ -21,11 +25,22 @@ const App = () => {
           <Route element={<Prefetch/>}>
             <Route path='dash' element={<DashLayout/>}>
               <Route index element={<Dashboard />} />
+
               <Route path='users' >
                  <Route index element={<Users />} />
                  <Route path='new' element={<NewUserForm />}  />
                  <Route path=':id' element={<EditUserForm />}  />
               </Route>
+              
+              <Route path='settings' >
+                 <Route index element={<Settings />} />
+                 <Route path='sections' >
+                    <Route index element={<Sections />} />
+                    <Route path='new' element={<NewSectionForm />}  />
+                    <Route path=':id' element={<EditSectionForm />}  />
+                 </Route>
+              </Route>
+
               <Route path='students' >
                  <Route index element={<Students />} />
                  <Route path='new' element={<NewStudentForm />}  />

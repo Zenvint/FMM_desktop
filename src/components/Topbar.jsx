@@ -15,7 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Logout from "@mui/icons-material/Logout";
 import { useSendLogoutMutation } from "../features/auth/authApiSlice.js";
 import PulseLoader from 'react-spinners/PulseLoader';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 
 const Topbar = () => {
 	const theme = useTheme();
@@ -32,6 +33,8 @@ const Topbar = () => {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
+	
 
 	const [sendLogout, { isLoading, isError, error }] = useSendLogoutMutation();
 
@@ -139,7 +142,7 @@ const Topbar = () => {
 				anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
 				<MenuItem onClick={handleClose}>New academic year</MenuItem>
 				<MenuItem onClick={handleClose}>+ Add school</MenuItem>
-				<MenuItem onClick={handleClose}>+ Add section</MenuItem>
+				<Link to="/dash/sections" ><MenuItem >Sections</MenuItem></Link>
 				<MenuItem onClick={handleClose}>+ Add class</MenuItem>
 				<Divider />
 				<MenuItem onClick={onLogoutClicked}>
