@@ -7,11 +7,12 @@ import { Menu, MenuItem, ProSidebar } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { tokens } from "../hooks/theme.js";
-import { HomeRounded, MonetizationOnRounded, SchoolRounded } from "@mui/icons-material";
+import { HomeRounded, LogoutOutlined,MonetizationOnRounded, SchoolRounded, Settings } from "@mui/icons-material";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import WcOutlinedIcon from "@mui/icons-material/WcOutlined";
 import GroupsIcon from "@mui/icons-material/Groups";
 import PersonIcon from "@mui/icons-material/Person";
+// import Warnimg from "../../components/warning";
 
 
 // Item component to display each menu item in the sidebar
@@ -161,6 +162,14 @@ const Sidebar = () => {
 							selected={selected}
 							setSelected={setSelected}
 							onClick={()=> setSelected('Users')}
+						/>
+						<Item
+							title={"Settings"}
+							to="/dash/settings"
+							icon={<Settings />}
+							selected={selected}
+							setSelected={setSelected}
+							onClick={()=> setSelected('Settings')}
 						/>
 					</Box>
 				</Menu>

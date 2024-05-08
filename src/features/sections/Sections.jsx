@@ -7,12 +7,12 @@ import Header from "../../components/Header.jsx";
 import { useTheme } from "@mui/material";
 import { AddBtn } from "../../components/Button.jsx";
 import { Link } from "react-router-dom";
-import { useGetUsersQuery } from "./usersApiSlice.js";
-import { UserTableColumns } from "../../configs/tableColumns.js";
+import { useGetSectionsQuery } from "./sectionsApiSlice.js";
+import {SectionTableColumns } from "../../configs/tableColumns.js";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useState, useEffect } from "react";
 
-const Users = () => {
+const Sections = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -28,12 +28,12 @@ const Users = () => {
   const canEdit = selectedRows.length == 1;
 
   const {
-    data: users,
+    data: sections,
     isLoading,
     isSuccess,
     isError,
     error,
-  } = useGetUsersQuery("usersList", {
+  } = useGetSectionsQuery("sectionsList", {
     pollingInterval: 60000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -48,18 +48,18 @@ const Users = () => {
   }
 
   if (isSuccess) {
-    const { ids } = users;
+    const { ids } = sections;
     const tableContent =
-      ids?.length && ids.map((userId) => users?.entities[userId]);
+      ids?.length && ids.map((userId) => sections?.entities[userId]);
 
     content = (
       <Box m="8px">
-        <Header title="Users" subtitle="List of all users." />
+        <Header title="Sections" subtitle="List of all Sections." />
         <Box display={"flex"}>
-          <Link to="/dash/users/new">
-            <AddBtn btnName="+ Add User" />
+          <Link to="/dash/settings/sections/new">
+            <AddBtn btnName="+ Add Section" />
           </Link>
-          <Link to={`/dash/users/${selectedRows[0]}`}>
+          <Link to={`/dash/settings/sections/${selectedRows[0]}`}>
             <AddBtn btnName="Edit" enabled={!canEdit} />
           </Link>
         </Box>
@@ -98,7 +98,7 @@ const Users = () => {
           <DataGrid
             marginTop={"5rem"}
             rows={tableContent}
-            columns={UserTableColumns}
+            columns={SectionTableColumns}
             components={{ Toolbar: GridToolbar }}
             checkboxSelection
             onSelectionModelChange={handleSelectionModelChange}
@@ -112,4 +112,4 @@ const Users = () => {
   return content;
 };
 
-export default Users;
+export default Sections;

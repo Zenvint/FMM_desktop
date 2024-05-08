@@ -19,3 +19,13 @@ export const UserTableColumns = [
         cellClassName: "name-column--cell"
     },
 ];
+
+export const SectionTableColumns = [
+    { field: "id", headerName: "ID", flex: 0.5 },
+    {
+        field: "sectionname",
+        headerName: "Section Name",
+        flex: 1,
+        cellClassName: "name-column--cell"
+    }
+];
