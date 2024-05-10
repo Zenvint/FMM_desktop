@@ -29,3 +29,25 @@ export const SectionTableColumns = [
         cellClassName: "name-column--cell"
     }
 ];
+
+export const ClassTableColumns = [
+    { field: "id", headerName: "ID", flex: 0.5 },
+    {
+        field: "classname",
+        headerName: "Class Name",
+        flex: 1,
+        cellClassName: "name-column--cell"
+    },
+    {
+        field: "sectionname",
+        headerName: "Section Name",
+        flex: 1,
+        cellClassName: "name-column--cell"
+    },
+    {
+        field: "tuition",
+        headerName: "Tuition Fee",
+        flex: 1,
+        cellClassName: "name-column--cell"
+    }
+];
