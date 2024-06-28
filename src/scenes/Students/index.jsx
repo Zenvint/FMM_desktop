@@ -88,54 +88,68 @@ const Students = () => {
 	];
 
 	return (
-		<Box m="10px">
-			<Header title="STUDENTS" subtitle="List of all students." />
-			<Box
-				m="0 0 0"
-				height="73vh"
-				sx={{
-					"& .MuiDataGrid-root": {
-						border: "none"
-					},
-					"& .MuiDataGrid-cell": {
-						borderBottom: "none"
-					},
-					"& .name-column--cell": {
-						color: colors.greenAccent[100]
-					},
-					"& .MuiDataGrid-columnHeaders": {
-						backgroundColor: colors.blueAccent[800],
-						borderBottom: "none"
-					},
-					"& .MuiDataGrid-virtualScroller": {
-						backgroundColor: colors.primary[400]
-					},
-					"& .MuiDataGrid-footerContainer": {
-						borderTop: "none",
-						backgroundColor: colors.blueAccent[800]
-					},
-					"& .MuiCheckbox-root": {
-						color: `${colors.blueAccent[200]} `
-					},
-					"& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-						color: `${colors.grey[100]}`
-					}
-				}}>
-				<Box display={"flex"}>
-					< Form btn={" Add Student"} icon={<PersonAddIcon />} title={"Add Student"}  />
-					< Form btn={" Edit"} icon={<DriveFileRenameOutlineIcon sx={{ ml: "-190px"}}/>} title={"Edit Student"} />
-					< DismissForm btn={" Dismiss"} icon={<PersonRemoveIcon sx={{ ml: "-370px"}} />} title={"Dismiss Student"} />
-				</Box>
-				<DataGrid
-					rows={studentList}
-					columns={columns}
-					components={{ Toolbar: GridToolbar }}
-					checkboxSelection
-					onRowSelectionModelChange={handleSelectionModelChange}
-				/>
-			</Box>
-		</Box>
-	);
+    <Box m="10px">
+      <Header title="STUDENTS" subtitle="List of all students." />
+      <Box display={"flex"} justifyContent={"start"} ml={-2}>
+        <Form
+          btn={" Add Student"}
+          icon={<PersonAddIcon />}
+          title={"Add Student"}
+        />
+        <Form
+          btn={" Edit"}
+          icon={<DriveFileRenameOutlineIcon />}
+          title={"Edit Student"}
+        />
+        <DismissForm
+          btn={" Dismiss"}
+          icon={<PersonRemoveIcon />}
+          title={"Dismiss Student"}
+        />
+      </Box>
+
+      <Box
+        m="0 0 0"
+        height="73vh"
+        sx={{
+          "& .MuiDataGrid-root": {
+            border: "none"
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "none"
+          },
+          "& .name-column--cell": {
+            color: colors.greenAccent[100]
+          },
+          "& .MuiDataGrid-columnHeaders": {
+            backgroundColor: colors.blueAccent[800],
+            borderBottom: "none"
+          },
+          "& .MuiDataGrid-virtualScroller": {
+            backgroundColor: colors.primary[400]
+          },
+          "& .MuiDataGrid-footerContainer": {
+            borderTop: "none",
+            backgroundColor: colors.blueAccent[800]
+          },
+          "& .MuiCheckbox-root": {
+            color: `${colors.blueAccent[200]} `
+          },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${colors.grey[100]}`
+          }
+        }}
+      >
+        <DataGrid
+          rows={studentList}
+          columns={columns}
+          components={{ Toolbar: GridToolbar }}
+          checkboxSelection
+          onRowSelectionModelChange={handleSelectionModelChange}
+        />
+      </Box>
+    </Box>
+  );
 };
 
 export default Students;

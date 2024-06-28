@@ -39,7 +39,7 @@ export default function StaffForm({btn, icon, title}) {
 
 	return (
 		<div className="form">
-			<Button className="btn" onClick={handleOpen} sx={{ mt: 0, ml: 0, color: colors.grey[100], fontSize: "12px",  padding: "10px 3px" }}>
+			<Button className="btn" onClick={handleOpen} sx={{  mr: -18, color: colors.grey[100], fontSize: "12px",  padding: "10px 3px" }}>
 				{icon} {btn}
 			</Button>
 			<Modal
@@ -60,7 +60,7 @@ export default function StaffForm({btn, icon, title}) {
 						<form action="#" class="form-container" id="form">
 							<div class="input-container">
 								<label for="staffName">Full Name:</label>
-								<input id="staffName" type="text" placeholder="Enter the staff name" value={""} required/>
+								<input id="staffName" name="staffName" type="text" placeholder="Enter the staff name"  required/>
 							</div>
 
                             <div class="input-container">
@@ -80,24 +80,24 @@ export default function StaffForm({btn, icon, title}) {
 							<div className="class_container" style={{gap:"2.5rem"}}>
 								<div class="input-container">
 									<label for="role">Role:</label>
-									<input id="role" type="text" placeholder="Enter role" value={""} required style={{width:"16rem"}}/>
+									<input id="role" name="role" type="text" placeholder="Enter role" required style={{width:"16rem"}}/>
 								</div>
 
 								<div class="input-container">
 									<label for="salary">Salary:</label>
-									<input id="salary" type="text" placeholder="Enter salary" value={""} required  style={{width:"16rem"}}/>
+									<input id="salary" name="salary" type="text" placeholder="Enter salary" required  style={{width:"16rem"}}/>
 								</div>
 							</div>
 
 							<div class="input-container">
 								<label for="staffEmail">Email:</label>
-								<input id="staffEmail" type="text" placeholder="Enter email" value={""} required/>
+								<input id="staffEmail" name="staffEmail" type="text" placeholder="Enter email" required/>
 							</div>
 
 							<div className="class_container">
 								<div class="input-container">
 									<label for="staffNum">Phone number:</label>
-									<input id="staffNun" type="text" placeholder="Enter phone number" value={""} required style={{width:"16rem"}}/>
+									<input id="staffNun" name="staffNum" type="text" placeholder="Enter phone number"  required style={{width:"16rem"}}/>
 								</div>
 
 							</div>

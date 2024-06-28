@@ -67,7 +67,7 @@ export default function ModalList({btnName, icon}) {
 
   return (
     <div>
-      <Button onClick={handleOpen} sx={{ color: colors.grey[100], margin: '0 10px', ":hover": { backgroundColor: colors.grey[800] }, width: '150px'  }}>{icon} {btnName}</Button>
+      <Button onClick={handleOpen} sx={{ color: colors.grey[100], ":hover": { color: colors.greenAccent[400] },  }}>{icon} {btnName}</Button>
       <Modal
         open={open}
       >

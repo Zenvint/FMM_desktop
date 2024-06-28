@@ -39,12 +39,6 @@ const Staff = () => {
 			cellClassName: "name-column--cell"
 		},
 		{
-			field: "salary",
-			headerName: "SALARY",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
 			field: "email",
 			headerName: "EMAIL",
 			flex: 1,
@@ -92,10 +86,10 @@ const Staff = () => {
 						color: `${colors.grey[100]}`
 					}
 				}}>
-				<Box display={"flex"} >
+				<Box display={"flex"} ml={-3} >
 					<StaffForm btn={"add staff"} icon={<PersonAddIcon />} title={"Staff Registration"} />
-					<StaffForm btn={"edit"} icon={<DriveFileRenameOutlineIcon sx={{ ml: "-190px"}} />} title={"Edit Staff"} />
-					<DismissForm btn={"dismiss"} icon={<PersonRemoveIcon sx={{ ml: "-370px"}} />} title={"Dismiss Staff"} />
+					<StaffForm btn={"edit"} icon={<DriveFileRenameOutlineIcon />} title={"Edit Staff"} />
+					<DismissForm btn={"dismiss"} icon={<PersonRemoveIcon />} title={"Dismiss Staff"} />
 				</Box>
 
 				<DataGrid

@@ -41,7 +41,7 @@ export default  function SessionForm({icon, title}) {
 						fontWeight: "bold",
 						alignItems: "center",
 						marginTop: "20px",
-						":hover": { color: colors.greenAccent[500] }
+						":hover": { color: colors.greenAccent[400] }
 					}}>
 					{icon} {title}
 				</Button>

@@ -9,6 +9,10 @@ import Staff from "./scenes/Staff";
 import { Session } from "./scenes/Settings/session";
 import { Settings } from "./scenes/Settings";
 import { School } from "./scenes/Settings/school";
+import { FeeSettings } from "./scenes/Settings/feeSettings";
+import { TuitionFee } from "./scenes/Finance/TuitionFee";
+import { Salaries } from "./scenes/Finance/Salaries";
+import { Expenses } from "./scenes/Finance/Expenses";
 
 function App() {
 	const [theme, colorMode] = useMode();
@@ -28,7 +32,10 @@ function App() {
 							<Route path="/settings" element={<Settings />} />
 							<Route path="/settings/session" element={<Session />} />
 							<Route path="/settings/school" element={<School />} />
-
+							<Route path="/settings/feeSettings" element={<FeeSettings />} />
+							<Route path="/finance/tuitionFee" element={<TuitionFee />} />
+							<Route path="/finance/salaries" element={<Salaries />} />
+							<Route path="/finance/expenses" element={<Expenses />} />
 						</Routes>
 					</main>
 				</div>

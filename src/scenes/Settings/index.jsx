@@ -8,6 +8,9 @@ import Header from "../../components/Header";
 import PendingActionsOutlinedIcon from '@mui/icons-material/PendingActionsOutlined';
 import CreditScoreOutlinedIcon from '@mui/icons-material/CreditScoreOutlined';
 import { Link } from "react-router-dom";
+import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
+import PriceCheckOutlinedIcon from '@mui/icons-material/PriceCheckOutlined';
+import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 
 export const Settings = () => {
 	const theme = useTheme();
@@ -26,7 +29,12 @@ export const Settings = () => {
                         </Link>
                         <Link to={"/settings/school"} style={{ textDecoration: 'none', color: colors.grey[100] }}>
                             <li>
-                                <CreditScoreOutlinedIcon className="li_icon" /> School settings
+                                <HistoryEduOutlinedIcon className="li_icon" /> School settings
+                            </li>
+                        </Link>
+                        <Link to={"/settings/feeSettings"} style={{ textDecoration: 'none', color: colors.grey[100] }}>
+                            <li>
+                                <PriceCheckOutlinedIcon className="li_icon" /> Fee settings
                             </li>
                         </Link>
 					</ul>

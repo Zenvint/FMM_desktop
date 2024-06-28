@@ -6,48 +6,48 @@ import { useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { Box } from "@mui/material";
-import SessionForm from "../../components/createSession";
-import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import { Link } from "react-router-dom";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+import { Edit } from "@mui/icons-material";
+import FeeSettingForm from "../../components/feeSettingForm";
 
-export const Session = () => {
+export const FeeSettings = () => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 
 	const columns = [
 		{
-			field: "sessionName",
-			headerName: "NAME",
+			field: "schoolName",
+			headerName: "SCHOOL",
 			flex: 1,
 			cellClassName: "name-column--cell"
 		},
 		{
-			field: "startDate",
-			headerName: "START DATE",
+			field: "sectionName",
+			headerName: "SECTION",
 			flex: 1,
 			cellClassName: "name-column--cell"
 		},
 		{
-			field: "endDate",
-			headerName: "END DATE",
+			field: "feeAmt",
+			headerName: "AMOUNT",
 			flex: 1,
 			cellClassName: "name-column--cell"
 		},
 		{
-			field: "status",
-			headerName: "STATUS",
+			field: "installmentNum",
+			headerName: "NUMBER OF INSTALLMENTS",
 			flex: 1,
 			cellClassName: "name-column--cell"
 		}
 	];
 
 	return (
-		<Box m="10px">
-			<Header title="SESSIONS" />
+		<Box m={"10px"}>
+			<Header title="FEE SETTINGS" />
 			<Box
 				m="0 0 0"
-				height="73vh"
+				height="70vh"
 				sx={{
 					"& .MuiDataGrid-root": {
 						border: "none"
@@ -76,17 +76,15 @@ export const Session = () => {
 						color: `${colors.grey[100]}`
 					}
 				}}>
-				<Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
-					<SessionForm
-						title={"New Academic Year"}
-						icon={<AddCircleOutlinedIcon sx={{ height: "15px" }} />}
+				<Box display="flex" justifyContent="space-between" alignItems={"center"} marginTop={"30px"}>
+					<FeeSettingForm
+						btn={"Edit"} title={"Fee Settings"}
+						icon={<Edit sx={{ height: "14px", width: "14px"}} />}
 					/>
 					<Link
 						to={"/settings"}
-						style={{
-							color: colors.grey[100],
-						}}>
-						<ArrowBackOutlinedIcon />
+						style={{ color: colors.grey[100],  }}>
+						<ArrowBackOutlinedIcon className="li_icon" />
 					</Link>
 				</Box>
 				<DataGrid rows={""} columns={columns} checkboxSelection />
