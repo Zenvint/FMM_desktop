@@ -61,7 +61,6 @@ export default function PayFeeForm({ btn, icon, title }) {
     e.preventDefault();
     handleClose();
     handleReceiptOpen();
-    onsubmit(formData);
     document.getElementById("form").reset();
   };
 
@@ -199,9 +198,9 @@ export default function PayFeeForm({ btn, icon, title }) {
                 <label>Fee Type:</label>
                 <RadioGroup name="feeType" value={formData.feeType} onChange={handleChange}>
                   <div style={{marginLeft: "10px"}}>
-                    <FormControlLabel value="registration Fee" control={<Radio />} label="Registration Fee" />
-                    <FormControlLabel value="school Fee" control={<Radio />} label="School Fee" />
-                    <FormControlLabel value="examination Fee" control={<Radio />} label="Examination Fee" />
+                    <FormControlLabel value="registration Fee" control={<Radio color="secondary" />} label="Registration Fee" />
+                    <FormControlLabel value="school Fee" control={<Radio color="secondary" />} label="School Fee" />
+                    <FormControlLabel value="examination Fee" control={<Radio color="secondary" />} label="Examination Fee" />
                   </div>
                 </RadioGroup>
               </div>
