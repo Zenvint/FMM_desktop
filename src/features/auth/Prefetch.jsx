@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { usersApiSlice } from '../users/usersApiSlice.js';
 import { sectionsApiSlice } from '../sections/sectionsApiSlice.js';
 import { classesApiSlice } from '../classes/classesApiSlice.js';
+import { studentsApiSlice } from '../students/studentsApiSlice.js';
 
 const Prefetch = () => {
     
@@ -12,6 +13,7 @@ const Prefetch = () => {
         store.dispatch(usersApiSlice.util.prefetch('getUsers', 'usersList', { force: true }))
         store.dispatch(sectionsApiSlice.util.prefetch('getSections', 'sectionsList', { force: true }))
         store.dispatch(classesApiSlice.util.prefetch('getClasses', 'classesList', { force: true }))
+        store.dispatch(studentsApiSlice.util.prefetch('getStudents', 'studentsList', { force: true }))
     }, [])
 
     return <Outlet />
