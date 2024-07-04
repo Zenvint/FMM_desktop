@@ -21,7 +21,7 @@ const Staff = () => {
 	const columns = [
 		{ field: "id", headerName: "ID", flex: 0.5 },
 		{
-			field: "name",
+			field: "staffName",
 			headerName: "NAME",
 			flex: 1,
 			cellClassName: "name-column--cell"

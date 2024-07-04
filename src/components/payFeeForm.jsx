@@ -25,18 +25,7 @@ export default function PayFeeForm({ btn, icon, title }) {
   const [selectedStudent, setSelectedStudent] = React.useState(null);
   const [studentN, setStudentN] = React.useState("");
   const [suggestions, setSuggestions] = React.useState([]);
-  const [formData, setFormData] = React.useState({
-    studentName: "",
-    school: "",
-    section: "",
-    class: "",
-    feeType: "",
-    discount: "",
-    amtPaid: "",
-    balance: "",
-    status: "",
-    date: ""
-  });
+  const [formData, setFormData] = React.useState({ studentName: "", school: "", section: "", class: "", feeType: "", discount: "", amtPaid: "", balance: "", status: "", date: "" });
 
   useEffect(() => {
     if (studentN.length > 0) {
@@ -69,15 +58,32 @@ export default function PayFeeForm({ btn, icon, title }) {
     setFormData({
       ...formData,
       [name]: value
-    })
+    });
   }
 
+  const getStatusOptions = (feeType) => {
+    if (feeType === "school Fee") {
+      return (
+        <>
+          <option value="1st_installment">1st Installment</option>
+          <option value="2nd_installment">2nd Installment</option>
+          <option value="3rd_installment">3rd Installment</option>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <option value="complete">Complete</option>
+          <option value="incomplete">Incomplete</option>
+        </>
+      );
+    }
+  };
 
   const close = () => {
     handleClose();
     document.getElementById("form").reset();
   };
-
 
   const style = {
     position: "absolute",
@@ -123,15 +129,15 @@ export default function PayFeeForm({ btn, icon, title }) {
                 <CloseIcon />
               </div>
             </header>
-            <form action="#" class="form-container" id="form" onSubmit={handleSubmit}>
-              <div class="input-container">
+            <form action="#" className="form-container" id="form" onSubmit={handleSubmit}>
+            <div className="input-container">
                 <label>Student Name:</label>
                 <input
                   type="text"
                   id="studentName"
                   name="studentName"
                   value={studentN}
-                  onChange={(e) => setStudentN(e.target.value)  }
+                  onChange={(e) => setStudentN(e.target.value)}
                   required
                   style={{
                     outlineColor: colors.primary[500],
@@ -156,10 +162,8 @@ export default function PayFeeForm({ btn, icon, title }) {
                 </div>
               </div>
 
-              <div
-                style={{ display: "flex", flexDirection: "row", gap: "25px" }}
-              >
-                <div class="input-container">
+              <div style={{ display: "flex", flexDirection: "row", gap: "25px" }}>
+                <div className="input-container">
                   <label>School:</label>
                   <input
                     type="text"
@@ -170,7 +174,7 @@ export default function PayFeeForm({ btn, icon, title }) {
                     readOnly
                   />
                 </div>
-                <div class="input-container">
+                <div className="input-container">
                   <label>Section:</label>
                   <input
                     type="text"
@@ -181,7 +185,7 @@ export default function PayFeeForm({ btn, icon, title }) {
                     readOnly
                   />
                 </div>
-                <div class="input-container">
+                <div className="input-container">
                   <label>Class:</label>
                   <input
                     type="text"
@@ -194,10 +198,10 @@ export default function PayFeeForm({ btn, icon, title }) {
                 </div>
               </div>
 
-              <div class="input-container">
+              <div className="input-container">
                 <label>Fee Type:</label>
                 <RadioGroup name="feeType" value={formData.feeType} onChange={handleChange}>
-                  <div style={{marginLeft: "10px"}}>
+                  <div style={{ marginLeft: "10px" }}>
                     <FormControlLabel value="registration Fee" control={<Radio color="secondary" />} label="Registration Fee" />
                     <FormControlLabel value="school Fee" control={<Radio color="secondary" />} label="School Fee" />
                     <FormControlLabel value="examination Fee" control={<Radio color="secondary" />} label="Examination Fee" />
@@ -205,36 +209,33 @@ export default function PayFeeForm({ btn, icon, title }) {
                 </RadioGroup>
               </div>
 
-              <div
-                style={{ display: "flex", flexDirection: "row", gap: "15px" }}
-              >
-                <div class="input-container" style={{ width: "100%" }}>
+              <div style={{ display: "flex", flexDirection: "row", gap: "15px" }}>
+                <div className="input-container" style={{ width: "100%" }}>
                   <label>Discount:</label>
                   <input type="text" id="discount" name="discount" value={formData.discount} onChange={handleChange} required />
                 </div>
-                <div class="input-container" style={{ width: "100%" }}>
+                <div className="input-container" style={{ width: "100%" }}>
                   <label>Amount Paid:</label>
                   <input type="text" id="amtPaid" name="amtPaid" value={formData.amtPaid} onChange={handleChange} required />
                 </div>
-                <div class="input-container" style={{ width: "100%" }}>
+                <div className="input-container" style={{ width: "100%" }}>
                   <label>Balance:</label>
                   <input type="text" id="balance" name="balance" value={formData.balance} onChange={handleChange} required />
                 </div>
-                <div class="input-container" style={{ width: "100%" }}>
+                <div className="input-container" style={{ width: "100%" }}>
                   <label>Status:</label>
                   <select id="status" name="status" value={formData.status} onChange={handleChange} style={{ height: "33px", marginTop: "1px" }}>
-                    <option value="Paid">Incomplete</option>
-                    <option value="Pending">Complet</option>
+                    {getStatusOptions(formData.feeType)}
                   </select>
                 </div>
               </div>
 
-              <div class="input-container">
+              <div className="input-container">
                 <label>Date:</label>
                 <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} required />
               </div>
 
-              <button onClick={handleSubmit} class="submit-button" form="form" >
+              <button onClick={handleSubmit} className="submit-button" form="form">
                 Save
               </button>
             </form>

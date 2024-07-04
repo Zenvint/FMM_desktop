@@ -5,6 +5,8 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { Box } from "@mui/material";
 import { staffList } from "../../data/mockData";
+import EditStaffSalary from "../../components/EditStaffSalary";
+import { Edit } from "@mui/icons-material";
 
 
 
@@ -31,7 +33,7 @@ export const Salaries = () => {
 	const columns = [
 		{ field: "id", headerName: "ID", flex: 0.5 },
 		{
-			field: "name",
+			field: "staffName",
 			headerName: "NAME",
 			flex: 1,
 			cellClassName: "name-column--cell"
@@ -47,7 +49,6 @@ export const Salaries = () => {
 			headerName: "SALARY",
 			flex: 1,
 			cellClassName: "name-column--cell",
-            editable: true,
 		},
 		{
 			field: "phone",
@@ -62,7 +63,8 @@ export const Salaries = () => {
 			<Header title="STAFF SALARIES" subtitle="Manage staff salaries" />
 			<Box
 				m="0 0 0"
-				height="66vh"
+				mt={"-17px"}
+				height="73vh"
 				sx={{
 					"& .MuiDataGrid-root": {
 						border: "none"
@@ -91,15 +93,21 @@ export const Salaries = () => {
 						color: `${colors.grey[100]}`
 					}
 				}}>
-				<Box display={"flex"} gap={"3rem"} justifyContent={"end"} marginTop={"-1rem"} >
-                    <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "0rem"}}>
-                        <h5 style={{position: "relative", marginRight: "2rem"}}>TOTAL STAFF:</h5>
-                        <h4 style={{color: colors.greenAccent[400], marginTop: "-20px", fontWeight: "bold", backgroundColor: colors.primary[400], width: "100px", textAlign: "center", borderRadius: "5px", height: "30px", alignItems: "center", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 5px", alignContent: "center"}}>{formattedStaff}</h4>
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "0rem"}}>
-                        <h5 style={{position: "relative", marginRight: "1rem"}}>TOTAL SALARIES:</h5>
-                        <h4 style={{color: colors.greenAccent[400], marginTop: "-20px", fontWeight: "bold", backgroundColor: colors.primary[400], width: "100px", textAlign: "center", borderRadius: "5px", height: "30px", alignItems: "center", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 5px", alignContent: "center"}}>{formattedSalaries}</h4>
-                    </div>
+					
+				<Box display={"flex"} justifyContent={"space-between"} alignItems={"center"} mb={"-1.5rem"}>
+					<Box display={"flex"}>
+						<EditStaffSalary btn={"edit"} icon={<Edit />} title={"EDIT SALARY"}  />
+					</Box>
+					<Box display={"flex"} gap={"3rem"} justifyContent={"end"} marginTop={"-1rem"} >
+						<div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "0rem"}}>
+							<h5 style={{position: "relative", marginRight: "2rem"}}>TOTAL STAFF:</h5>
+							<h4 style={{color: colors.greenAccent[400], marginTop: "-20px", fontWeight: "bold", backgroundColor: colors.primary[400], width: "100px", textAlign: "center", borderRadius: "5px", height: "30px", alignItems: "center", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 5px", alignContent: "center"}}>{formattedStaff}</h4>
+						</div>
+						<div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "0rem"}}>
+							<h5 style={{position: "relative", marginRight: "1rem"}}>TOTAL SALARIES:</h5>
+							<h4 style={{color: colors.greenAccent[400], marginTop: "-20px", fontWeight: "bold", backgroundColor: colors.primary[400], width: "100px", textAlign: "center", borderRadius: "5px", height: "30px", alignItems: "center", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 5px", alignContent: "center"}}>{formattedSalaries}</h4>
+						</div>
+					</Box>
 				</Box>
 
 				<DataGrid

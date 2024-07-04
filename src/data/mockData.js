@@ -1138,7 +1138,7 @@ export const studentList = [
     export const staffList = [
         {
           id: 1,
-          name: "John Doe",
+          staffName: "John Doe",
           gender: "Male",
           role: "Teacher",
           salary: 50000,
@@ -1147,7 +1147,7 @@ export const studentList = [
         },
         {
           id: 2,
-          name: "Jane Smith",
+          staffName: "Jane Smith",
           gender: "Female",
           role: "Principal",
           salary: 80000,
@@ -1156,7 +1156,7 @@ export const studentList = [
         },
         {
           id: 3,
-          name: "Michael Johnson",
+          staffName: "Michael Johnson",
           gender: "Male",
           role: "Librarian",
           salary: 45000,
@@ -1165,7 +1165,7 @@ export const studentList = [
         },
         {
           id: 4,
-          name: "Emily Davis",
+          staffName: "Emily Davis",
           gender: "Female",
           role: "Counselor",
           salary: 55000,
@@ -1174,7 +1174,7 @@ export const studentList = [
         },
         {
           id: 5,
-          name: "David Wilson",
+          staffName: "David Wilson",
           gender: "Male",
           role: "Administrator",
           salary: 70000,
@@ -1183,7 +1183,7 @@ export const studentList = [
         },
         {
           id: 6,
-          name: "Sarah Thompson",
+          staffName: "Sarah Thompson",
           gender: "Female",
           role: "Teacher",
           salary: 60000,
@@ -1192,7 +1192,7 @@ export const studentList = [
         },
         {
           id: 7,
-          name: "Robert Brown",
+          staffName: "Robert Brown",
           gender: "Male",
           role: "Teacher",
           salary: 52000,
@@ -1201,7 +1201,7 @@ export const studentList = [
         },
         {
           id: 8,
-          name: "Linda White",
+          staffName: "Linda White",
           gender: "Female",
           role: "Vice Principal",
           salary: 75000,
@@ -1210,7 +1210,7 @@ export const studentList = [
         },
         {
           id: 9,
-          name: "James Harris",
+          staffName: "James Harris",
           gender: "Male",
           role: "Security",
           salary: 40000,
@@ -1219,7 +1219,7 @@ export const studentList = [
         },
         {
           id: 10,
-          name: "Patricia Martinez",
+          staffName: "Patricia Martinez",
           gender: "Female",
           role: "Secretary",
           salary: 47000,
@@ -1228,7 +1228,7 @@ export const studentList = [
         },
         {
           id: 11,
-          name: "Charles Anderson",
+          staffName: "Charles Anderson",
           gender: "Male",
           role: "Teacher",
           salary: 51000,
@@ -1237,7 +1237,7 @@ export const studentList = [
         },
         {
           id: 12,
-          name: "Barbara Jackson",
+          staffName: "Barbara Jackson",
           gender: "Female",
           role: "Nurse",
           salary: 49000,
@@ -1246,7 +1246,7 @@ export const studentList = [
         },
         {
           id: 13,
-          name: "Daniel Lee",
+          staffName: "Daniel Lee",
           gender: "Male",
           role: "Counselor",
           salary: 54000,
@@ -1255,7 +1255,7 @@ export const studentList = [
         },
         {
           id: 14,
-          name: "Nancy Walker",
+          staffName: "Nancy Walker",
           gender: "Female",
           role: "Teacher",
           salary: 56000,
@@ -1264,7 +1264,7 @@ export const studentList = [
         },
         {
           id: 15,
-          name: "Matthew Hall",
+          staffName: "Matthew Hall",
           gender: "Male",
           role: "Maintenance",
           salary: 45000,
@@ -1273,7 +1273,7 @@ export const studentList = [
         },
         {
           id: 16,
-          name: "Elizabeth Young",
+          staffName: "Elizabeth Young",
           gender: "Female",
           role: "Teacher",
           salary: 58000,
@@ -1282,7 +1282,7 @@ export const studentList = [
         },
         {
           id: 17,
-          name: "Anthony Hernandez",
+          staffName: "Anthony Hernandez",
           gender: "Male",
           role: "Coach",
           salary: 53000,
@@ -1291,7 +1291,7 @@ export const studentList = [
         },
         {
           id: 18,
-          name: "Kimberly King",
+          staffName: "Kimberly King",
           gender: "Female",
           role: "Teacher",
           salary: 59000,
@@ -1300,7 +1300,7 @@ export const studentList = [
         },
         {
           id: 19,
-          name: "Brian Wright",
+          staffName: "Brian Wright",
           gender: "Male",
           role: "Teacher",
           salary: 50000,
@@ -1309,7 +1309,7 @@ export const studentList = [
         },
         {
           id: 20,
-          name: "Lisa Lopez",
+          staffName: "Lisa Lopez",
           gender: "Female",
           role: "Receptionist",
           salary: 46000,
@@ -1318,7 +1318,7 @@ export const studentList = [
         },
         {
           id: 21,
-          name: "Christopher Hill",
+          staffName: "Christopher Hill",
           gender: "Male",
           role: "Teacher",
           salary: 51000,
@@ -1327,7 +1327,7 @@ export const studentList = [
         },
         {
           id: 22,
-          name: "Karen Scott",
+          staffName: "Karen Scott",
           gender: "Female",
           role: "Librarian",
           salary: 47000,
@@ -1336,7 +1336,7 @@ export const studentList = [
         },
         {
           id: 23,
-          name: "Steven Green",
+          staffName: "Steven Green",
           gender: "Male",
           role: "Teacher",
           salary: 52000,
@@ -1345,7 +1345,7 @@ export const studentList = [
         },
         {
           id: 24,
-          name: "Betty Adams",
+          staffName: "Betty Adams",
           gender: "Female",
           role: "Teacher",
           salary: 54000,
@@ -1354,7 +1354,7 @@ export const studentList = [
         },
         {
           id: 25,
-          name: "Joshua Baker",
+          staffName: "Joshua Baker",
           gender: "Male",
           role: "Teacher",
           salary: 55000,
@@ -1363,7 +1363,7 @@ export const studentList = [
         },
         {
           id: 26,
-          name: "Margaret Nelson",
+          staffName: "Margaret Nelson",
           gender: "Female",
           role: "Counselor",
           salary: 56000,
@@ -1372,7 +1372,7 @@ export const studentList = [
         },
         {
           id: 27,
-          name: "Edward Carter",
+          staffName: "Edward Carter",
           gender: "Male",
           role: "Teacher",
           salary: 57000,
@@ -1381,7 +1381,7 @@ export const studentList = [
         },
         {
           id: 28,
-          name: "Ashley Mitchell",
+          staffName: "Ashley Mitchell",
           gender: "Female",
           role: "Vice Principal",
           salary: 78000,
@@ -1390,7 +1390,7 @@ export const studentList = [
         },
         {
           id: 29,
-          name: "Ryan Perez",
+          staffName: "Ryan Perez",
           gender: "Male",
           role: "Teacher",
           salary: 58000,
@@ -1399,7 +1399,7 @@ export const studentList = [
         },
         {
           id: 30,
-          name: "Donna Roberts",
+          staffName: "Donna Roberts",
           gender: "Female",
           role: "Administrator",
           salary: 70000,

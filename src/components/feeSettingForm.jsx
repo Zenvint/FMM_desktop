@@ -169,7 +169,7 @@ export default function FeeSettingForm({ btn, icon, title }) {
               </div>
 
               <div className="input-container">
-                <label htmlFor="installments">Installments:</label>
+                <label htmlFor="installments">Instalments:</label>
                 <input type="number" min="1" max="5" step="1" />
               </div>
             </div>
