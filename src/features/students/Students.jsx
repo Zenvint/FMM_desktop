@@ -56,8 +56,13 @@ const Students = () => {
           <Link to="/dash/students/new">
             <AddBtn btnName="+ Add Student" />
           </Link>
+        
           <Link to={`/dash/students/${selectedRows[0]}`}>
             <AddBtn btnName="Edit" enabled={!canEdit} />
+          </Link>
+
+          <Link to="/dash/students/newmulti">
+            <AddBtn btnName=" + Add Multiple Student" />
           </Link>
         </Box>
         <Box

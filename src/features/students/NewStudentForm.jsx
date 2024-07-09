@@ -1,4 +1,3 @@
-/** @format */
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import PulseLoader from "react-spinners/PulseLoader.js";

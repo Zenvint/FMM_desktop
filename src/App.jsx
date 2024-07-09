@@ -18,6 +18,7 @@ import Settings from './features/settings/Settings.jsx'
 import Classes from './features/classes/Classes.jsx'
 import NewClassForm from './features/classes/NewClassForm.jsx'
 import EditClassForm from './features/classes/EditClassForm.jsx'
+import AddMultiStudentsForm from './features/students/AddMultiStudentsForm.js'
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
               <Route path='students' >
                  <Route index element={<Students />} />
                  <Route path='new' element={<NewStudentForm />}  />
+                 <Route path='newmulti' element={<AddMultiStudentsForm />}  />
               </Route>
               <Route path='staff' >
                  <Route />
