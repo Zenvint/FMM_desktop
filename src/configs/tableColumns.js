@@ -79,7 +79,7 @@ export const StudentTableColumns = [
         cellClassName: "name-column--cell"
     },
     {
-        field: "dob",
+        field: "dobformated",
         headerName: "Date of Birth",
         flex: 1,
         cellClassName: "name-column--cell"

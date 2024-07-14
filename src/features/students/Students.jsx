@@ -6,20 +6,24 @@ import { tokens } from "../../hooks/theme.js";
 import Header from "../../components/Header.jsx";
 import { useTheme } from "@mui/material";
 import { AddBtn } from "../../components/Button.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetStudentsQuery } from "./studentsApiSlice.js";
-import {StudentTableColumns } from "../../configs/tableColumns.js";
+import { StudentTableColumns } from "../../configs/tableColumns.js";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useState } from "react";
 
-
 const Students = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [selectedRows, setSelectedRows] = useState([]);
 
   const handleSelectionModelChange = (selectionModel) => {
     setSelectedRows(selectionModel);
+  };
+
+  const handleEdit = () => {
+    navigate(`/dash/students/${selectedRows[0]}`);
   };
 
   const canEdit = selectedRows.length == 1;
@@ -56,10 +60,8 @@ const Students = () => {
           <Link to="/dash/students/new">
             <AddBtn btnName="+ Add Student" />
           </Link>
-        
-          <Link to={`/dash/students/${selectedRows[0]}`}>
-            <AddBtn btnName="Edit" enabled={!canEdit} />
-          </Link>
+
+          <AddBtn btnName="Edit" enabled={!canEdit} handleEdit={handleEdit} />
 
           <Link to="/dash/students/newmulti">
             <AddBtn btnName=" + Add Multiple Student" />
