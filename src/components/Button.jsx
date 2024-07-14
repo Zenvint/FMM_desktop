@@ -6,12 +6,13 @@ import { tokens } from "../hooks/theme.js";
 
 import { useTheme } from "@mui/material";
 
-export const AddBtn = ({ btnName, to, enabled }) => {
+export const AddBtn = ({ btnName, to, enabled, handleEdit }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 
 	return (
 		<Button
+			onClick={handleEdit}
 			disabled={enabled}
 			sx={{
 				color: colors.grey[100],

@@ -29,6 +29,11 @@ const Settings = () => {
                                 <CreditScoreOutlinedIcon className="li_icon" /> Section settings
                             </li>
                         </Link>
+						<Link to={"/dash/settings/classes"} style={{ textDecoration: 'none', color: colors.grey[100] }}>
+                            <li>
+                                <CreditScoreOutlinedIcon className="li_icon" /> Classes settings
+                            </li>
+                        </Link>
 					</ul>
 				</div>
 			</Box>

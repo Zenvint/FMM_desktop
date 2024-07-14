@@ -3,135 +3,117 @@ import * as React from "react";
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../hooks/theme.js";
-import { studentList } from "../../data/mockData.js";
 import Header from "../../components/Header.jsx";
 import { useTheme } from "@mui/material";
 import { AddBtn } from "../../components/Button.jsx";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useGetStudentsQuery } from "./studentsApiSlice.js";
+import { StudentTableColumns } from "../../configs/tableColumns.js";
+import PulseLoader from "react-spinners/PulseLoader";
+import { useState } from "react";
 
 const Students = () => {
-	const theme = useTheme();
-	const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const [selectedRows, setSelectedRows] = useState([]);
 
-	const columns = [
-		{ field: "id", headerName: "ID", flex: 0.5 },
-		{
-			field: "name",
-			headerName: "NAME",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "gender",
-			headerName: "GENDER",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "school",
-			headerName: "SCHOOL",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "section",
-			headerName: "SECTION",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "class",
-			headerName: "CLASS",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "DoB",
-			headerName: "DoB",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "PoB",
-			headerName: "PoB",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "nationality",
-			headerName: "NATIONALTY",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "parents",
-			headerName: "PARENT",
-			flex: 1,
-			cellClassName: "name-column--cell"
-		},
-		{
-			field: "phone",
-			headerName: "PHONE-No",
-			flex: 1
-		}
-	];
+  const handleSelectionModelChange = (selectionModel) => {
+    setSelectedRows(selectionModel);
+  };
 
-	return (
-		<Box m="8px">
-			<Header
-				title="STUDENTS"
-				subtitle="List of all students."
-			/>
-			<Box display={"flex"}>
-				<Link to="/dash/students/new">
-					<AddBtn btnName="+ Add Student"/>
-				</Link>
-				<AddBtn btnName="Edit" />
-				<AddBtn btnName="dismiss" />
-				<AddBtn btnName="import" />
-			</Box>
-			<Box
-				m="0 0 0"
-				height="73vh"
-				sx={{
-					"& .MuiDataGrid-root": {
-						border: "none"
-					},
-					"& .MuiDataGrid-cell": {
-						borderBottom: "none"
-					},
-					"& .name-column--cell": {
-						color: colors.greenAccent[100]
-					},
-					"& .MuiDataGrid-columnHeaders": {
-						backgroundColor: colors.blueAccent[800],
-						borderBottom: "none"
-					},
-					"& .MuiDataGrid-virtualScroller": {
-						backgroundColor: colors.primary[400]
-					},
-					"& .MuiDataGrid-footerContainer": {
-						borderTop: "none",
-						backgroundColor: colors.blueAccent[800]
-					},
-					"& .MuiCheckbox-root": {
-						color: `${colors.blueAccent[200]} `
-					},
-					"& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-						color: `${colors.grey[100]}`
-					}
-				}}>
-				<DataGrid
-					marginTop={"5rem"}
-					rows={studentList}
-					columns={columns}
-					components={{ Toolbar: GridToolbar }}
-					checkboxSelection
-				/>
-			</Box>
-		</Box>
-	);
+  const handleEdit = () => {
+    navigate(`/dash/students/${selectedRows[0]}`);
+  };
+
+  const canEdit = selectedRows.length == 1;
+
+  const {
+    data: students,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetStudentsQuery("studentsList", {
+    pollingInterval: 60000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+  });
+
+  let content;
+
+  if (isLoading) content = <PulseLoader color={"#FFF"} />;
+
+  if (isError) {
+    content = <p className="errmsg">{error?.data?.message}</p>;
+  }
+
+  if (isSuccess) {
+    const { ids } = students;
+    const tableContent =
+      ids?.length && ids.map((userId) => students?.entities[userId]);
+
+    content = (
+      <Box m="8px">
+        <Header title="Students" subtitle="List of all Students." />
+        <Box display={"flex"}>
+          <Link to="/dash/students/new">
+            <AddBtn btnName="+ Add Student" />
+          </Link>
+
+          <AddBtn btnName="Edit" enabled={!canEdit} handleEdit={handleEdit} />
+
+          <Link to="/dash/students/newmulti">
+            <AddBtn btnName=" + Add Multiple Student" />
+          </Link>
+        </Box>
+        <Box
+          m="0 0 0"
+          height="73vh"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none",
+            },
+            "& .MuiDataGrid-cell": {
+              borderBottom: "none",
+            },
+            "& .name-column--cell": {
+              color: colors.greenAccent[100],
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: colors.blueAccent[800],
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: colors.primary[400],
+            },
+            "& .MuiDataGrid-footerContainer": {
+              borderTop: "none",
+              backgroundColor: colors.blueAccent[800],
+            },
+            "& .MuiCheckbox-root": {
+              color: `${colors.blueAccent[200]} `,
+            },
+            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+              color: `${colors.grey[100]}`,
+            },
+          }}
+        >
+          <DataGrid
+            marginTop={"5rem"}
+            rows={tableContent}
+            columns={StudentTableColumns}
+            components={{ Toolbar: GridToolbar }}
+            checkboxSelection
+            onSelectionModelChange={handleSelectionModelChange}
+            selectionModel={selectedRows}
+          />
+        </Box>
+      </Box>
+    );
+  }
+
+  return content;
 };
 
 export default Students;

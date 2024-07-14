@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import { Formik } from "formik";
@@ -6,17 +7,32 @@ import Header from "../../components/Header.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import {
   useGetStudentsQuery,
-  useAddNewStudentMutation,
+  useUpdateStudentMutation,
+  useDeleteStudentMutation
 } from "./studentsApiSlice.js";
 import { useGetSectionsQuery } from "../sections/sectionsApiSlice.js";
 import { useGetClassesQuery } from "../classes/classesApiSlice.js";
 import { useSnackbar } from "notistack";
 
-const NewStudentForm = () => {
+const EditStudentForm = () => {
+
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const [addNewStudent, { isLoading, isSuccess, isError, error }] =
-    useAddNewStudentMutation();
+  const { id } = useParams();
+
+  const { student } = useGetStudentsQuery("studentsList", {
+    selectFromResult: ({ data }) => ({
+      student: data?.entities[id],
+    }),
+  });
+
+  const [updateStudent, { isLoading, isSuccess, isError, error }] =
+    useUpdateStudentMutation();
+
+  const [
+    deleteStudent,
+    { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
+  ] = useDeleteStudentMutation();
 
   const {
     data: sections,
@@ -42,16 +58,17 @@ const NewStudentForm = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  let matricule;
-  const [fullname, setFullname] = useState("");
-  const [sectionId, setSectionId] = useState("");
-  const [classId, setClassId] = useState("");
-  const [dob, setDob] = useState("");
-  const [pob, setPob] = useState("");
-  const [nationality, setNationality] = useState("");
-  const [gender, setGender] = useState("");
-  const [parentname, setParentName] = useState("");
-  const [parentnumber, setParentNUmber] = useState("");
+
+  const [isDelLoading, setIsDelLoading] = useState(false);
+  const [fullname, setFullname] = useState(student.fullname);
+  const [sectionId, setSectionId] = useState(student.sectionId);
+  const [classId, setClassId] = useState(student.classId);
+  const [dob, setDob] = useState(student.dobformated);
+  const [pob, setPob] = useState(student.pob);
+  const [nationality, setNationality] = useState(student.nationality);
+  const [gender, setGender] = useState(student.gender);
+  const [parentname, setParentName] = useState(student.parentname);
+  const [parentnumber, setParentNUmber] = useState(student.parentnumber);
 
   const onFullnameChanged = (e) => setFullname(e.target.value);
   const onSectionIdChanged = (e) => setSectionId(e.target.value);
@@ -63,70 +80,64 @@ const NewStudentForm = () => {
   const onParentnameChanged = (e) => setParentName(e.target.value);
   const onParentNumberChanged = (e) => setParentNUmber(e.target.value);
 
-  const { students } = useGetStudentsQuery("studentsList", {
-    selectFromResult: ({ data }) => ({
-      students: data?.ids.map((id) => data?.entities[id]),
-    }),
-  });
+  const onSaveStudentClicked = async (e) => {
+    e.preventDefault();
+    await updateStudent({
+        id: student.id,
+        matricule: student.matricule,
+        fullname,
+        sectionId,
+        classId,
+        dob,
+        pob,
+        nationality,
+        gender,
+        parentname,
+        parentnumber,
+      })
+  };
 
-  const setUpMatricule = () => {
-    const today = new Date();
-    if (students) {
-      const lastStudentMatricule = students[students.length - 1].matricule;
-      const lastRegist = lastStudentMatricule.substring(7);
-      const lastRegistInt = parseInt(lastRegist, 10);
-      matricule = `FMM${today.getFullYear()}${lastRegistInt + 1}`;
-      console.log(matricule);
-    } else {
-      matricule = `FMM${today.getFullYear()}${10001}`;
-    }
+  const onDeleteSectionClicked = async () => {
+    setIsDelLoading(true);
+    await deleteStudent({ id: student.id });
   };
 
   
 
-  const onSaveStudentClicked = async (e) => {
-    e.preventDefault();
-    setUpMatricule();
-    await addNewStudent({
-      matricule,
-      fullname,
-      sectionId,
-      classId,
-      dob,
-      pob,
-      nationality,
-      gender,
-      parentname,
-      parentnumber,
-    })
-  };
+  useEffect(
+    () => {
+      if (isSuccess || isDelSuccess) {
+        setIsDelLoading(false);
+        setFullname("");
+        setSectionId("");
+        setClassId("");
+        setDob("");
+        setPob("");
+        setNationality("");
+        setGender("");
+        setParentName("");
+        setParentNUmber("");
+        enqueueSnackbar(
+          `Seccessful`,
+          { variant: "success" }
+        );
+        navigate("/dash/students");
+      }
+    },
+    [isSuccess, isDelSuccess,navigate],
+    enqueueSnackbar
+  );
 
   useEffect(() => {
-    if (isSuccess) {
-      setFullname("")
-      setSectionId("")
-      setClassId("")
-      setDob("")
-      setPob("")
-      setNationality("")
-      setGender("")
-      setParentName("")
-      setParentNUmber("")
-      enqueueSnackbar(`Student with matricule: ${matricule} added Seccessfully!`, { variant: "success" });
-      navigate("/dash/students");
+    if (isError || isDelError) {
+      enqueueSnackbar("An Error occured", { variant: "error" });
     }
-  }, [isSuccess, navigate], enqueueSnackbar);
-
-  useEffect(() => {
-    if (isError){
-      enqueueSnackbar("Could not add Student!", { variant: "error" });
-    }
-  }, [isError, enqueueSnackbar])
+  }, [isError, isDelError, enqueueSnackbar]);
 
   const errClass =
-    isErrorClass || isErrorSection || isError ? "errmsg" : "offscreen";
+    isErrorClass || isErrorSection || isError || isDelError  ? "errmsg" : "offscreen";
 
-  if (isLoadingClasses || isLoadingSections || isLoading) {
+  if (isLoadingClasses || isLoadingSections || isLoading  || isDelLoading ) {
     return <PulseLoader color={"#FFF"} />;
   }
 
@@ -168,8 +179,7 @@ const NewStudentForm = () => {
 
   const errContent =
     (errorClass?.data?.message ||
-      errorSection?.data?.message ||
-      error?.data?.message) ??
+      errorSection?.data?.message || error?.data?.message || delerror?.data?.message ) ??
     "";
 
   return (
@@ -342,6 +352,9 @@ const NewStudentForm = () => {
             <button className="submit-button" type="submit">
               Save
             </button>
+            <button className="submit-button" onClick={onDeleteSectionClicked}>
+              Delete
+            </button>
           </form>
         </>
       </Formik>
@@ -349,4 +362,4 @@ const NewStudentForm = () => {
   );
 };
 
-export default NewStudentForm;
+export default EditStudentForm;

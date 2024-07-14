@@ -5,6 +5,7 @@ import Header from "../../components/Header.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import { useAddNewSectionMutation } from "./sectionsApiSlice.js";
 import { useState, useEffect } from "react";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const NewSectionForm = () => {
   const [addNewSection, { isLoading, isSuccess, isError, error }] = useAddNewSectionMutation();
@@ -35,6 +36,10 @@ const NewSectionForm = () => {
 
 
   const errClass = isError ? "errmsg" : "offscreen";
+
+  if (isLoading){
+    return <PulseLoader color={"#FFF"} />;
+  }
 
   return (
     <Box m="20px">

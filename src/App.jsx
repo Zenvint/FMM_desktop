@@ -15,6 +15,11 @@ import Sections from './features/sections/Sections.jsx'
 import NewSectionForm from './features/sections/NewSectionForm.jsx'
 import EditSectionForm from './features/sections/EditSectionForm.jsx'
 import Settings from './features/settings/Settings.jsx'
+import Classes from './features/classes/Classes.jsx'
+import NewClassForm from './features/classes/NewClassForm.jsx'
+import EditClassForm from './features/classes/EditClassForm.jsx'
+import AddMultiStudentsForm from './features/students/AddMultiStudentsForm.js'
+import EditStudentForm from './features/students/EditStudentForm.js'
 
 const App = () => {
   return (
@@ -39,11 +44,18 @@ const App = () => {
                     <Route path='new' element={<NewSectionForm />}  />
                     <Route path=':id' element={<EditSectionForm />}  />
                  </Route>
+                 <Route path='classes' >
+                    <Route index element={<Classes />} />
+                    <Route path='new' element={<NewClassForm />}  />
+                    <Route path=':id' element={<EditClassForm />}  />
+                 </Route>
               </Route>
 
               <Route path='students' >
                  <Route index element={<Students />} />
                  <Route path='new' element={<NewStudentForm />}  />
+                 <Route path='newmulti' element={<AddMultiStudentsForm />}  />
+                 <Route path=':id' element={<EditStudentForm />}  />
               </Route>
               <Route path='staff' >
                  <Route />

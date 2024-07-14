@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAddNewUserMutation } from "./usersApiSlice.js";
 import ROLES from "../../configs/roles.js";
 import { useState, useEffect } from "react";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
 
@@ -69,6 +70,10 @@ const NewUserForm = () => {
   const validRolesClass = !Boolean(roles.length)
     ? "form__input--incomplete"
     : "";
+
+    if (isLoading){
+      return <PulseLoader color={"#FFF"} />;
+    }
 
   return (
     <Box m="20px">
