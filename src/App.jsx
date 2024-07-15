@@ -18,8 +18,8 @@ import Settings from './features/settings/Settings.jsx'
 import Classes from './features/classes/Classes.jsx'
 import NewClassForm from './features/classes/NewClassForm.jsx'
 import EditClassForm from './features/classes/EditClassForm.jsx'
-import AddMultiStudentsForm from './features/students/AddMultiStudentsForm.js'
-import EditStudentForm from './features/students/EditStudentForm.js'
+import AddMultiStudentsForm from './features/students/AddMultiStudentsForm.jsx'
+import EditStudentForm from './features/students/EditStudentForm.jsx'
 
 const App = () => {
   return (

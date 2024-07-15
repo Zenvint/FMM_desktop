@@ -11,8 +11,10 @@ import {
 import { useGetSectionsQuery } from "../sections/sectionsApiSlice";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
+import { useSnackbar } from "notistack";
 
 const EditClassForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
 
   const { classObj } = useGetClassesQuery("classesList", {
@@ -45,18 +47,28 @@ const EditClassForm = () => {
 
   const navigate = useNavigate();
 
+  const [isDelLoading, setIsDelLoading] = useState(false);
   const [classname, setClassname] = useState(classObj.classname);
   const [tuition, setTuition] = useState(classObj.tuition);
   const [selectedSection, setSelectedSection] = useState(classObj.sectionId);
 
   useEffect(() => {
     if (isSuccess || isDelSuccess) {
+      setIsDelLoading(false);
       setClassname("");
       setTuition("");
       setSelectedSection("");
+      enqueueSnackbar(`Seccess`, { variant: "success" });
       navigate("/dash/settings/classes");
     }
   }, [isSuccess, isDelSuccess, navigate]);
+
+  useEffect(() => {
+    if (isError || isDelError){
+      setIsDelLoading(false);
+      enqueueSnackbar(`An Error occured`, { variant: "success" });
+    }
+  })
 
   const onClassnameChanged = (e) => setClassname(e.target.value);
   const handleSectionChange = (e) => setSelectedSection(e.target.value);
@@ -77,6 +89,7 @@ const EditClassForm = () => {
   };
 
   const onDeleteClassClicked = async () => {
+    setIsDelLoading(true);
     await deleteClass({ id: classObj.id });
   };
 
@@ -94,7 +107,7 @@ const EditClassForm = () => {
       ));
   }
 
-  let canSave = !isLoading || !isLoadingSections;
+  let canSave = !isLoading || !isLoadingSections ;
 
   const errClass =
     isError || isDelError || isErrorSection ? "errmsg" : "offscreen";
@@ -105,7 +118,7 @@ const EditClassForm = () => {
       errorSection?.data?.message) ??
     "";
 
-  if (!classObj || isLoading || isLoadingSections)
+  if (!classObj || isLoading || isLoadingSections || isDelLoading)
     return <PulseLoader color={"#FFF"} />;
 
   return (

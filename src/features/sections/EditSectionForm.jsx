@@ -6,8 +6,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useUpdateSectionMutation, useDeleteSectionMutation, useGetSectionsQuery } from "./sectionsApiSlice.js";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
+import { useSnackbar } from "notistack";
 
 const EditSectionForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
 
   const { section } = useGetSectionsQuery("sectionsList", {
@@ -28,15 +30,25 @@ const EditSectionForm = () => {
 
   const navigate = useNavigate();
 
+  const [isDelLoading, setIsDelLoading] = useState(false);
   const [sectionname, setSectionname] = useState(section.sectionname);
 
 
   useEffect(() => {
     if (isSuccess || isDelSuccess) {
+      setIsDelLoading(false)
+      enqueueSnackbar(`Seccess`, { variant: "success" });
       setSectionname("");
       navigate("/dash/settings/sections");
     }
   }, [isSuccess, isDelSuccess, navigate]);
+
+  useEffect(() => {
+    if(isError || isDelError){
+      setIsDelLoading(false)
+      enqueueSnackbar(`An Error occured`, { variant: "error" });
+    }
+  }, [isError, isDelError])
 
   const onSectionnameChanged = (e) => setSectionname(e.target.value);
 
@@ -47,6 +59,7 @@ const EditSectionForm = () => {
   };
 
   const onDeleteSectionClicked = async () => {
+    setIsDelLoading(true)
     await deleteSection({ id: section.id });
   };
 
@@ -59,7 +72,7 @@ const EditSectionForm = () => {
 
   const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 
-  if (!section || isLoading) return <PulseLoader color={"#FFF"} />;
+  if (!section || isLoading || isDelLoading) return <PulseLoader color={"#FFF"} />;
 
   return (
     <Box m="20px">

@@ -6,8 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAddNewSectionMutation } from "./sectionsApiSlice.js";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useSnackbar } from "notistack";
 
 const NewSectionForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [addNewSection, { isLoading, isSuccess, isError, error }] = useAddNewSectionMutation();
 
   const navigate = useNavigate();
@@ -17,10 +19,17 @@ const NewSectionForm = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      enqueueSnackbar(`Section added Seccessfully!`, { variant: "success" });
       setSectionname("");
       navigate("/dash/settings/sections");
     }
   }, [isSuccess, navigate]);
+
+  useEffect(() => {
+    if(isError) {
+      enqueueSnackbar(`could not add section`, { variant: "error" });
+    }
+  }, [isError])
 
   const onSectionnameChanged = (e) => setSectionname(e.target.value);
   
