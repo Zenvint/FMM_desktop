@@ -1,49 +1,44 @@
 /** @format */
-import * as React from "react";
-import { Box } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { tokens } from "../../hooks/theme.js";
-import Header from "../../components/Header.jsx";
-import { useTheme } from "@mui/material";
-import { AddBtn } from "../../components/Button.jsx";
-import { Link, useNavigate } from "react-router-dom";
-import { useGetSectionsQuery } from "./sectionsApiSlice.js";
-import { SectionTableColumns } from "../../configs/tableColumns.js";
-import PulseLoader from "react-spinners/PulseLoader";
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import { useState, useEffect } from "react";
 
-const Sections = () => {
+import React from "react";
+import { useState } from "react";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import Header from "../../components/Header.jsx";
+import { Box } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+import { AddBtn } from "../../components/Button.jsx";
+import { InstallmentsTableColumns } from "../../configs/tableColumns.js";
+import { useGetInstallmentsQuery } from "./installmentsApiSlice.js";
+import PulseLoader from "react-spinners/PulseLoader.js";
+
+const Installments = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   const [selectedRows, setSelectedRows] = useState([]);
 
   const handleSelectionModelChange = (selectionModel) => {
     setSelectedRows(selectionModel);
   };
 
-  const handleEdit = () => {
-    navigate(`/dash/settings/sections/${selectedRows[0]}`);
-  };
-
-  const handleAdd = () => {
-    navigate("/dash/settings/sections/new");
-  };
-
-  //   useEffect(() => {
-  // 	console.log(selectedRows[0])
-  //   }, [selectedRows])
-
   const canEdit = selectedRows.length == 1;
 
+  const handleEdit = () => {
+    navigate(`/dash/settings/installments/${selectedRows[0]}`);
+  };
+
+
   const {
-    data: sections,
+    data: installments,
     isLoading,
     isSuccess,
     isError,
     error,
-  } = useGetSectionsQuery("sectionsList", {
+  } = useGetInstallmentsQuery("installmentsList", {
     pollingInterval: 60000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -62,12 +57,10 @@ const Sections = () => {
           flexDirection={"row"}
           justifyContent={"space-between"}
         >
-          <Link to={"/dash/settings"} style={{ color: colors.grey[100] }}>
+          <Link to={"/dash/installments"} style={{ color: colors.grey[100] }}>
             <ArrowBackOutlinedIcon className="li_icon" />
           </Link>
           <Box display={"flex"}>
-            <AddBtn handleEdit={handleAdd} btnName="+ Add Section" />
-
             <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
           </Box>
         </Box>
@@ -80,13 +73,13 @@ const Sections = () => {
   }
 
   if (isSuccess) {
-    const { ids } = sections;
+    const { ids } = installments;
     const tableContent =
-      ids?.length && ids.map((userId) => sections?.entities[userId]);
+      ids?.length && ids.map((installmentId) => installments?.entities[installmentId]);
 
     content = (
-      <Box m="8px">
-        <Header title="Sections" subtitle="List of all Sections." />
+      <Box m={"10px"}>
+        <Header title="Installments Settings" />
         <Box
           display={"flex"}
           flexDirection={"row"}
@@ -96,14 +89,12 @@ const Sections = () => {
             <ArrowBackOutlinedIcon className="li_icon" />
           </Link>
           <Box display={"flex"}>
-            <AddBtn handleEdit={handleAdd} btnName="+ Add Section" />
-
             <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
           </Box>
         </Box>
         <Box
           m="0 0 0"
-          height="73vh"
+          height="70vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -136,7 +127,7 @@ const Sections = () => {
           <DataGrid
             marginTop={"5rem"}
             rows={tableContent}
-            columns={SectionTableColumns}
+            columns={InstallmentsTableColumns}
             components={{ Toolbar: GridToolbar }}
             checkboxSelection
             onSelectionModelChange={handleSelectionModelChange}
@@ -150,4 +141,4 @@ const Sections = () => {
   return content;
 };
 
-export default Sections;
+export default Installments;

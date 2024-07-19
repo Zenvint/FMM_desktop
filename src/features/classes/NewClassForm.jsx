@@ -6,8 +6,10 @@ import { useAddNewClassMutation } from "./classesApiSlice.js";
 import { useGetSectionsQuery } from "../sections/sectionsApiSlice.js";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useSnackbar } from "notistack";
 
 const NewClassForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [addNewClass, { isLoading, isSuccess, isError, error }] =
     useAddNewClassMutation();
   const {
@@ -33,9 +35,16 @@ const NewClassForm = () => {
       setClassname("");
       setTuition("");
       setSelectedSection("");
+      enqueueSnackbar(`class added Seccessfully!`, { variant: "success" });
       navigate("/dash/settings/classes");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(() => {
+    if(isError) {
+      enqueueSnackbar(`could not add class`, { variant: "error" });
+    }
+  }, [isError])
 
   const onClassnameChanged = (e) => setClassname(e.target.value);
   const handleSectionChange = (e) => setSelectedSection(e.target.value);

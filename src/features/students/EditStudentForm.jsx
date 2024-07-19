@@ -130,6 +130,7 @@ const EditStudentForm = () => {
 
   useEffect(() => {
     if (isError || isDelError) {
+      setIsDelLoading(false);
       enqueueSnackbar("An Error occured", { variant: "error" });
     }
   }, [isError, isDelError, enqueueSnackbar]);

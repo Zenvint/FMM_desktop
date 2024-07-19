@@ -19,7 +19,7 @@ const Settings = () => {
                 <Header title="SETTINGS" subtitle="System Settings" />
 				<div className="box">
 					<ul>
-                        <Link to={"/dash/settings/session"} style={{ textDecoration: 'none', color: colors.grey[100] }}>
+                        <Link to={""} style={{ textDecoration: 'none', color: colors.grey[100] }}>
                             <li>
                                 <PendingActionsOutlinedIcon className="li_icon" /> Academic year
                             </li>
@@ -32,6 +32,11 @@ const Settings = () => {
 						<Link to={"/dash/settings/classes"} style={{ textDecoration: 'none', color: colors.grey[100] }}>
                             <li>
                                 <CreditScoreOutlinedIcon className="li_icon" /> Classes settings
+                            </li>
+                        </Link>
+                        <Link to={"/dash/settings/installments"} style={{ textDecoration: 'none', color: colors.grey[100] }}>
+                            <li>
+                                <CreditScoreOutlinedIcon className="li_icon" /> Fee Installments Settings
                             </li>
                         </Link>
 					</ul>

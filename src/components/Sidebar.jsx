@@ -3,15 +3,17 @@
 import "react-pro-sidebar/dist/css/styles.css";
 import React from "react";
 import { useState } from "react";
-import { Menu, MenuItem, ProSidebar } from "react-pro-sidebar";
+import { Menu, MenuItem, ProSidebar, SubMenu } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { tokens } from "../hooks/theme.js";
-import { HomeRounded, LogoutOutlined,MonetizationOnRounded, SchoolRounded, Settings } from "@mui/icons-material";
+import { HomeRounded, LogoutOutlined,MonetizationOnRounded, PaymentOutlined, SchoolRounded, Settings } from "@mui/icons-material";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import WcOutlinedIcon from "@mui/icons-material/WcOutlined";
 import GroupsIcon from "@mui/icons-material/Groups";
 import PersonIcon from "@mui/icons-material/Person";
+import PaymentsOutlinedIcon from '@mui/icons-material/PaymentsOutlined';
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 // import Warnimg from "../../components/warning";
 
 
@@ -136,25 +138,54 @@ const Sidebar = () => {
 						/>
 						<Item
 							title={"Staff"}
-							to="/Staff"
+							to=""
 							icon={<GroupsIcon />}
 							selected={selected}
 							setSelected={setSelected}
 						/>
 						<Item
 							title={"Academics"}
-							to="/Academics"
+							to=""
 							icon={<SchoolRounded />}
 							selected={selected}
 							setSelected={setSelected}
 						/>
-						<Item
+						<SubMenu
 							title={"Finance"}
-							to="/Finance"
+							style={{
+								color: colors.grey[100],
+								fontWeight: "500",
+								backgroundColor: colors.primary[400]
+							}}
+							to=""
 							icon={<MonetizationOnRounded />}
 							selected={selected}
-							setSelected={setSelected}
-						/>
+							>
+							<Item
+								title={"Tuitions Fee"}
+								className="subMenu"
+								to=""
+								icon={<PaymentsOutlinedIcon />}
+								selected={selected}
+								setSelected={setSelected}
+							/>
+							<Item
+								title={"Salaries"}
+								className="subMenu"
+								to=""
+								icon={<PaymentOutlined />}
+								selected={selected}
+								setSelected={setSelected}
+							/>
+							<Item
+								title={"Expense"}
+								className="subMenu"
+								to=""
+								icon={<AddShoppingCartOutlinedIcon />}
+								selected={selected}
+								setSelected={setSelected}
+							/>
+						</SubMenu>
 						<Item
 							title={"Users"}
 							to="/dash/users"
