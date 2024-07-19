@@ -1,5 +1,4 @@
 export const UserTableColumns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
     {
         field: "email",
         headerName: "Email",
@@ -21,7 +20,6 @@ export const UserTableColumns = [
 ];
 
 export const SectionTableColumns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
     {
         field: "sectionname",
         headerName: "Section Name",
@@ -30,8 +28,34 @@ export const SectionTableColumns = [
     }
 ];
 
+export const InstallmentsTableColumns = [
+    {
+        field: "sectionname",
+        headerName: "Section Name",
+        flex: 1,
+        cellClassName: "name-column--cell"
+    },
+    {
+        field: "firstinstallment",
+        headerName: "1st Installment %",
+        flex: 1,
+        cellClassName: "name-column--cell"
+    },
+    {
+        field: "secondinstallment",
+        headerName: "2nd Installment %",
+        flex: 1,
+        cellClassName: "name-column--cell"
+    },
+    {
+        field: "thirdinstallment",
+        headerName: "3rd Installment %",
+        flex: 1,
+        cellClassName: "name-column--cell"
+    }
+];
+
 export const ClassTableColumns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
     {
         field: "classname",
         headerName: "Class Name",
@@ -53,7 +77,6 @@ export const ClassTableColumns = [
 ];
 
 export const StudentTableColumns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
     {
         field: "matricule",
         headerName: "Matricule",

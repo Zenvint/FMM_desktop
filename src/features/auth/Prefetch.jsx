@@ -6,6 +6,7 @@ import { usersApiSlice } from '../users/usersApiSlice.js';
 import { sectionsApiSlice } from '../sections/sectionsApiSlice.js';
 import { classesApiSlice } from '../classes/classesApiSlice.js';
 import { studentsApiSlice } from '../students/studentsApiSlice.js';
+import { installmentsApiSlice } from '../installments/installmentsApiSlice.js';
 
 const Prefetch = () => {
     
@@ -14,6 +15,7 @@ const Prefetch = () => {
         store.dispatch(sectionsApiSlice.util.prefetch('getSections', 'sectionsList', { force: true }))
         store.dispatch(classesApiSlice.util.prefetch('getClasses', 'classesList', { force: true }))
         store.dispatch(studentsApiSlice.util.prefetch('getStudents', 'studentsList', { force: true }))
+        store.dispatch(installmentsApiSlice.util.prefetch('getInstallments', 'installmentsList', { force: true }))
     }, [])
 
     return <Outlet />

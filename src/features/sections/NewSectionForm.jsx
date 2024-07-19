@@ -63,10 +63,10 @@ const NewSectionForm = () => {
             id="sectionname"
             type="text"
             placeholder="Enter Section Name"
-            required
             autoComplete="off"
             value={sectionname}
             onChange={onSectionnameChanged}
+            required
           />
         </div>
 
