@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
-*{
+
+* {
   font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -20,7 +21,7 @@
   --INPUT-INVALID: #F00;
 }
 
-body{
+body {
   background: #aab0b9;
   display: flex;
   justify-content: center;
@@ -41,14 +42,14 @@ body{
   text-decoration: underline;
 }
 
-.login__page{
+.login__page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.wrapper{
+.wrapper {
   width: 330px;
   padding: 4rem 0 4rem 0;
   margin: 50px auto;
@@ -58,17 +59,19 @@ body{
   text-align: center;
   box-shadow: 0 25px 10px rgba(0, 0, 0, 0.1);
 }
-.login_h1{
+
+.login_h1 {
   font-size: 1.5rem;
   color: #07001f;
   margin-bottom: 10px;
 }
-.login_p{
+
+.login_p {
   margin-bottom: 1.5rem;
   font-size: 14px;
 }
 
-form input{
+form input {
   width: 85%;
   background: #dfe9f5;
   padding: 6px 10px;
@@ -79,22 +82,26 @@ form input{
   border-radius: 5px;
   margin-bottom: 20px;
 }
-.check{
+
+.check {
   display: flex;
   justify-content: space-evenly;
   margin-right: 9rem;
 }
-.check input{
+
+.check input {
   width: 15px;
   height: 15px;
 }
-.check label{
-    text-align: right;
-    font-size: 14px;
-    font-weight: bold;
-    margin-right: 5px;
+
+.check label {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
 }
-.login_button{
+
+.login_button {
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 1rem;
@@ -107,7 +114,8 @@ form input{
   color: #fff;
   cursor: pointer;
 }
-.login_button:hover{
+
+.login_button:hover {
   background: rgb(51, 17, 164);
 }
 
@@ -116,108 +124,118 @@ html,
 body,
 .app,
 .content {
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-    font-weight: 200;
-} 
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  font-weight: 200;
+}
 
 
 
 
 .app {
-    display: flex; 
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #e0e0e0;
+  background: #e0e0e0;
 }
 
 /* Handle */
 ::webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 .form {
-	display: flex;
-	justify-content: center;
-	margin-right: 100px;
-	height: 3vh;
-	margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  margin-right: 100px;
+  height: 3vh;
+  margin-top: 5px;
 }
-.btn{
-        margin-Left: -4px;
-        font-Size: 11px;
-        font-Weight: 600;
-        height: 20px;
-        align-Items: center;
+
+.btn {
+  margin-Left: -4px;
+  font-Size: 11px;
+  font-Weight: 600;
+  height: 20px;
+  align-Items: center;
 }
-.btn:hover{
-        color: #9cf4d1;
+
+.btn:hover {
+  color: #9cf4d1;
 }
+
 .header {
-	text-align: center;
-	font-size: 22px;
-	font-weight: "bold";
+  text-align: center;
+  font-size: 22px;
+  font-weight: "bold";
 }
+
 .close {
-	float: right;
-	cursor: pointer;
-	margin-top: 5px;
-	width: 20px;
-	height: 20px;
+  float: right;
+  cursor: pointer;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
 }
 
 .class_container {
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
+
 .input-container {
-	display: flex;
-	flex-direction: column;
-	gap: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
+
 .dropdown {
-	width: 10rem;
+  width: 10rem;
 }
+
 .input-container label {
-	font-weight: bold;
+  font-weight: bold;
 }
+
 .input-container input,
 .input-container select {
-	width: 100%;
-	border-radius: 5px;
-	background-color: #a7a8b2;
-	color: #080808;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #a7a8b2;
+  color: #080808;
 }
+
 .radio-container {
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
+
 .submit-button {
-	background-color: #61c591;
-	color: #fffdfd;
-	width: 20%;
-	height: 35px;
-	border-radius: 10px;
-	margin-top: 13px;
-	font-size: 18px;
-	font-weight: bold;
-	align-self: end;
-	cursor: pointer;
+  background-color: #61c591;
+  color: #fffdfd;
+  width: 20%;
+  height: 35px;
+  border-radius: 10px;
+  margin-top: 13px;
+  font-size: 18px;
+  font-weight: bold;
+  align-self: end;
+  cursor: pointer;
 }
 
 .nowrap {
@@ -272,17 +290,24 @@ body,
 }
 
 .form__select {
-  width: 200px; /* Set the width of the select box */
-  height: auto; /* Allow the height to adjust based on content */
-  padding: 5px; /* Add some padding around the checkboxes */
-  border: 1px solid #ccc; /* Add a border */
-  overflow-y: auto; /* Enable vertical scrolling if options exceed the height */
+  width: 200px;
+  /* Set the width of the select box */
+  height: auto;
+  /* Allow the height to adjust based on content */
+  padding: 5px;
+  /* Add some padding around the checkboxes */
+  border: 1px solid #ccc;
+  /* Add a border */
+  overflow-y: auto;
+  /* Enable vertical scrolling if options exceed the height */
 }
 
 /* Style the options to look like checkboxes */
 .form__select option {
-  padding: 5px; /* Add padding */
-  border-bottom: 1px solid #ccc; /* Add a border between options */
+  padding: 5px;
+  /* Add padding */
+  border-bottom: 1px solid #ccc;
+  /* Add a border between options */
 }
 
 /* Hide the default dropdown arrow */
@@ -291,7 +316,8 @@ body,
 }
 
 .form__select option:checked {
-  background-color: #e0e0e0; /* Change background color of checked options */
+  background-color: #e0e0e0;
+  /* Change background color of checked options */
 }
 
 
@@ -317,43 +343,66 @@ body,
 }
 
 .box {
-	width: 50rem;
-	height: 25rem;
-	padding: 10px;
-  }
-  .box ul {
-	position: relative;
-	background: "none";
-  }
-  .box ul:hover li {
-	opacity: 0.5;
-  }
-  .box ul li {
-	display: flex; 
-	align-items: center;
-	flex-direction: row	;
-	gap: 30px;
-	list-style: none;
-	margin-top: 3px;
-	padding: 7px;
-	width: 95%;
-	height: 4rem;
-	font-size: 14px;
-	font-weight: 400;
-	background: "none";
-	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-	transition: transform 0.5s;
-  }
-  .box ul li:hover {
-	transform: scale(1.1);
-	z-index: 5;
-	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-	opacity: 1;
-	font-size: 18px;
-	font-weight: 600;
-  }
-  .li_icon {
-	margin: 10px; 
-	height: 30px; 
-	width: 30px
-  }
+  width: 50rem;
+  height: 25rem;
+  padding: 10px;
+}
+
+.box ul {
+  position: relative;
+  background: "none";
+}
+
+.box ul:hover li {
+  opacity: 0.5;
+}
+
+.box ul li {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 30px;
+  list-style: none;
+  margin-top: 3px;
+  padding: 7px;
+  width: 95%;
+  height: 4rem;
+  font-size: 14px;
+  font-weight: 400;
+  background: "none";
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s;
+}
+
+.box ul li:hover {
+  transform: scale(1.1);
+  z-index: 5;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.li_icon {
+  margin: 10px;
+  height: 30px;
+  width: 30px
+}
+
+.fee-complete,
+.fee-incomplete {
+  padding: 5px;
+  font-size: x-large;
+  font-weight: bold;
+  background-color: white;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.fee-complete {
+  background-color: #9cf4d1;
+}
+
+.fee-incomplete {
+  background-color: crimson;
+}

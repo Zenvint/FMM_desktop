@@ -45,7 +45,26 @@ const Students = () => {
   if (isLoading) content = <PulseLoader color={"#FFF"} />;
 
   if (isError) {
-    content = <p className="errmsg">{error?.data?.message}</p>;
+    content = (
+      <Box m="8px">
+        <Header title="Students" subtitle="List of all Students." />
+        <Box display={"flex"}>
+          <Link to="/dash/students/new">
+            <AddBtn btnName="+ Add Student" />
+          </Link>
+
+          <AddBtn btnName="Edit" enabled={!canEdit} handleEdit={handleEdit} />
+
+          <Link to="/dash/students/newmulti">
+            <AddBtn btnName=" + Add Multiple Student" />
+          </Link>
+        </Box>
+
+        <Box m="0 0 0" display={"grid"} justifyItems={"center"}>
+          <p className="errmsg">{error?.data?.message}</p>
+        </Box>
+      </Box>
+    );
   }
 
   if (isSuccess) {

@@ -22,6 +22,9 @@ import AddMultiStudentsForm from "./features/students/AddMultiStudentsForm.jsx";
 import EditStudentForm from "./features/students/EditStudentForm.jsx";
 import Installments from "./features/installments/Installments.jsx";
 import EditInstallmentForm from "./features/installments/EditInstallmentForm.jsx";
+import Fees from "./features/fee/Fees.jsx";
+import PayFeeForm from "./features/fee/PayFeeForm.jsx";
+import Receipt from "./features/fee/Receipt.js";
 
 const App = () => {
   return (
@@ -69,8 +72,12 @@ const App = () => {
               <Route path="academics">
                 <Route />
               </Route>
-              <Route path="Finance">
-                <Route />
+              <Route path="finance">
+                <Route path="fees">
+                  <Route index element={<Fees />} />
+                  <Route path="pay/:id" element={<PayFeeForm />} />
+                  <Route path="feereceipt/:id/:deposit" element={<Receipt />} />
+                </Route>
               </Route>
             </Route>
           </Route>

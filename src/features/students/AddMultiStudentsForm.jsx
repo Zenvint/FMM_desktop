@@ -129,6 +129,7 @@ const AddMultiStudentsForm = () => {
     () => {
       if (isSuccess) {
         enqueueSnackbar(`added students Seccessfully!`, { variant: "success" });
+        navigate('/dash/students')
       }
     },
     [isSuccess, navigate],
