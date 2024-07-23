@@ -4,10 +4,12 @@ import Box from "@mui/material/Box";
 import Header from "../../components/Header.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetFeesQuery, useUpdateFeeMutation } from "./feesApiSlice";
+import { useAddNewTransactionMutation } from "../transactions/transactionApiSlice.js";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
 import { AddBtn } from "../../components/Button.jsx";
+import TRANSACTIONTYPE from "../../configs/transactiontype.js";
 
 const PayFeeForm = () => {
   const navigate = useNavigate();
@@ -29,6 +31,9 @@ const PayFeeForm = () => {
 
   const [updateFee, { isLoading, isSuccess, isError, error }] =
     useUpdateFeeMutation();
+
+  const [createTransaction, { isLoading: isTransLoading, isSuccess: isTransSuccess, isError: isTransError, error: transError }] =
+    useAddNewTransactionMutation();
 
   const on1stInstallChanged = (e) => {
     const value = e.target.value;
@@ -78,32 +83,33 @@ const PayFeeForm = () => {
     setStudFee({...updatedfee, studentname: fee.studentname, matricule: fee.matricule, sectionname: fee.sectionname, classname: fee.classname })
 
     await updateFee({...updatedfee});
+    await createTransaction({transactiontype: TRANSACTIONTYPE.Tuition, amount: deposit})
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && isTransSuccess) {
       enqueueSnackbar(`${fee.studentname} fee paid Successfully.`, {
         variant: "success",
       });
       navigate(`/dash/finance/fees/feereceipt/${fee.id}/${deposit}`)
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess,isTransSuccess, navigate]);
 
   useEffect(() => {
-    if (isError) {
+    if (isError || isTransError) {
       enqueueSnackbar(`An Error Occured.`, {
         variant: "error",
       });
     }
-  }, [isError]);
+  }, [isError, isTransError]);
 
-  let canSave = !isLoading && !fee.status && deposit > 0;
+  let canSave = !isLoading && !isTransLoading && !fee.status && deposit > 0;
 
-  const errClass = isError ? "errmsg" : "offscreen";
+  const errClass = isError || isTransError ? "errmsg" : "offscreen";
 
-  const errContent = error?.data?.message ?? "";
+  const errContent = (error?.data?.message || transError?.data?.message) ?? "";
 
-  if (!fee || isLoading) return <PulseLoader color={"#FFF"} />;
+  if (!fee || isLoading || isTransLoading) return <PulseLoader color={"#FFF"} />;
 
   return (
 
