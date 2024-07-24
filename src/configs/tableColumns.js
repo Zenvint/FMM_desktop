@@ -188,4 +188,9 @@ export const FeeTableColumns = [
     headerName: "STATUS",
     flex: 1,
   },
+  {
+    field: "registrationfee",
+    headerName: "Registration",
+    flex: 1,
+  },
 ];

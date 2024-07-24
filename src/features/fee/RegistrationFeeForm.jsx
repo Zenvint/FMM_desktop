@@ -15,6 +15,7 @@ const RegistrationFeeForm = () => {
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
     const { id } = useParams();
+
   
     const { fee } = useGetFeesQuery("feesList", {
       selectFromResult: ({ data }) => ({
@@ -23,10 +24,6 @@ const RegistrationFeeForm = () => {
     });
   
     const [deposit, setDeposit] = useState(0);
-    const [studFee, setStudFee] = useState();
-    const [amountPaid, setAmountPaid] = useState(Number(fee.amountPaid));
-    const [balance, setBalance] = useState(Number(fee.balance));
-    const [status, setStatus] = useState(fee.status);
     
   
     const [updateFee, { isLoading, isSuccess, isError, error }] =
@@ -47,51 +44,26 @@ const RegistrationFeeForm = () => {
     };
   
     const onSaveSectionClicked = async (e) => {
-      if (deposit > balance) {
-        enqueueSnackbar(
-          `Deposit amount should be less than or equal to the balance`,
-          {
-            variant: "info",
-          }
-        );
-        return;
-      }
-      const newBalance = balance - deposit;
-      const newAP = amountPaid + deposit;
   
-      let updatedfee;
-  
-      if (deposit === balance) {
-        updatedfee = {
-          id: fee.id,
-          registrationfee: fee.registrationfee,
-          amountPaid: newAP,
-          balance: newBalance,
-          status: !status,
-          discount: fee.discount,
-        };
-      } else {
-        updatedfee = {
-          id: fee.id,
-          registrationfee: fee.registrationfee,
-          amountPaid: newAP,
-          balance: newBalance,
-          status: status,
-          discount: fee.discount,
-        };
-      }
-      
-  
+      let updatedfee = {
+        id: fee.id,
+        registrationfee: !fee.registrationfee,
+        amountPaid: fee.amountPaid,
+        balance: fee.balance,
+        status: fee.status,
+        discount: fee.discount,
+      };
+    
       await updateFee({...updatedfee});
-      await createTransaction({transactiontype: TRANSACTIONTYPE.Tuition, amount: deposit})
+      await createTransaction({transactiontype: TRANSACTIONTYPE.Registration, amount: deposit})
     };
   
     useEffect(() => {
       if (isSuccess && isTransSuccess) {
-        enqueueSnackbar(`${fee.studentname} fee paid Successfully.`, {
+        enqueueSnackbar(`${fee.studentname} Registration fee paid Successfully.`, {
           variant: "success",
         });
-        navigate(`/dash/finance/fees/feereceipt/${fee.id}/${deposit}`)
+        navigate(`/dash/finance/fees/registrationreceipt/${fee.id}/${deposit}`)
       }
     }, [isSuccess,isTransSuccess, navigate]);
   
@@ -103,7 +75,7 @@ const RegistrationFeeForm = () => {
       }
     }, [isError, isTransError]);
   
-    let canSave = !isLoading && !isTransLoading && !fee.status && deposit > 0;
+    let canSave = !isLoading && !isTransLoading && !fee.registrationfee && deposit > 0;
   
     const errClass = isError || isTransError ? "errmsg" : "offscreen";
   
@@ -115,7 +87,7 @@ const RegistrationFeeForm = () => {
   
         <Box m="20px">
           <Header
-            title="Pay Fee"
+            title="Registration Fee"
             subtitle={`${fee.studentname} with matricule: ${fee.matricule}`}
           />
   
@@ -124,8 +96,8 @@ const RegistrationFeeForm = () => {
             <div className="">Discount: {fee.discount} FCFA</div>
             <div className="">Amount Paid: {fee.amountPaid} FCFA</div>
             <div className="">Balance: {fee.balance} FCFA</div>
-            <div className={`${fee.status ? "fee-complete" : "fee-incomplete"}`}>
-              <p>{fee.status ? "Completed" : "Incomplete"}</p>
+            <div className={`${fee.registrationfee ? "fee-complete" : "fee-incomplete"}`}>
+              <p>{fee.registrationfee ? "Paid" : "Not Paid"}</p>
             </div>
           </div>
   
@@ -133,7 +105,7 @@ const RegistrationFeeForm = () => {
   
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="input-container">
-              <label htmlFor="paid-amount">Deposit:</label>
+              <label htmlFor="paid-amount">Registration fee:</label>
               <input
                 id="paid-amount"
                 type="number"
@@ -143,7 +115,7 @@ const RegistrationFeeForm = () => {
                 autoComplete="off"
                 value={deposit}
                 onChange={on1stInstallChanged}
-                disabled={fee.status}
+                disabled={fee.registrationfee}
               />
             </div>
   

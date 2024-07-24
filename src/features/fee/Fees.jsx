@@ -147,11 +147,16 @@ const Fees = () => {
         }}
       >
         <Box display={"flex"} justifyContent={"space-between"}>
-          <Box>
+          <Box width={"30vw"} display={"flex"} justifyContent={"space-around"} >
             <AddBtn
               btnName="Pay Fee"
               enabled={!canEdit}
               handleEdit={handleEdit}
+            />
+            <AddBtn
+              btnName="Pay Registration"
+              enabled={!canEdit}
+              handleEdit={handleRegistration}
             />
             <AddBtn
               btnName="Manage Discount"
@@ -159,11 +164,6 @@ const Fees = () => {
               handleEdit={handleDiscount}
             />
 
-            <AddBtn
-              btnName="Pay Registration"
-              enabled={!canEdit}
-              handleEdit={handleRegistration}
-            />
           </Box>
 
           <Box display={"flex"} mb={"-5px"} justifyContent={"center"}>

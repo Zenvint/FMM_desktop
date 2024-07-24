@@ -24,8 +24,10 @@ import Installments from "./features/installments/Installments.jsx";
 import EditInstallmentForm from "./features/installments/EditInstallmentForm.jsx";
 import Fees from "./features/fee/Fees.jsx";
 import PayFeeForm from "./features/fee/PayFeeForm.jsx";
-import Receipt from "./features/fee/Receipt.js";
+import Receipt from "./features/fee/Receipt.jsx";
 import FeeDiscountForm from "./features/fee/FeeDiscountForm.jsx";
+import RegistrationFeeForm from "./features/fee/RegistrationFeeForm.jsx";
+import RegistReceipt from "./features/fee/RegistReceipt.jsx";
 
 const App = () => {
   return (
@@ -78,7 +80,9 @@ const App = () => {
                   <Route index element={<Fees />} />
                   <Route path="pay/:id" element={<PayFeeForm />} />
                   <Route path="discount/:id" element={<FeeDiscountForm />} />
+                  <Route path="registration/:id" element={<RegistrationFeeForm />} />
                   <Route path="feereceipt/:id/:deposit" element={<Receipt />} />
+                  <Route path="registrationreceipt/:id/:deposit" element={<RegistReceipt/>} />
                 </Route>
               </Route>
             </Route>
