@@ -25,6 +25,7 @@ import EditInstallmentForm from "./features/installments/EditInstallmentForm.jsx
 import Fees from "./features/fee/Fees.jsx";
 import PayFeeForm from "./features/fee/PayFeeForm.jsx";
 import Receipt from "./features/fee/Receipt.js";
+import FeeDiscountForm from "./features/fee/FeeDiscountForm.jsx";
 
 const App = () => {
   return (
@@ -76,6 +77,7 @@ const App = () => {
                 <Route path="fees">
                   <Route index element={<Fees />} />
                   <Route path="pay/:id" element={<PayFeeForm />} />
+                  <Route path="discount/:id" element={<FeeDiscountForm />} />
                   <Route path="feereceipt/:id/:deposit" element={<Receipt />} />
                 </Route>
               </Route>

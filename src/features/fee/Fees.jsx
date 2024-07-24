@@ -33,8 +33,6 @@ const Fees = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  
-
   const handleSelectionModelChange = (selectionModel) => {
     setSelectedRows(selectionModel);
   };
@@ -44,8 +42,12 @@ const Fees = () => {
   };
 
   const handleDiscount = () => {
-    
+    navigate(`/dash/finance/fees/discount/${selectedRows[0]}`);
   };
+
+  const handleRegistration = () => {
+    navigate(`/dash/finance/fees/registration/${selectedRows[0]}`);
+  }
 
   const canEdit = selectedRows?.length == 1;
 
@@ -106,7 +108,7 @@ const Fees = () => {
       />
     );
   }
-  
+
   return (
     <Box m="10px">
       <Header title="Tuition Fee" subtitle="Managing the tuitions Fee" />
@@ -155,6 +157,12 @@ const Fees = () => {
               btnName="Manage Discount"
               enabled={!canEdit}
               handleEdit={handleDiscount}
+            />
+
+            <AddBtn
+              btnName="Pay Registration"
+              enabled={!canEdit}
+              handleEdit={handleRegistration}
             />
           </Box>
 

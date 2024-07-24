@@ -23,7 +23,6 @@ const PayFeeForm = () => {
   });
 
   const [deposit, setDeposit] = useState(0);
-  const [studFee, setStudFee] = useState();
   const [amountPaid, setAmountPaid] = useState(Number(fee.amountPaid));
   const [balance, setBalance] = useState(Number(fee.balance));
   const [status, setStatus] = useState(fee.status);
@@ -80,7 +79,6 @@ const PayFeeForm = () => {
         discount: fee.discount,
       };
     }
-    setStudFee({...updatedfee, studentname: fee.studentname, matricule: fee.matricule, sectionname: fee.sectionname, classname: fee.classname })
 
     await updateFee({...updatedfee});
     await createTransaction({transactiontype: TRANSACTIONTYPE.Tuition, amount: deposit})
@@ -121,6 +119,7 @@ const PayFeeForm = () => {
 
         <div className={`class_container}`}>
           <div className="">Total Fee: {fee.tuition} FCFA</div>
+          <div className="">Discount: {fee.discount} FCFA</div>
           <div className="">Amount Paid: {fee.amountPaid} FCFA</div>
           <div className="">Balance: {fee.balance} FCFA</div>
           <div className={`${fee.status ? "fee-complete" : "fee-incomplete"}`}>
