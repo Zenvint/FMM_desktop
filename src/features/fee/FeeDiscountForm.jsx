@@ -57,6 +57,7 @@ const FeeDiscountForm = () => {
       }
       const newBalance = balance - discount;
       const newAP = amountPaid + discount;
+      const newDiscount = fee?.discount !== 0 ? fee?.discount + discount : discount;
   
       let updatedfee;
   
@@ -67,7 +68,7 @@ const FeeDiscountForm = () => {
           amountPaid: newAP,
           balance: newBalance,
           status: !status,
-          discount: discount,
+          discount: newDiscount,
         };
       } else {
         updatedfee = {
@@ -76,7 +77,7 @@ const FeeDiscountForm = () => {
           amountPaid: newAP,
           balance: newBalance,
           status: status,
-          discount: discount,
+          discount: newDiscount,
         };
       }
   

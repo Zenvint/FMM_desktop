@@ -28,6 +28,7 @@ import Receipt from "./features/fee/Receipt.jsx";
 import FeeDiscountForm from "./features/fee/FeeDiscountForm.jsx";
 import RegistrationFeeForm from "./features/fee/RegistrationFeeForm.jsx";
 import RegistReceipt from "./features/fee/RegistReceipt.jsx";
+import FeeDetails from "./features/fee/FeeDetails.jsx";
 
 const App = () => {
   return (
@@ -83,6 +84,7 @@ const App = () => {
                   <Route path="registration/:id" element={<RegistrationFeeForm />} />
                   <Route path="feereceipt/:id/:deposit" element={<Receipt />} />
                   <Route path="registrationreceipt/:id/:deposit" element={<RegistReceipt/>} />
+                  <Route path="details/:id" element={<FeeDetails />} />
                 </Route>
               </Route>
             </Route>

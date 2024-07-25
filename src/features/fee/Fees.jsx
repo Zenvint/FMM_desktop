@@ -41,13 +41,17 @@ const Fees = () => {
     navigate(`/dash/finance/fees/pay/${selectedRows[0]}`);
   };
 
+  const handleDetails = () => {
+    navigate(`/dash/finance/fees/details/${selectedRows[0]}`);
+  };
+
   const handleDiscount = () => {
     navigate(`/dash/finance/fees/discount/${selectedRows[0]}`);
   };
 
   const handleRegistration = () => {
     navigate(`/dash/finance/fees/registration/${selectedRows[0]}`);
-  }
+  };
 
   const canEdit = selectedRows?.length == 1;
 
@@ -147,7 +151,7 @@ const Fees = () => {
         }}
       >
         <Box display={"flex"} justifyContent={"space-between"}>
-          <Box width={"30vw"} display={"flex"} justifyContent={"space-around"} >
+          <Box width={"30vw"} display={"flex"} justifyContent={"space-around"}>
             <AddBtn
               btnName="Pay Fee"
               enabled={!canEdit}
@@ -164,6 +168,11 @@ const Fees = () => {
               handleEdit={handleDiscount}
             />
 
+            <AddBtn
+              btnName="Details"
+              enabled={!canEdit}
+              handleEdit={handleDetails}
+            />
           </Box>
 
           <Box display={"flex"} mb={"-5px"} justifyContent={"center"}>
