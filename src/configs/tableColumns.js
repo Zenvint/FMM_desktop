@@ -194,3 +194,24 @@ export const FeeTableColumns = [
     flex: 1,
   },
 ];
+
+export const ExpenseTableColumns = [
+  {
+    field: "benefactor",
+    headerName: "Benefactor",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "descriptions",
+    headerName: "Description",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "amount",
+    headerName: "Amount| FCFA",
+    flex: 1,
+  }
+];
+

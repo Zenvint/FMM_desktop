@@ -11,7 +11,7 @@ import { ClassTableColumns } from "../../configs/tableColumns.js";
 import PulseLoader from "react-spinners/PulseLoader";
 
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import { useState, useEffect } from "react";
+import { useState, } from "react";
 
 const Classes = () => {
   const navigate  = useNavigate();

@@ -7,12 +7,18 @@ import { sectionsApiSlice } from "../sections/sectionsApiSlice.js";
 import { classesApiSlice } from "../classes/classesApiSlice.js";
 import { studentsApiSlice } from "../students/studentsApiSlice.js";
 import { installmentsApiSlice } from "../installments/installmentsApiSlice.js";
+import { expensesApiSlice } from "../expenses/expensesApiSlice.js";
 import { feesApiSlice } from "../fee/feesApiSlice.js";
 
 const Prefetch = () => {
   useEffect(() => {
     store.dispatch(
       usersApiSlice.util.prefetch("getUsers", "usersList", { force: true })
+    );
+    store.dispatch(
+      expensesApiSlice.util.prefetch("getExpenses", "expensesList", {
+        force: true,
+      })
     );
     store.dispatch(
       sectionsApiSlice.util.prefetch("getSections", "sectionsList", {

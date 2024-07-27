@@ -29,6 +29,9 @@ import FeeDiscountForm from "./features/fee/FeeDiscountForm.jsx";
 import RegistrationFeeForm from "./features/fee/RegistrationFeeForm.jsx";
 import RegistReceipt from "./features/fee/RegistReceipt.jsx";
 import FeeDetails from "./features/fee/FeeDetails.jsx";
+import Expenses from "./features/expenses/Expenses.jsx";
+import NewExpenseForm from "./features/expenses/NewExpenseForm.jsx";
+import EditExpenseForn from "./features/expenses/EditExpenseForn.jsx";
 
 const App = () => {
   return (
@@ -81,10 +84,21 @@ const App = () => {
                   <Route index element={<Fees />} />
                   <Route path="pay/:id" element={<PayFeeForm />} />
                   <Route path="discount/:id" element={<FeeDiscountForm />} />
-                  <Route path="registration/:id" element={<RegistrationFeeForm />} />
+                  <Route
+                    path="registration/:id"
+                    element={<RegistrationFeeForm />}
+                  />
                   <Route path="feereceipt/:id/:deposit" element={<Receipt />} />
-                  <Route path="registrationreceipt/:id/:deposit" element={<RegistReceipt/>} />
+                  <Route
+                    path="registrationreceipt/:id/:deposit"
+                    element={<RegistReceipt />}
+                  />
                   <Route path="details/:id" element={<FeeDetails />} />
+                </Route>
+                <Route path="expenses">
+                  <Route index element={<Expenses />} />
+                  <Route path="new" element={<NewExpenseForm />} />
+                  <Route path=":id" element={<EditExpenseForn />} />
                 </Route>
               </Route>
             </Route>

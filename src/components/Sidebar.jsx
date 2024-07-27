@@ -180,7 +180,7 @@ const Sidebar = () => {
 							<Item
 								title={"Expense"}
 								className="subMenu"
-								to=""
+								to="/dash/finance/expenses"
 								icon={<AddShoppingCartOutlinedIcon />}
 								selected={selected}
 								setSelected={setSelected}
