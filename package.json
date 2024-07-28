@@ -29,6 +29,7 @@
     "electron": "29.2.0",
     "electron-hot-reload": "^0.1.4",
     "electron-reload": "^2.0.0-alpha.1",
+    "file-loader": "^6.2.0",
     "node-loader": "^2.0.0",
     "style-loader": "^3.0.0"
   },
@@ -54,6 +55,7 @@
     "@testing-library/user-event": "^13.5.0",
     "electron-squirrel-startup": "^1.0.0",
     "formik": "^2.4.5",
+    "jspdf": "^2.5.1",
     "jwt-decode": "^4.0.0",
     "notistack": "^3.0.1",
     "primereact": "^10.6.3",

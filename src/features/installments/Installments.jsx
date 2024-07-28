@@ -51,7 +51,7 @@ const Installments = () => {
   if (isError) {
     content = (
       <Box m="8px">
-        <Header title="Sections" subtitle="List of all Sections." />
+        <Header title="Installments" subtitle="List of all Intallments." />
         <Box
           display={"flex"}
           flexDirection={"row"}
@@ -79,7 +79,7 @@ const Installments = () => {
 
     content = (
       <Box m={"10px"}>
-        <Header title="Installments Settings" />
+         <Header title="Installments" subtitle="List of all Intallments." />
         <Box
           display={"flex"}
           flexDirection={"row"}

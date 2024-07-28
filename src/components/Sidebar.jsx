@@ -138,17 +138,11 @@ const Sidebar = () => {
 						/>
 						<Item
 							title={"Staff"}
-							to=""
+							to="/dash/staff"
 							icon={<GroupsIcon />}
 							selected={selected}
 							setSelected={setSelected}
-						/>
-						<Item
-							title={"Academics"}
-							to=""
-							icon={<SchoolRounded />}
-							selected={selected}
-							setSelected={setSelected}
+							onClick={()=> setSelected('Staff')}
 						/>
 						<SubMenu
 							title={"Finance"}
@@ -164,7 +158,7 @@ const Sidebar = () => {
 							<Item
 								title={"Tuitions Fee"}
 								className="subMenu"
-								to=""
+								to="/dash/finance/fees"
 								icon={<PaymentsOutlinedIcon />}
 								selected={selected}
 								setSelected={setSelected}
@@ -172,7 +166,7 @@ const Sidebar = () => {
 							<Item
 								title={"Salaries"}
 								className="subMenu"
-								to=""
+								to="/dash/finance/salaries"
 								icon={<PaymentOutlined />}
 								selected={selected}
 								setSelected={setSelected}
@@ -180,7 +174,7 @@ const Sidebar = () => {
 							<Item
 								title={"Expense"}
 								className="subMenu"
-								to=""
+								to="/dash/finance/expenses"
 								icon={<AddShoppingCartOutlinedIcon />}
 								selected={selected}
 								setSelected={setSelected}

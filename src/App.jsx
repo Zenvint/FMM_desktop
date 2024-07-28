@@ -22,6 +22,22 @@ import AddMultiStudentsForm from "./features/students/AddMultiStudentsForm.jsx";
 import EditStudentForm from "./features/students/EditStudentForm.jsx";
 import Installments from "./features/installments/Installments.jsx";
 import EditInstallmentForm from "./features/installments/EditInstallmentForm.jsx";
+import Fees from "./features/fee/Fees.jsx";
+import PayFeeForm from "./features/fee/PayFeeForm.jsx";
+import Receipt from "./features/fee/Receipt.jsx";
+import FeeDiscountForm from "./features/fee/FeeDiscountForm.jsx";
+import RegistrationFeeForm from "./features/fee/RegistrationFeeForm.jsx";
+import RegistReceipt from "./features/fee/RegistReceipt.jsx";
+import FeeDetails from "./features/fee/FeeDetails.jsx";
+import Expenses from "./features/expenses/Expenses.jsx";
+import NewExpenseForm from "./features/expenses/NewExpenseForm.jsx";
+import EditExpenseForn from "./features/expenses/EditExpenseForn.jsx";
+import Staffs from "./features/staff/Staffs.jsx";
+import NewStaffForm from "./features/staff/NewStaffForm.jsx";
+import EditStaffForm from "./features/staff/EditStaffForm.jsx";
+import Salaries from "./features/salary/Salaries.jsx";
+import SalaryDetails from "./features/salary/SalaryDetails.jsx";
+import PaySalaryForm from "./features/salary/PaySalaryForm.jsx";
 
 const App = () => {
   return (
@@ -64,13 +80,39 @@ const App = () => {
                 <Route path=":id" element={<EditStudentForm />} />
               </Route>
               <Route path="staff">
-                <Route />
+                <Route index element={<Staffs />} />
+                <Route path="new" element={<NewStaffForm />} />
+                <Route path=":id" element={<EditStaffForm />} />
               </Route>
               <Route path="academics">
                 <Route />
               </Route>
-              <Route path="Finance">
-                <Route />
+              <Route path="finance">
+                <Route path="fees">
+                  <Route index element={<Fees />} />
+                  <Route path="pay/:id" element={<PayFeeForm />} />
+                  <Route path="discount/:id" element={<FeeDiscountForm />} />
+                  <Route
+                    path="registration/:id"
+                    element={<RegistrationFeeForm />}
+                  />
+                  <Route path="feereceipt/:id/:deposit" element={<Receipt />} />
+                  <Route
+                    path="registrationreceipt/:id/:deposit"
+                    element={<RegistReceipt />}
+                  />
+                  <Route path="details/:id" element={<FeeDetails />} />
+                </Route>
+                <Route path="expenses">
+                  <Route index element={<Expenses />} />
+                  <Route path="new" element={<NewExpenseForm />} />
+                  <Route path=":id" element={<EditExpenseForn />} />
+                </Route>
+                <Route path="salaries">
+                  <Route index element={<Salaries />} />
+                  <Route path="pay/:id" element={<PaySalaryForm />} />
+                  <Route path="details/:id" element={<SalaryDetails />} />
+                </Route>
               </Route>
             </Route>
           </Route>
