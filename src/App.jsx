@@ -35,6 +35,9 @@ import EditExpenseForn from "./features/expenses/EditExpenseForn.jsx";
 import Staffs from "./features/staff/Staffs.jsx";
 import NewStaffForm from "./features/staff/NewStaffForm.jsx";
 import EditStaffForm from "./features/staff/EditStaffForm.jsx";
+import Salaries from "./features/salary/Salaries.jsx";
+import SalaryDetails from "./features/salary/SalaryDetails.jsx";
+import PaySalaryForm from "./features/salary/PaySalaryForm.jsx";
 
 const App = () => {
   return (
@@ -104,6 +107,11 @@ const App = () => {
                   <Route index element={<Expenses />} />
                   <Route path="new" element={<NewExpenseForm />} />
                   <Route path=":id" element={<EditExpenseForn />} />
+                </Route>
+                <Route path="salaries">
+                  <Route index element={<Salaries />} />
+                  <Route path="pay/:id" element={<PaySalaryForm />} />
+                  <Route path="details/:id" element={<SalaryDetails />} />
                 </Route>
               </Route>
             </Route>

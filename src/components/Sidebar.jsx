@@ -166,7 +166,7 @@ const Sidebar = () => {
 							<Item
 								title={"Salaries"}
 								className="subMenu"
-								to=""
+								to="/dash/finance/salaries"
 								icon={<PaymentOutlined />}
 								selected={selected}
 								setSelected={setSelected}

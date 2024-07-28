@@ -10,6 +10,7 @@ import { installmentsApiSlice } from "../installments/installmentsApiSlice.js";
 import { expensesApiSlice } from "../expenses/expensesApiSlice.js";
 import { feesApiSlice } from "../fee/feesApiSlice.js";
 import { staffsApiSlice } from "../staff/staffsApiSlice.js";
+import { salariesApiSlice } from "../salary/salaryApiSlice.js";
 
 const Prefetch = () => {
   useEffect(() => {
@@ -48,6 +49,9 @@ const Prefetch = () => {
     );
     store.dispatch(
       staffsApiSlice.util.prefetch("getStaffs", "staffsList", { force: true })
+    );
+    store.dispatch(
+      salariesApiSlice.util.prefetch("getSalaries", "salariesList", { force: true })
     );
   }, []);
 
