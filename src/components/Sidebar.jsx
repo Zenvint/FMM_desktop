@@ -138,17 +138,11 @@ const Sidebar = () => {
 						/>
 						<Item
 							title={"Staff"}
-							to=""
+							to="/dash/staff"
 							icon={<GroupsIcon />}
 							selected={selected}
 							setSelected={setSelected}
-						/>
-						<Item
-							title={"Academics"}
-							to=""
-							icon={<SchoolRounded />}
-							selected={selected}
-							setSelected={setSelected}
+							onClick={()=> setSelected('Staff')}
 						/>
 						<SubMenu
 							title={"Finance"}

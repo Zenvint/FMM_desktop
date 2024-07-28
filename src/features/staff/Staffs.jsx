@@ -6,12 +6,12 @@ import Header from "../../components/Header.jsx";
 import { useTheme } from "@mui/material";
 import { AddBtn } from "../../components/Button.jsx";
 import { useNavigate } from "react-router-dom";
-import { useGetExpensesQuery } from "./expensesApiSlice.js";
-import {ExpenseTableColumns } from "../../configs/tableColumns.js";
+import { useGetStaffsQuery } from "./staffsApiSlice.js";
+import {StaffTableColumns } from "../../configs/tableColumns.js";
 import PulseLoader from "react-spinners/PulseLoader";
-import { useState, } from "react";
+import { useState } from "react";
 
-const Expenses = () => {
+const Staffs = () => {
     const navigate  = useNavigate();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -22,22 +22,22 @@ const Expenses = () => {
     };
   
     const handleEdit = () => {
-      navigate(`/dash/finance/expenses/${selectedRows[0]}`);
+      navigate(`/dash/staff/${selectedRows[0]}`);
     };
   
     const handleAdd = () => {
-      navigate("/dash/finance/expenses/new");
+      navigate("/dash/staff/new");
     };
   
     const canEdit = selectedRows.length == 1;
   
     const {
-      data: expenses,
+      data: staffs,
       isLoading,
       isSuccess,
       isError,
       error,
-    } = useGetExpensesQuery("expensesList", {
+    } = useGetStaffsQuery("staffsList", {
       pollingInterval: 60000,
       refetchOnFocus: true,
       refetchOnMountOrArgChange: true,
@@ -50,14 +50,14 @@ const Expenses = () => {
     if (isError) {
       content = (
         <Box m="8px">
-          <Header title="Expenses" subtitle="List of all Classes." />
+          <Header title="Staff" subtitle="List of all Staff." />
           <Box
             display={"flex"}
             flexDirection={"row"}
             justifyContent={"space-between"}
           >
             <Box display={"flex"}>
-              <AddBtn handleEdit={handleAdd} btnName="+ Add Expenses" />
+              <AddBtn handleEdit={handleAdd} btnName="+ Add Staff" />
   
               <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
             </Box>
@@ -71,20 +71,20 @@ const Expenses = () => {
     }
   
     if (isSuccess) {
-      const { ids } = expenses;
+      const { ids } = staffs;
       const tableContent =
-        ids?.length && ids.map((expenseId) => expenses?.entities[expenseId]);
+        ids?.length && ids.map((staffId) => staffs?.entities[staffId]);
   
       content = (
         <Box m="8px">
-          <Header title="Expenses" subtitle="List of all Expenses." />
+          <Header title="Staff" subtitle="List of all Staff." />
           <Box
             display={"flex"}
             flexDirection={"row"}
             justifyContent={"space-between"}
           >
             <Box display={"flex"}>
-              <AddBtn handleEdit={handleAdd} btnName="+ Add Expenses" />
+              <AddBtn handleEdit={handleAdd} btnName="+ Add Staff" />
   
               <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
             </Box>
@@ -124,7 +124,7 @@ const Expenses = () => {
             <DataGrid
               marginTop={"5rem"}
               rows={tableContent}
-              columns={ExpenseTableColumns}
+              columns={StaffTableColumns}
               components={{ Toolbar: GridToolbar }}
               checkboxSelection
               onSelectionModelChange={handleSelectionModelChange}
@@ -138,4 +138,4 @@ const Expenses = () => {
     return content;
 }
 
-export default Expenses
+export default Staffs

@@ -409,3 +409,8 @@ body,
 .fee-incomplete {
   background-color: crimson;
 }
+
+.submit-button:disabled {
+  background-color: #518f6f;
+  cursor: default;
+}

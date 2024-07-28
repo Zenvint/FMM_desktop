@@ -215,3 +215,46 @@ export const ExpenseTableColumns = [
   }
 ];
 
+export const StaffTableColumns = [
+  {
+    field: "name",
+    headerName: "Name",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "gender",
+    headerName: "Gender",
+    flex: 1,
+  },
+  {
+    field: "role",
+    headerName: "Role",
+    flex: 1,
+  },
+  {
+    field: "description",
+    headerName: "Description",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "email",
+    headerName: "Email",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "phone",
+    headerName: "Tel",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "salary | FCFA",
+    headerName: "Description",
+    flex: 1,
+  
+  }
+];
+

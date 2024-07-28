@@ -32,6 +32,9 @@ import FeeDetails from "./features/fee/FeeDetails.jsx";
 import Expenses from "./features/expenses/Expenses.jsx";
 import NewExpenseForm from "./features/expenses/NewExpenseForm.jsx";
 import EditExpenseForn from "./features/expenses/EditExpenseForn.jsx";
+import Staffs from "./features/staff/Staffs.jsx";
+import NewStaffForm from "./features/staff/NewStaffForm.jsx";
+import EditStaffForm from "./features/staff/EditStaffForm.jsx";
 
 const App = () => {
   return (
@@ -74,7 +77,9 @@ const App = () => {
                 <Route path=":id" element={<EditStudentForm />} />
               </Route>
               <Route path="staff">
-                <Route />
+                <Route index element={<Staffs />} />
+                <Route path="new" element={<NewStaffForm />} />
+                <Route path=":id" element={<EditStaffForm />} />
               </Route>
               <Route path="academics">
                 <Route />
