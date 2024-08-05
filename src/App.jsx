@@ -38,6 +38,7 @@ import EditStaffForm from "./features/staff/EditStaffForm.jsx";
 import Salaries from "./features/salary/Salaries.jsx";
 import SalaryDetails from "./features/salary/SalaryDetails.jsx";
 import PaySalaryForm from "./features/salary/PaySalaryForm.jsx";
+import FeeSettings from "./features/fee/FeeSettings.jsx";
 
 const App = () => {
   return (
@@ -70,6 +71,9 @@ const App = () => {
                 <Route path="installments">
                   <Route index element={<Installments />} />
                   <Route path=":id" element={<EditInstallmentForm />} />
+                </Route>
+                <Route path="fees">
+                  <Route index element={<FeeSettings />} />
                 </Route>
               </Route>
 

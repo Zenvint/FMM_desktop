@@ -39,14 +39,30 @@ export const feesApiSlice = apiSlice.injectEndpoints({
         },
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Fee", id: arg.id }],
-    })
+    }),
+    updateFeeHistory: builder.mutation({
+      query: (initialFee) => ({
+        url: "/fees/history",
+        method: "PATCH",
+        body: {
+          ...initialFee,
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Fee", id: arg.id }],
+    }),
+    newFeeYear: builder.mutation({
+      query: (credentials) => ({
+        url: "/fees/newfeeyear",
+        method: "POST",
+        body: {
+          ...credentials,
+        },
+      })
+    }),
   }),
 });
 
-export const {
-  useGetFeesQuery,
-  useUpdateFeeMutation
-} = feesApiSlice;
+export const { useGetFeesQuery, useUpdateFeeMutation, useNewFeeYearMutation, useUpdateFeeHistoryMutation } = feesApiSlice;
 
 // returns the query result object
 export const selectFeesResult = feesApiSlice.endpoints.getFees.select();
@@ -63,6 +79,4 @@ export const {
   selectById: selectFeeById,
   selectIds: selectFeeIds,
   // Pass in a selector that returns the notes slice of state
-} = feesAdapter.getSelectors(
-  (state) => selectFeesData(state) ?? initialState
-);
+} = feesAdapter.getSelectors((state) => selectFeesData(state) ?? initialState);

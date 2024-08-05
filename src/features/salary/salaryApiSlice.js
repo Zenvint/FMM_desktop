@@ -39,13 +39,34 @@ export const salariesApiSlice = apiSlice.injectEndpoints({
         },
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Salary", id: arg.id }],
-    })
+    }),
+    updateSalaryHistory: builder.mutation({
+      query: (initialSalary) => ({
+        url: "/salary/history",
+        method: "PATCH",
+        body: {
+          ...initialSalary,
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Salary", id: arg.id }],
+    }),
+    newSalaryMonth: builder.mutation({
+      query: (credentials) => ({
+        url: "/salary/newsalarymonth",
+        method: "POST",
+        body: {
+          ...credentials,
+        },
+      })
+    }),
   }),
 });
 
 export const {
   useGetSalariesQuery,
-  useUpdateSalaryMutation
+  useUpdateSalaryMutation,
+  useNewSalaryMonthMutation,
+  useUpdateSalaryHistoryMutation
 } = salariesApiSlice;
 
 // returns the query result object

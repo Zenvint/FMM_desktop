@@ -6,6 +6,7 @@ import { AddBtn } from "../../components/Button.jsx";
 import { Box } from "@mui/material";
 import { tokens } from "../../hooks/theme";
 import { useTheme } from "@mui/material";
+import SalaryHistory from "./SalaryHistory.jsx";
 
 const SalaryDetails = () => {
   const navigate = useNavigate();
@@ -24,14 +25,14 @@ const SalaryDetails = () => {
   };
 
   const handleFee = () => {
-    navigate(`/dash/finance/salaries/pay/${salary.id}`);
+    navigate(`/dash/finance/salaries/pay/${id}`);
   };
 
   return (
     <Box
       borderRadius={"10px"}
-      m={"150px"}
-      padding={"20px"}
+      m={"15px"}
+      padding={"5px"}
       bgcolor={colors.primary[400]}
       display={"flex"}
       flexDirection={"column"}
@@ -57,6 +58,10 @@ const SalaryDetails = () => {
             </div>
           </fieldset>
         </Box>
+      </Box>
+
+      <Box>
+        <SalaryHistory id={id} />
       </Box>
 
       <Box

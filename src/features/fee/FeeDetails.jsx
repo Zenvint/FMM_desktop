@@ -6,6 +6,7 @@ import { AddBtn } from "../../components/Button.jsx";
 import { Box } from "@mui/material";
 import { tokens } from "../../hooks/theme";
 import { useTheme } from "@mui/material";
+import FeeHistory from "./FeeHistory.jsx";
 
 const FeeDetails = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const FeeDetails = () => {
   };
 
   return (
-    <Box borderRadius={"10px"} m={"150px"} padding={"20px"} bgcolor={colors.primary[400]} display={"flex"} flexDirection={"column"} gap={"20px"} justifyContent={"center"} alignItems={"center"} >
+    <Box borderRadius={"10px"} m={"15px"} padding={"5px"} bgcolor={colors.primary[400]} display={"flex"} flexDirection={"column"} gap={"20px"} justifyContent={"center"} alignItems={"center"} >
       <Header
         title="Student Details"
         subtitle={`Matricule: ${fee.matricule}`}
@@ -73,6 +74,10 @@ const FeeDetails = () => {
             </div>
           </fieldset>
         </Box>
+      </Box>
+
+      <Box>
+        <FeeHistory id={id} />
       </Box>
 
       <Box marginTop={"5vh"} display={"flex"} width={"30vw"} justifyContent={"space-between"}>

@@ -8,7 +8,7 @@ import {
   useUpdateSalaryMutation,
 } from "./salaryApiSlice.js";
 import { useAddNewTransactionMutation } from "../transactions/transactionApiSlice.js";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
 import { AddBtn } from "../../components/Button.jsx";
@@ -84,8 +84,8 @@ const PaySalaryForm = () => {
   return (
     <Box m="20px">
       <Header
-        title="Pay Salary"
-        subtitle={`${salary.studentname} with matricule: ${salary.matricule}`}
+        title="Staff Salary Payment"
+        subtitle={`Salary payement`}
       />
 
       <div className={`class_container}`}>

@@ -81,15 +81,14 @@ const AddMultiStudentsForm = () => {
     const lastStudentMatricule = students[students.length - 1].matricule;
     const lastRegist = lastStudentMatricule.substring(7);
     lastRegistInt = parseInt(lastRegist, 10);
+  } else {
+    lastRegistInt = 10000;
   }
 
   const setUpMatricule = () => {
     const today = new Date();
-    if (students) {
-      return `FMM${today.getFullYear()}${lastRegistInt + 1}`;
-    } else {
-      return `FMM${today.getFullYear()}${10001}`;
-    }
+
+    return `FMM${today.getFullYear()}${lastRegistInt + 1}`;
   };
 
   const createNewStudent = async (matricule, student) => {
@@ -105,17 +104,17 @@ const AddMultiStudentsForm = () => {
       parentname: student.parentname,
       parentnumber: student.parentnumber,
     });
-  }
+  };
 
   const onSaveStudentClicked = async (e) => {
     e.preventDefault();
 
     if (selectedFile) {
       numStudent = data.length;
-      data.forEach( (student) => {
+      data.forEach((student) => {
         const matricule = setUpMatricule();
         console.log(matricule);
-        createNewStudent(matricule, student)
+        createNewStudent(matricule, student);
         count++;
         lastRegistInt += 1;
         console.log(lastRegistInt);
@@ -129,7 +128,7 @@ const AddMultiStudentsForm = () => {
     () => {
       if (isSuccess) {
         enqueueSnackbar(`added students Seccessfully!`, { variant: "success" });
-        navigate('/dash/students')
+        navigate("/dash/students");
       }
     },
     [isSuccess, navigate],
