@@ -4,40 +4,22 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../hooks/theme.js";
 import Header from "../../components/Header.jsx";
 import { useTheme } from "@mui/material";
-import { AddBtn } from "../../components/Button.jsx";
-import { useNavigate } from "react-router-dom";
-import { useGetExpensesQuery } from "./expensesApiSlice.js";
-import {ExpenseTableColumns } from "../../configs/tableColumns.js";
+import { useGetTransactionsQuery } from "./transactionApiSlice.js";
+import { TransactionTableColumns } from "../../configs/tableColumns.js";
 import PulseLoader from "react-spinners/PulseLoader";
-import { useState, } from "react";
 
-const Expenses = () => {
-    const navigate  = useNavigate();
+
+const Transactions = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const [selectedRows, setSelectedRows] = useState([]);
-  
-    const handleSelectionModelChange = (selectionModel) => {
-      setSelectedRows(selectionModel);
-    };
-  
-    const handleEdit = () => {
-      navigate(`/dash/finance/expenses/${selectedRows[0]}`);
-    };
-  
-    const handleAdd = () => {
-      navigate("/dash/finance/expenses/new");
-    };
-  
-    const canEdit = selectedRows.length == 1;
   
     const {
-      data: expenses,
+      data: transactions,
       isLoading,
       isSuccess,
       isError,
       error,
-    } = useGetExpensesQuery("expensesList", {
+    } = useGetTransactionsQuery("transactionsList", {
       pollingInterval: 60000,
       refetchOnFocus: true,
       refetchOnMountOrArgChange: true,
@@ -50,18 +32,7 @@ const Expenses = () => {
     if (isError) {
       content = (
         <Box m="8px">
-          <Header title="Expenses" subtitle="List of all Expenses." />
-          <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
-          >
-            <Box display={"flex"}>
-              <AddBtn handleEdit={handleAdd} btnName="+ Add Expenses" />
-  
-              <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
-            </Box>
-          </Box>
+          <Header title="Transaction" subtitle="List of all Transactions." />
   
           <Box m="0 0 0" display={"grid"} justifyItems={"center"}>
             <p className="errmsg">{error?.data?.message}</p>
@@ -71,24 +42,13 @@ const Expenses = () => {
     }
   
     if (isSuccess) {
-      const { ids } = expenses;
+      const { ids } = transactions;
       const tableContent =
-        ids?.length && ids.map((expenseId) => expenses?.entities[expenseId]);
+        ids?.length && ids.map((transactionId) => transactions?.entities[transactionId]);
   
       content = (
         <Box m="8px">
-          <Header title="Expenses" subtitle="List of all Expenses." />
-          <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
-          >
-            <Box display={"flex"}>
-              <AddBtn handleEdit={handleAdd} btnName="+ Add Expenses" />
-  
-              <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
-            </Box>
-          </Box>
+          <Header title="Transactions" subtitle="List of all Transactions." />
           <Box
             m="0 0 0"
             height="73vh"
@@ -124,11 +84,9 @@ const Expenses = () => {
             <DataGrid
               marginTop={"5rem"}
               rows={tableContent}
-              columns={ExpenseTableColumns}
+              columns={TransactionTableColumns}
               components={{ Toolbar: GridToolbar }}
               checkboxSelection
-              onSelectionModelChange={handleSelectionModelChange}
-              selectionModel={selectedRows}
             />
           </Box>
         </Box>
@@ -138,4 +96,4 @@ const Expenses = () => {
     return content;
 }
 
-export default Expenses
+export default Transactions

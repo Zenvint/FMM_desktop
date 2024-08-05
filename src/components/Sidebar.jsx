@@ -189,6 +189,14 @@ const Sidebar = () => {
 							onClick={()=> setSelected('Users')}
 						/>
 						<Item
+							title={"Transactions"}
+							to="/dash/transactions"
+							icon={<PersonIcon />}
+							selected={selected}
+							setSelected={setSelected}
+							onClick={()=> setSelected('Transactions')}
+						/>
+						<Item
 							title={"Settings"}
 							to="/dash/settings"
 							icon={<Settings />}

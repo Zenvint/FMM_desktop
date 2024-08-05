@@ -39,6 +39,7 @@ import Salaries from "./features/salary/Salaries.jsx";
 import SalaryDetails from "./features/salary/SalaryDetails.jsx";
 import PaySalaryForm from "./features/salary/PaySalaryForm.jsx";
 import FeeSettings from "./features/fee/FeeSettings.jsx";
+import Transactions from "./features/transactions/Transactions.jsx";
 
 const App = () => {
   return (
@@ -117,6 +118,9 @@ const App = () => {
                   <Route path="pay/:id" element={<PaySalaryForm />} />
                   <Route path="details/:id" element={<SalaryDetails />} />
                 </Route>
+              </Route>
+              <Route path="transactions">
+              <Route index element={<Transactions />} />
               </Route>
             </Route>
           </Route>
