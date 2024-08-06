@@ -40,6 +40,12 @@ import SalaryDetails from "./features/salary/SalaryDetails.jsx";
 import PaySalaryForm from "./features/salary/PaySalaryForm.jsx";
 import FeeSettings from "./features/fee/FeeSettings.jsx";
 import Transactions from "./features/transactions/Transactions.jsx";
+import Statistics from "./features/statistics/Statistics.jsx";
+import TransactionStatistics from "./features/statistics/TransactionStatistics.jsx";
+import ExpensesStats from "./features/statistics/ExpensesStats.jsx";
+import StudentStats from "./features/statistics/StudentStats.jsx";
+import FeesStats from "./features/statistics/FeesStats.jsx";
+import SalaryStats from "./features/statistics/SalaryStats.jsx";
 
 const App = () => {
   return (
@@ -120,7 +126,15 @@ const App = () => {
                 </Route>
               </Route>
               <Route path="transactions">
-              <Route index element={<Transactions />} />
+                <Route index element={<Transactions />} />
+              </Route>
+              <Route path="stats">
+                <Route index element={<Statistics />} />
+                <Route path="transaction" element={<TransactionStatistics />} />
+                <Route path="expenses" element={<ExpensesStats />} />
+                <Route path="students" element={<StudentStats />} />
+                <Route path="fees" element={<FeesStats />} />
+                <Route path="salaries" element={<SalaryStats />} />
               </Route>
             </Route>
           </Route>
