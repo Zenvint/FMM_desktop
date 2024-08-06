@@ -11,10 +11,6 @@ const Statistics = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const handleTransaction = () => {
-    navigate("/dash/stats/transaction")
-  }
-
   const handleExpense = () => {
     navigate("/dash/stats/expenses")
   }
@@ -53,10 +49,9 @@ const Statistics = () => {
             padding={"20px 0px" }
             gap={"10px"}
           >
-            <AddBtn btnName={"Transaction"} handleEdit={handleTransaction}/>
-            <AddBtn btnName={"Expenses"} handleEdit={handleExpense} />
             <AddBtn btnName={"Students"} handleEdit={handleStudents} />
             <AddBtn btnName={"Student Finance"} handleEdit={handleFees} />
+            <AddBtn btnName={"Expenses"} handleEdit={handleExpense} />
             <AddBtn btnName={"Salaries"} handleEdit={handleSalaries} />
           </Box>
           <Box>
