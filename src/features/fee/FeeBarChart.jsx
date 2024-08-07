@@ -55,7 +55,7 @@ const FeeBarChart = ({ data1, data2 }) => {
   };
 
   return (
-    <Box bgcolor={"white"} width={"70vw"} >
+    <Box bgcolor={"white"} height={"60vh"} width={"70vw"} >
       <Bar data={chartData} options={options} />
     </Box>
   );

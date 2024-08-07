@@ -143,7 +143,7 @@ const FeesStats = () => {
 
   return (
     <Box padding={"20px"}>
-      <Header title={"Statistics"} subtitle={"Fees Statistics"} />
+      <Header title={"Statistics"} subtitle={"Student Finance Statistics"} />
 
       <Box
         padding={"10px"}
