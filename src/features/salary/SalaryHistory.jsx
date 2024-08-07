@@ -10,22 +10,28 @@ const SalaryHistory = ({ id }) => {
     }),
   });
 
-  const salaryrecords = salary.history;
+  const salaryrecords = salary?.history;
   let salaryhistorycontent = [];
-  const keys = Object.keys(salaryrecords);
-  salaryhistorycontent = keys.map((key) => (
-    <SalaryHistoryTile
-      key={key}
-      id={id}
-      datestring={key}
-      record={salaryrecords[key]}
-    />
-  ));
+  if (salaryrecords) {
+    const keys = Object.keys(salaryrecords);
+    salaryhistorycontent = keys.map((key) => (
+      <SalaryHistoryTile
+        key={key}
+        id={id}
+        datestring={key}
+        record={salaryrecords[key]}
+      />
+    ));
+  }
   return (
     <fieldset>
       <legend>Salary History</legend>
       <Box width={"45vw"} height={"33vh"} overflow={"auto"}>
-        {salaryhistorycontent}
+        {salary?.history ? (
+          salaryhistorycontent
+        ) : (
+          <p className="errmsg">No History</p>
+        )}
       </Box>
     </fieldset>
   );

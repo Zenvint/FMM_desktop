@@ -297,8 +297,8 @@ export const StaffTableColumns = [
     cellClassName: "name-column--cell",
   },
   {
-    field: "salary | FCFA",
-    headerName: "Description",
+    field: "salary",
+    headerName: "salary | FCFA",
     flex: 1,
   
   }

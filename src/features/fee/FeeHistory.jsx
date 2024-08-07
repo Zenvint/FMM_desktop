@@ -10,22 +10,29 @@ const FeeHistory = ({ id }) => {
     }),
   });
 
-  const feerecords = fee.history;
+  const feerecords = fee?.history;
   let feehistorycontent = [];
-  const keys = Object.keys(feerecords);
-  feehistorycontent = keys.map((key) => (
-    <FeeHistoryTile
-      key={key}
-      id={id}
-      yearstring={key}
-      record={feerecords[key]}
-    />
-  ));
+  let keys;
+  if (feerecords) {
+    keys = Object.keys(feerecords);
+    feehistorycontent = keys.map((key) => (
+      <FeeHistoryTile
+        key={key}
+        id={id}
+        yearstring={key}
+        record={feerecords[key]}
+      />
+    ));
+  }
   return (
     <fieldset>
       <legend>Fee History</legend>
       <Box width={"45vw"} height={"33vh"} overflow={"auto"}>
-        {feehistorycontent}
+        {fee?.history ? (
+          feehistorycontent
+        ) : (
+          <p className="errmsg">No History</p>
+        )}
       </Box>
     </fieldset>
   );

@@ -28,12 +28,12 @@ const ExpensesStats = () => {
 
   const countByDate = (expenses) => {
     const counts = {};
-    expenses.forEach((transaction) => {
-      const date = transaction.createdOn;
+    expenses.forEach((expense) => {
+      const date = expense.createdOn;
       if (counts[date]) {
-        counts[date] += transaction.amount;
+        counts[date] += expense.amount;
       } else {
-        counts[date] = transaction.amount;
+        counts[date] = expense.amount;
       }
     });
 
