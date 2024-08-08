@@ -23,6 +23,8 @@ const Topbar = () => {
 	const colorMode = useContext(colorModeContext);
 	const colors = tokens(theme.palette.mode);
 	const navigate = useNavigate();
+	const date = new Date();
+    const formattedDate = date.toISOString().split('T')[0];
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
@@ -88,7 +90,7 @@ const Topbar = () => {
 				alignItems={"center"}
 				marginLeft={"10px"}>
 				<h5 style={{ marginLeft: "10px" }} id="academic_year">
-					2023/2024
+					{formattedDate}
 				</h5>
 				<p
 					id="academic_status"

@@ -217,6 +217,7 @@ const Sidebar = () => {
               setSelected={setSelected}
               onClick={() => setSelected("Statistics")}
             />
+            
 
             <Item
               title={"Settings"}

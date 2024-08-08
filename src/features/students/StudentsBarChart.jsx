@@ -36,7 +36,7 @@ const StudentsBarChart = ({ data }) => {
   };
 
   return (
-    <Box bgcolor={"white"} width={"70vw"}>
+    <Box bgcolor={"white"} width={"50vw"} >
       <Bar data={chartData} options={options} />
     </Box>
   );

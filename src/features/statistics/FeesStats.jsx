@@ -147,7 +147,6 @@ const FeesStats = () => {
 
       <Box
         padding={"10px"}
-        width={"78vw"}
         height={"83vh"}
         bgcolor={colors.primary[400]}
       >
@@ -163,12 +162,11 @@ const FeesStats = () => {
         </Box>
 
         <Box
-          width={"77vw"}
           height={"77vh"}
           overflow={"auto"}
           display={"flex"}
           flexDirection={"column"}
-          justifyContent={"flex-start"}
+          alignItems={"center"}
           gap={"5vh"}
         >
           {content}

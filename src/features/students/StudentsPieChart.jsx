@@ -21,7 +21,7 @@ const StudentsPieChart = ({data}) => {
       };
     
       return (
-        <Box bgcolor={"white"} height={"50vh"} width={"70vw"} display={"grid"} justifyItems={"center"} >
+        <Box bgcolor={"white"} height={"50vh"} width={"50vw"} display={"grid"} justifyItems={"center"} >
             <Pie data={data} options={options} />
         </Box>
       );

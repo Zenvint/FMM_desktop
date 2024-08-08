@@ -36,7 +36,7 @@ const ExpensesBarChart = ({data}) => {
       };
     
       return (
-        <Box bgcolor={"white"} width={"70vw"}>
+        <Box bgcolor={"white"} height={"50vh"} width={"70vw"}>
           <Bar data={chartData} options={options} />
         </Box>
       );
