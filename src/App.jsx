@@ -39,6 +39,13 @@ import Salaries from "./features/salary/Salaries.jsx";
 import SalaryDetails from "./features/salary/SalaryDetails.jsx";
 import PaySalaryForm from "./features/salary/PaySalaryForm.jsx";
 import FeeSettings from "./features/fee/FeeSettings.jsx";
+import Transactions from "./features/transactions/Transactions.jsx";
+import Statistics from "./features/statistics/Statistics.jsx";
+import ExpensesStats from "./features/statistics/ExpensesStats.jsx";
+import StudentStats from "./features/statistics/StudentStats.jsx";
+import FeesStats from "./features/statistics/FeesStats.jsx";
+import SalaryStats from "./features/statistics/SalaryStats.jsx";
+import DismissedStudentForm from "./features/students/DismissedStudentForm.jsx";
 
 const App = () => {
   return (
@@ -82,6 +89,7 @@ const App = () => {
                 <Route path="new" element={<NewStudentForm />} />
                 <Route path="newmulti" element={<AddMultiStudentsForm />} />
                 <Route path=":id" element={<EditStudentForm />} />
+                <Route path="dismiss/:id" element={<DismissedStudentForm />} />
               </Route>
               <Route path="staff">
                 <Route index element={<Staffs />} />
@@ -117,6 +125,16 @@ const App = () => {
                   <Route path="pay/:id" element={<PaySalaryForm />} />
                   <Route path="details/:id" element={<SalaryDetails />} />
                 </Route>
+              </Route>
+              <Route path="transactions">
+                <Route index element={<Transactions />} />
+              </Route>
+              <Route path="stats">
+                <Route index element={<Statistics />} />
+                <Route path="expenses" element={<ExpensesStats />} />
+                <Route path="students" element={<StudentStats />} />
+                <Route path="fees" element={<FeesStats />} />
+                <Route path="salaries" element={<SalaryStats />} />
               </Route>
             </Route>
           </Route>

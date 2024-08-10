@@ -19,8 +19,7 @@ const Settings = () => {
         <Header title="SETTINGS" subtitle="System Settings" />
         <div className="box">
           <ul>
-            <fieldset>
-              <legend>Academics</legend>
+            
               <Link
                 to={""}
                 style={{ textDecoration: "none", color: colors.grey[100] }}
@@ -48,9 +47,8 @@ const Settings = () => {
                   settings
                 </li>
               </Link>
-            </fieldset>
-            <fieldset>
-              <legend>Finance</legend>
+            
+           
               <Link
                 to={"/dash/settings/installments"}
                 style={{ textDecoration: "none", color: colors.grey[100] }}
@@ -65,10 +63,10 @@ const Settings = () => {
                 style={{ textDecoration: "none", color: colors.grey[100] }}
               >
                 <li>
-                  <CreditScoreOutlinedIcon className="li_icon" /> Fee settings
+                  <CreditScoreOutlinedIcon className="li_icon" /> General settings
                 </li>
               </Link>
-            </fieldset>
+           
           </ul>
         </div>
       </Box>

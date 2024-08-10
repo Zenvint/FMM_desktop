@@ -16,8 +16,8 @@ import * as XLSX from "xlsx";
 
 const AddMultiStudentsForm = () => {
   let lastRegistInt;
-  let count = 0;
-  let numStudent = 0;
+  const [count, setCount] = useState(0);
+  const [numStudent, setNumStudent] = useState(0)
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [addNewStudent, { isLoading, isSuccess, isError, error }] =
@@ -110,12 +110,13 @@ const AddMultiStudentsForm = () => {
     e.preventDefault();
 
     if (selectedFile) {
-      numStudent = data.length;
+      setNumStudent(data?.length)
       data.forEach((student) => {
         const matricule = setUpMatricule();
         console.log(matricule);
         createNewStudent(matricule, student);
-        count++;
+        const currentcount = count +1;
+        setCount(currentcount);
         lastRegistInt += 1;
         console.log(lastRegistInt);
       });

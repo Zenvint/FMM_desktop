@@ -215,6 +215,26 @@ export const ExpenseTableColumns = [
   }
 ];
 
+export const TransactionTableColumns = [
+  {
+    field: "transactiontype",
+    headerName: "Transaction Type",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "amount",
+    headerName: "Amount| FCFA",
+    flex: 1,
+  },
+  {
+    field: "createdAt",
+    headerName: "Date",
+    flex: 1,
+  }
+];
+
+
 export const SalaryTableColumns = [
   {
     field: "name",
@@ -277,8 +297,8 @@ export const StaffTableColumns = [
     cellClassName: "name-column--cell",
   },
   {
-    field: "salary | FCFA",
-    headerName: "Description",
+    field: "salary",
+    headerName: "salary | FCFA",
     flex: 1,
   
   }

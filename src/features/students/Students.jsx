@@ -26,6 +26,10 @@ const Students = () => {
     navigate(`/dash/students/${selectedRows[0]}`);
   };
 
+  const handleDismiss = () => {
+    navigate(`/dash/students/dismiss/${selectedRows[0]}`);
+  };
+
   const canEdit = selectedRows.length == 1;
 
   const {
@@ -48,16 +52,20 @@ const Students = () => {
     content = (
       <Box m="8px">
         <Header title="Students" subtitle="List of all Students." />
-        <Box display={"flex"}>
+        <Box display={"flex"} width={"50vw"} >
           <Link to="/dash/students/new">
             <AddBtn btnName="+ Add Student" />
           </Link>
 
           <AddBtn btnName="Edit" enabled={!canEdit} handleEdit={handleEdit} />
+          <AddBtn btnName="Dismiss" enabled={!canEdit} handleEdit={handleDismiss} />
 
           <Link to="/dash/students/newmulti">
             <AddBtn btnName=" + Add Multiple Student" />
           </Link>
+
+          
+          
         </Box>
 
         <Box m="0 0 0" display={"grid"} justifyItems={"center"}>
@@ -73,14 +81,15 @@ const Students = () => {
       ids?.length && ids.map((userId) => students?.entities[userId]);
 
     content = (
-      <Box m="8px">
+      <Box m="8px" >
         <Header title="Students" subtitle="List of all Students." />
-        <Box display={"flex"}>
+        <Box display={"flex"} width={"50vw"}>
           <Link to="/dash/students/new">
             <AddBtn btnName="+ Add Student" />
           </Link>
 
           <AddBtn btnName="Edit" enabled={!canEdit} handleEdit={handleEdit} />
+          <AddBtn btnName="Dismiss" enabled={!canEdit} handleEdit={handleDismiss} />
 
           <Link to="/dash/students/newmulti">
             <AddBtn btnName=" + Add Multiple Student" />
