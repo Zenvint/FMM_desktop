@@ -50,6 +50,16 @@ export const studentsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Student", id: arg.id }],
     }),
+    dismissStudent: builder.mutation({
+      query: (initialStudentData) => ({
+        url: "/students/dismiss",
+        method: "PATCH",
+        body: {
+          ...initialStudentData,
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Student", id: arg.id }],
+    }),
     deleteStudent: builder.mutation({
       query: ({ id }) => ({
         url: `/students`,
@@ -66,6 +76,7 @@ export const {
   useAddNewStudentMutation,
   useUpdateStudentMutation,
   useDeleteStudentMutation,
+  useDismissStudentMutation
 } = studentsApiSlice;
 
 // returns the query result object

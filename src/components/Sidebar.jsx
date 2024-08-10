@@ -21,6 +21,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import PersonIcon from "@mui/icons-material/Person";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import useEnglish from "../hooks/useEnglish.js";
 // import Warnimg from "../../components/warning";
 
 // Item component to display each menu item in the sidebar
@@ -49,6 +50,7 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  const [english] = useEnglish();
 
   return (
     <Box
@@ -126,7 +128,7 @@ const Sidebar = () => {
                   fontWeight={"bold"}
                 >
                   {" "}
-                  Kevin B
+                  USER
                 </Typography>
               </Box>
             </Box>
@@ -217,7 +219,6 @@ const Sidebar = () => {
               setSelected={setSelected}
               onClick={() => setSelected("Statistics")}
             />
-            
 
             <Item
               title={"Settings"}
