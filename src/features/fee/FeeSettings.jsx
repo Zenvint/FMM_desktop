@@ -10,15 +10,15 @@ import { useSnackbar } from "notistack";
 import useConfirmSnackbar from "../../hooks/useConfirmSnackbar.js";
 import { useNewSalaryMonthMutation } from "../salary/salaryApiSlice.js";
 import { format } from "date-fns";
-import useEnglish from "../../hooks/useEnglish.js";
+import { Link } from "react-router-dom";
+
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
 const FeeSettings = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const { enqueueSnackbar } = useSnackbar();
   const { showConfirmation } = useConfirmSnackbar();
-  const [english, setEnglish] = useEnglish();
-  const handleToggle = () => setEnglish((prev) => !prev);
 
   const [newFeeYear, { isLoading, isSuccess, isError, error }] =
     useNewFeeYearMutation();
@@ -88,6 +88,16 @@ const FeeSettings = () => {
     <Box>
       <Box p={2}>
         <Header title="SETTINGS" subtitle="Fee Settings" />
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          justifyContent={"space-between"}
+        >
+          <Link to={"/dash/settings"} style={{ color: colors.grey[100] }}>
+            <ArrowBackOutlinedIcon className="li_icon" />
+          </Link>
+          <Box display={"flex"}></Box>
+        </Box>
         <div className="box">
           <fieldset>
             <Box
@@ -124,20 +134,6 @@ const FeeSettings = () => {
                 <p className={errClass}>{errContent}</p>
               </Box>
             )}
-          </fieldset>
-          <fieldset>
-            <legend>Language</legend>
-            <Box>
-              <div className="check">
-                <input
-                  type="checkbox"
-                  id="persist"
-                  checked={english}
-                  onChange={handleToggle}
-                />
-                <label htmlFor="persist">English</label>
-              </div>
-            </Box>
           </fieldset>
         </div>
       </Box>
