@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+:root {
+  /* COLORS */
+  --BGCOLOR: #0F172A;
+  --BORDER-COLOR: #FFF;
+  --COLOR: #FFF;
+  --ERROR: firebrick;
+  --INACTIVE: lightgray;
+  --LINK-COLOR: whitesmoke;
+  --LINK-HOVER: rgba(245, 245, 245, 0.9);
+  --NOTE-BGCOLOR: hsla(240, 64%, 27%, 0.65);
+  --STATUS-COMPLETE: limegreen;
+  --STATUS-OPEN: firebrick;
+  --TABLE-BGCOLOR: #FFF;
+  --TABLE-COLOR: #000;
+  --INPUT-INVALID: #F00;
+}
+
+body {
+  background: #aab0b9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.errmsg {
+  display: inline-block;
+  background-color: var(--TABLE-BGCOLOR);
+  color: var(--ERROR);
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.errmsg a:any-link {
+  color: var(--ERROR);
+  text-decoration: underline;
+}
+
+.login__page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wrapper {
+  width: 330px;
+  padding: 4rem 0 4rem 0;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 10px;
+  border: solid 1px #c2b8d3;
+  text-align: center;
+  box-shadow: 0 25px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login_h1 {
+  font-size: 1.5rem;
+  color: #07001f;
+  margin-bottom: 10px;
+}
+
+.login_p {
+  margin-bottom: 1.5rem;
+  font-size: 14px;
+}
+
+form input {
+  width: 85%;
+  background: #dfe9f5;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #07001f;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.check {
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 9rem;
+}
+
+.check input {
+  width: 15px;
+  height: 15px;
+}
+
+.check label {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.login_button {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 8px 0;
+  border-radius: 9px;
+  outline: none;
+  border: none;
+  width: 85%;
+  background: rgba(56, 2, 163, 0.767);
+  color: #fff;
+  cursor: pointer;
+}
+
+.login_button:hover {
+  background: rgb(51, 17, 164);
+}
+
+
+html,
+body,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  font-weight: 200;
+}
+
+
+
+
+.app {
+  display: flex;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle */
+::webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin-right: 100px;
+  height: 3vh;
+  margin-top: 5px;
+}
+
+.btn {
+  margin-Left: -4px;
+  font-Size: 11px;
+  font-Weight: 600;
+  height: 20px;
+  align-Items: center;
+}
+
+.btn:hover {
+  color: #9cf4d1;
+}
+
+.header {
+  text-align: center;
+  font-size: 22px;
+  font-weight: "bold";
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.class_container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  color: #ffffff;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dropdown {
+  width: 10rem;
+}
+
+.input-container label {
+  font-weight: bold;
+}
+
+.input-container input,
+.input-container select {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #e6e7f2;
+  color: #080808;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.submit-button {
+  background-color: #61c591;
+  color: #fffdfd;
+  width: 20%;
+  height: 35px;
+  border-radius: 10px;
+  margin-top: 13px;
+  font-size: 18px;
+  font-weight: bold;
+  align-self: end;
+  cursor: pointer;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.75em;
+  max-width: 800px;
+}
+
+.form__checkbox-container {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 0.5em;
+}
+
+.form__persist {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.5em;
+}
+
+.form__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__input,
+.form__submit-button {
+  padding: 0.5em;
+  border-radius: 15px;
+}
+
+.form__input--text {
+  min-height: 150px;
+}
+
+.form__input--incomplete {
+  border: 1px solid var(--INPUT-INVALID);
+  outline: 1px solid var(--INPUT-INVALID);
+}
+
+.form__checkbox {
+  width: 24px;
+  height: 24px;
+}
+
+.form__select {
+  width: 200px;
+  /* Set the width of the select box */
+  height: auto;
+  /* Allow the height to adjust based on content */
+  padding: 5px;
+  /* Add some padding around the checkboxes */
+  border: 1px solid #ccc;
+  /* Add a border */
+  overflow-y: auto;
+  /* Enable vertical scrolling if options exceed the height */
+}
+
+/* Style the options to look like checkboxes */
+.form__select option {
+  padding: 5px;
+  /* Add padding */
+  border-bottom: 1px solid #ccc;
+  /* Add a border between options */
+}
+
+/* Hide the default dropdown arrow */
+.form__select::-ms-expand {
+  display: none;
+}
+
+.form__select option:checked {
+  background-color: #e0e0e0;
+  /* Change background color of checked options */
+}
+
+
+.form__action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5em;
+  position: absolute;
+  right: 0.5em;
+}
+
+.form__row {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2em;
+}
+
+.form__divider {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5em;
+}
+
+.box {
+  width: 50rem;
+  height: 25rem;
+  padding: 10px;
+}
+
+.box ul {
+  position: relative;
+  background: "none";
+}
+
+.box ul:hover li {
+  opacity: 0.5;
+}
+
+.box ul li {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 30px;
+  list-style: none;
+  margin-top: 3px;
+  padding: 7px;
+  width: 95%;
+  height: 4rem;
+  font-size: 14px;
+  font-weight: 400;
+  background: "none";
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s;
+}
+
+.box ul li:hover {
+  transform: scale(1.1);
+  z-index: 5;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.li_icon {
+  margin: 10px;
+  height: 30px;
+  width: 30px
+}
+
+.fee-complete,
+.fee-incomplete {
+  /* padding: 3px; */
+  font-size: 14px;
+  font-weight: 600;
+  /* background-color: #ffffff; */
+  width: 75px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+
+.fee-complete {
+  color: #0fd02f;
+}
+
+.fee-incomplete {
+  color: crimson;
+}
+
+.submit-button:disabled {
+  background-color: #518f6f;
+  cursor: default;
+}
+
+.box fieldset {
+  padding-left: 50px;
+}
