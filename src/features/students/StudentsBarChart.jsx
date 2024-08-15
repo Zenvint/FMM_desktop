@@ -42,7 +42,7 @@ const StudentsBarChart = ({ data }) => {
   };
 
   return (
-    <Box  height={"40vh"} width={"39vw"} marginTop={"30px"} >
+    <Box  height={"40vh"} width={"30vw"} marginTop={"30px"} >
       <Bar data={chartData} options={options} />
     </Box>
   );

@@ -81,7 +81,7 @@ const Salaries = () => {
 
       <Box
         m="0 0 0 0"
-        height="76vh"
+        height="76.75vh"
         width={"100%"}
         sx={{
           "& .MuiDataGrid-root": {

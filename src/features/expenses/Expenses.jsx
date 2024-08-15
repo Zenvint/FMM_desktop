@@ -76,14 +76,15 @@ const Expenses = () => {
         ids?.length && ids.map((expenseId) => expenses?.entities[expenseId]);
   
       content = (
-        <Box m="8px">
+        <Box m="10px">
           <Header title="Expenses" subtitle="List of all Expenses." />
           <Box
             display={"flex"}
             flexDirection={"row"}
             justifyContent={"space-between"}
+            marginTop={"1rem"}
           >
-            <Box display={"flex"}>
+            <Box display={"flex"} marginTop={"15px"}            >
               <AddBtn handleEdit={handleAdd} btnName="+ Add Expenses" />
   
               <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
@@ -91,7 +92,7 @@ const Expenses = () => {
           </Box>
           <Box
             m="0 0 0"
-            height="73vh"
+            height="75.75vh"
             sx={{
               "& .MuiDataGrid-root": {
                 border: "none",

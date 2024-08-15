@@ -124,7 +124,6 @@ const StudentStats = () => {
       <Box
         padding={"10px"}
         height={"80vh"}
-        bgcolor={colors.primary[400]}
       >
         <Box
           display={"flex"}

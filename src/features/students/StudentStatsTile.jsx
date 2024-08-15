@@ -9,23 +9,35 @@ const StudentStatsTile = ({legendtitle, title, number}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  const boxStyle = {
+    width: "15vw",
+    height: "12vh",
+    backgroundColor: colors.primary[400],
+    padding: "15px",
+    margin: "auto 0",
+  }
+
+  const titleStyle = {
+    fontWeight: "bold",
+    fontSize: "1rem",
+    color: colors.grey[100],
+    textAlign: "start",
+  }
+
+  const valueStyle = {
+    color: colors.greenAccent[400],
+    fontWeight: "700",
+    fontSize: "1.15rem",
+    textAlign: "center",
+  }
+
   return (
-    <Box width={"16vw"} height={"12vh"}>
-        <legend style={{ fontWeight: "bold"}}>{legendtitle}</legend>
-        <Box
-          width={"13vw"}
-          height={"11vh"}
-          bgcolor={colors.primary[400]}
-          padding={"5px"}
-          display={"flex"}
-          flexDirection={"column"}
-          alignItems={"center"}
-          justifyContent={"center"}
-        >
-          <Box color={colors.grey[100]} fontSize={"1rem"} fontWeight={"bold"}>
+    <Box>
+        <Box sx={boxStyle}>
+          <Box sx={titleStyle}>
             {title}
           </Box>
-          <Box color={colors.greenAccent[400]} fontWeight={"700"} fontSize={"1.5rem"}>
+          <Box sx={valueStyle}>
             {" "}
             <CountUp start={0} end={number} duration={2.5} />
           </Box>

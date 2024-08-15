@@ -7,6 +7,8 @@ import { useAddNewUserMutation } from "./usersApiSlice.js";
 import ROLES from "../../configs/roles.js";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
 
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
 
@@ -19,7 +21,8 @@ const NewUserForm = () => {
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
   const [roles, setRoles] = useState(["Teacher"]);
-  
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
 
   useEffect(() => {
@@ -78,67 +81,84 @@ const NewUserForm = () => {
   return (
     <Box m="20px">
       <Header title="New User" />
-      
-	    <p className={errClass}>{error?.data?.message}</p>
 
-        <form onSubmit={onSaveUserClicked} >
-			<div className="input-container">
-				<label htmlFor="userEmail">User Email:</label>
-				<input
-				id="userEmail"
-				type="email"
-				placeholder="Enter Email"
-				required
-				autoComplete="off"
-				value={email}
-				onChange={onUserEmailChanged}
-				/>
-          </div>
+      <p className={errClass}>{error?.data?.message}</p>
 
-		  <div className="input-container">
-				<label className="form__label" htmlFor="userPassword">User Password:<span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
-				<input
-					className={`form__input ${validPwdClass}`}
-					id="userPassword"
-					type="password"
-					placeholder="Enter user password"
-					required
-					autoComplete="off"
-					value={password}
-					onChange={onPasswordChanged}
-				/>
-          </div>
+      <form
+        onSubmit={onSaveUserClicked}
+        style={{
+          background: colors.primary[400],
+          padding: "25px",
+          borderRadius: "10px",
+          width: "70%",
+          margin: "auto"
+        }}
+      >
+        <div className="input-container">
+          <label htmlFor="userEmail">User Email:</label>
+          <input
+            id="userEmail"
+            type="email"
+            placeholder="Enter Email"
+            required
+            autoComplete="off"
+            value={email}
+            onChange={onUserEmailChanged}
+          />
+        </div>
 
-          <div className="class_container">
-				<div className="input-container">
-					<label htmlFor="roles" >
-						{" "}
-						ASSIGNED ROLES:{" "}
-					</label>
-					<select
-						id="roles"
-						name="roles"
-						className={`form__select ${validRolesClass}`}
-						multiple={true}
-						size="5"
-						value={roles}
-						onChange={onRolesChanged}
-						>
-						{options}
-					</select>
-				</div>
+        <div className="input-container">
+          <label className="form__label" htmlFor="userPassword">
+            User Password:
+            <span className="nowrap">[4-12 chars incl. !@#$%]</span>
+          </label>
+          <input
+            className={`form__input ${validPwdClass}`}
+            id="userPassword"
+            type="password"
+            placeholder="Enter user password"
+            required
+            autoComplete="off"
+            value={password}
+            onChange={onPasswordChanged}
+          />
+        </div>
+
+        <div className="class_container">
+          <div className="input-container">
+            <label htmlFor="roles"> ASSIGNED ROLES: </label>
+            <select
+              id="roles"
+              name="roles"
+              className={`form__select ${validRolesClass}`}
+              multiple={true}
+              size="5"
+              value={roles}
+              onChange={onRolesChanged}
+            >
+              {options}
+            </select>
           </div>
-		  
-			<button className="submit-button" type="submit" disabled={!canSave} >
-			  Save
-			</button>
-			<Link to={"/dash/users"}>
-			  <button className="submit-button"  variant="contained">
-				Cancel
-			  </button>
-			</Link>
-        </form>
-      
+        </div>
+
+        <Link to={"/dash/users"} style={{ marginLeft: "18rem" }}>
+          <button
+            className="submit-button"
+            variant="contained"
+            style={{ background: colors.grey[400] }}
+          >
+            Cancel
+          </button>
+        </Link>
+        <button
+          className="submit-button"
+          type="submit"
+          disabled={!canSave}
+          style={{ marginLeft: "1rem" }}
+        >
+          Save
+        </button>
+      </form>
     </Box>
   );
 };

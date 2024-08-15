@@ -78,7 +78,7 @@ const Topbar = () => {
   }
 
   return (
-    <Box display="flex" justifyContent=" space-between" p={1.5}>
+    <Box display="flex" justifyContent=" space-between" p={1}>
       {/* STATUS BAR */}
       <Box
         display="flex"
@@ -88,7 +88,6 @@ const Topbar = () => {
         width={"125px"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        marginLeft={"10px"}
       >
         <h5 style={{ marginLeft: "10px" }} id="academic_year">
           {formattedDate}

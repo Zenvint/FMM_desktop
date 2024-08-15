@@ -7,6 +7,9 @@ import { useUpdateUserMutation,useDeleteUserMutation, useGetUsersQuery } from ".
 import ROLES from "../../configs/roles.js";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
+
 
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
 
@@ -36,6 +39,9 @@ const EditUserForm = () => {
   const [validPassword, setValidPassword] = useState(false);
   const [roles, setRoles] = useState(user.roles);
   const [active, setActive] = useState(user.active);
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
 
   useEffect(() => {
     setValidPassword(PWD_REGEX.test(password));
@@ -106,7 +112,16 @@ const EditUserForm = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        style={{
+          background: colors.primary[400],
+          padding: "25px",
+          borderRadius: "10px",
+          width: "70%",
+          margin: "auto"
+        }}
+      >
         <div className="input-container">
           <label htmlFor="userEmail">User Email:</label>
           <input
@@ -149,6 +164,7 @@ const EditUserForm = () => {
               type="checkbox"
               checked={active}
               onChange={onActiveChanged}
+              style={{ marginLeft: "10px", marginTop: "18px" }}
             />
           </label>
         </div>
@@ -170,19 +186,22 @@ const EditUserForm = () => {
           </div>
         </div>
 
+        <Link to={"/dash/users"} style={{ marginLeft: "10rem"}}>
+          <button className="submit-button" variant="contained" style={{ background: colors.grey[400]}}>
+            Cancel
+          </button>
+        </Link>
         <button
           className="submit-button"
           onClick={onSaveUserClicked}
           disabled={!canSave}
+          style={{ marginLeft: "1rem" }}
         >
           Save
         </button>
-        <Link to={"/dash/users"}>
-          <button className="submit-button" variant="contained">
-            Cancel
-          </button>
-        </Link>
-        <button className="submit-button" onClick={onDeleteUserClicked} >Dismiss</button>
+        <button className="submit-button" onClick={onDeleteUserClicked} style={{ marginLeft: "1rem", background: "red" }}>
+          Dismiss
+        </button>
       </form>
     </Box>
   );

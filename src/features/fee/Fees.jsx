@@ -88,7 +88,7 @@ const Fees = () => {
 
       <Box
         m="0 0 0 0"
-        height="75.5vh"
+        height="76vh"
         width={"100%"}
         sx={{
           "& .MuiDataGrid-root": {

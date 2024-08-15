@@ -12,7 +12,6 @@ import StudentStatsTile from "../students/StudentStatsTile.jsx";
 import StudentsBarChart from "../students/StudentsBarChart.jsx";
 import TRANSACTIONTYPE from "../../configs/transactiontype.js";
 import TransactionStatsTile from "../transactions/TransactionStatsTile.jsx";
-import StudentsPieChart from "../students/StudentsPieChart.jsx";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -126,11 +125,11 @@ const Dashboard = () => {
           display={"flex"}
           flexDirection={"column"}
           justifyContent={"center"}
-          gap={"5rem"}
+          gap={"2rem"}
           margin={"2rem 0 0 0"}
           padding={"0 2rem 0 0"}
         >
-          <Box display={"flex"} flexDirection={"row"} gap={"5vh"} >
+          <Box display={"flex"} flexDirection={"row"} gap={"3rem"} >
             <StudentStatsTile
               legendtitle={"Total Number of Students:"}
               title={"School"}
@@ -185,15 +184,16 @@ const Dashboard = () => {
   }
 
   return (
-    <Box padding={"0 30px"}>
+    <Box padding={"10px"}>
       <Header title={"Dashboard"} subtitle={"Welcome to your dashboard"} />
       <Box
-        padding={"5px"}
+        paddingLeft={"50px"}
         height={"80vh"}
         bgcolor={"none"}
         display={"flex"}
         gap={"1vw"}
-        marginLeft={"1rem"}
+        margin={"auto"}
+        border={"none"}
       >
         {content}
       </Box>

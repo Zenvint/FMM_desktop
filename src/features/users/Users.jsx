@@ -55,46 +55,50 @@ const Users = () => {
     content = (
       <Box m="8px">
         <Header title="Users" subtitle="List of all users." />
-        <Box display={"flex"}>
-          <Link to="/dash/users/new">
-            <AddBtn btnName="+ Add User" />
-          </Link>
-          <Link to={`/dash/users/${selectedRows[0]}`}>
-            <AddBtn btnName="Edit" enabled={!canEdit} />
-          </Link>
-        </Box>
         <Box
           m="0 0 0"
-          height="73vh"
+          height="76.5vh"
           sx={{
             "& .MuiDataGrid-root": {
-              border: "none",
+              border: "none"
             },
             "& .MuiDataGrid-cell": {
-              borderBottom: "none",
+              borderBottom: "none"
             },
             "& .name-column--cell": {
-              color: colors.greenAccent[100],
+              color: colors.greenAccent[100]
             },
             "& .MuiDataGrid-columnHeaders": {
               backgroundColor: colors.blueAccent[800],
-              borderBottom: "none",
+              borderBottom: "none"
             },
             "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: colors.primary[400],
+              backgroundColor: colors.primary[400]
             },
             "& .MuiDataGrid-footerContainer": {
               borderTop: "none",
-              backgroundColor: colors.blueAccent[800],
+              backgroundColor: colors.blueAccent[800]
             },
             "& .MuiCheckbox-root": {
-              color: `${colors.blueAccent[200]} `,
+              color: `${colors.blueAccent[200]} `
             },
             "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-              color: `${colors.grey[100]}`,
-            },
+              color: `${colors.grey[100]}`
+            }
           }}
         >
+
+          <Box display={"flex"}>
+            <Box marginTop={"1rem"}>
+              <Link to="/dash/users/new">
+                <AddBtn btnName="+ Add User" />
+              </Link>
+              <Link to={`/dash/users/${selectedRows[0]}`}>
+                <AddBtn btnName="Edit" enabled={!canEdit} />
+              </Link>
+            </Box>
+          </Box>
+
           <DataGrid
             marginTop={"5rem"}
             rows={tableContent}

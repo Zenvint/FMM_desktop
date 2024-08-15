@@ -50,7 +50,7 @@ const Students = () => {
 
   if (isError) {
     content = (
-      <Box m="8px">
+      <Box m="10px">
         <Header title="Students" subtitle="List of all Students." />
         <Box display={"flex"} width={"50vw"} >
           <Link to="/dash/students/new">
@@ -81,7 +81,7 @@ const Students = () => {
       ids?.length && ids.map((userId) => students?.entities[userId]);
 
     content = (
-      <Box m="8px" >
+      <Box m="10px" >
         <Header title="Students" subtitle="List of all Students." />
         
         <Box display={"flex"} width={"50vw"} marginTop={"30px"}>

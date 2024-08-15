@@ -92,7 +92,7 @@ const Staffs = () => {
           </Box>
           <Box
             m="0 0 0"
-            height="76vh"
+            height="76.25vh"
             sx={{
               "& .MuiDataGrid-root": {
                 border: "none",
