@@ -10,11 +10,16 @@ import {
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
+import { useTheme } from "@mui/material";
+import { tokens } from "../../hooks/theme.js";
+
 
 const EditInstallmentForm = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const { installment } = useGetInstallmentsQuery("installmentsList", {
     selectFromResult: ({ data }) => ({
@@ -100,7 +105,7 @@ const EditInstallmentForm = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto", justifyContent: "center", alignItems: "center" }}>
         <div className="input-container">
           <label htmlFor="1st-install">First Installment:</label>
           <input
@@ -150,11 +155,12 @@ const EditInstallmentForm = () => {
           className="submit-button"
           onClick={onSaveSectionClicked}
           disabled={!canSave}
+          style={{marginLeft: "16rem"}}
         >
           Save
         </button>
-        <Link to={"/dash/settings/installments"}>
-          <button className="submit-button" variant="contained">
+        <Link to={"/dash/settings/installments"} style={{ marginLeft: "20px"}}>
+          <button className="submit-button" variant="contained" style={{ backgroundColor: colors.grey[400]}}>
             Cancel
           </button>
         </Link>

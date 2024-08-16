@@ -199,7 +199,7 @@ const EditUserForm = () => {
         >
           Save
         </button>
-        <button className="submit-button" onClick={onDeleteUserClicked} style={{ marginLeft: "1rem", background: "red" }}>
+        <button className="submit-button" onClick={onDeleteUserClicked} style={{ marginLeft: "1rem", background: colors.redAccent[400] }}>
           Dismiss
         </button>
       </form>

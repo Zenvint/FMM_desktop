@@ -86,24 +86,25 @@ const Sections = () => {
 
     content = (
       <Box m="8px">
-        <Header title="Sections" subtitle="List of all Sections." />
-        <Box
-          display={"flex"}
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-        >
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <Header title="Sections" subtitle="List of all Sections." />
           <Link to={"/dash/settings"} style={{ color: colors.grey[100] }}>
             <ArrowBackOutlinedIcon className="li_icon" />
           </Link>
+        </Box>
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          marginTop={"2rem"}
+        >
           <Box display={"flex"}>
             <AddBtn handleEdit={handleAdd} btnName="+ Add Section" />
-
             <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
           </Box>
         </Box>
         <Box
           m="0 0 0"
-          height="73vh"
+          height="75vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",

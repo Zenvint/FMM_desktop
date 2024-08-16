@@ -20,7 +20,7 @@ const SalariesBarChart = ({data}) => {
           {
             label: "Total Salaries per day",
             data: data.map((item) => item.count),
-            backgroundColor: "rgba(75, 192, 192, 0.6)",
+            backgroundColor: "#70d8bd",
             borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1,
           },
@@ -36,7 +36,7 @@ const SalariesBarChart = ({data}) => {
       };
     
       return (
-        <Box bgcolor={"white"} height={"50vh"} width={"70vw"}>
+        <Box bgcolor={"none"} height={"50vh"} width={"70vw"}>
           <Bar data={chartData} options={options} />
         </Box>
       );

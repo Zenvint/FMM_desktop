@@ -12,24 +12,12 @@ import StudentStatsTile from "../students/StudentStatsTile.jsx";
 import StudentsBarChart from "../students/StudentsBarChart.jsx";
 import TRANSACTIONTYPE from "../../configs/transactiontype.js";
 import TransactionStatsTile from "../transactions/TransactionStatsTile.jsx";
-import { useGetExpensesQuery } from "../expenses/expensesApiSlice.js";
 
 const Statistics = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const {
-    data: expenses,
-    isLoading,
-    isSuccess,
-    isError,
-    error
-  } = useGetExpensesQuery("expensesList", {
-    pollingInterval: 60000,
-    refetchOnFocus: true,
-    refetchOnMountOrArgChange: true
-  });
 
   const handleExpense = () => {
     navigate("/dash/stats/expenses");
@@ -101,29 +89,6 @@ const Statistics = () => {
     );
   }
 
-  if (isSuccess) {
-    const { ids } = expenses;
-    const expensesData =
-      ids?.length && ids.map((expenseId) => expenses?.entities[expenseId]);
-
-    // getting the total amount spent on expenses
-    let totalexpenses = 0;
-    expensesData.forEach((expense) => {
-      totalexpenses += expense.amount;
-    });
-
-    content = (
-      <>
-        <Box display={"flex"} gap={"5vw"}>
-          <TransactionStatsTile
-            legendtitle={"Total Amount"}
-            title={"Expenses"}
-            number={totalexpenses}
-          />
-        </Box>
-      </>
-    );
-  }
 
   if (isStudSuccess && isTransSuccess) {
     const { ids: transIds } = transactions;
@@ -170,10 +135,15 @@ const Statistics = () => {
           display={"flex"}
           flexDirection={"column"}
           justifyContent={"center"}
-          alignItems={"center"}
-          gap={"2vh"}
+          alignItems={"start"}
+          gap={"1vh"}
         >
-          <Box display={"flex"} flexDirection={"row"} gap={"3vh"}>
+          <Box display={"flex"} flexDirection={"row"} gap={"7vh"}>
+          <StudentStatsTile
+              legendtitle={"Number of Students"}
+              title={"Students:"}
+              number={activeStudents?.length ? activeStudents.length : 0}
+            />
             <TransactionStatsTile
               legendtitle={"Total Transactions"}
               title={"School Fee:"}
@@ -194,68 +164,70 @@ const Statistics = () => {
         </Box>
 
         <Box
-          width={"60vw"}
+          width={"70vw"}
           display={"flex"}
-          alignItems={"center"}
+          flexDirection={"row"}
+          gap={"1.25vw"}
+          alignItems={"start"}
           justifyContent={"center"}
-          marginTop={"2vh"}
-          marginLeft={"2vw"}
+          marginTop={"3rem"}
         >
-          <Box display={"flex"} flexDirection={"column"} gap={"3vh"}>
-            <Box>
-              {content}
-            </Box>
-            <StudentStatsTile
-              legendtitle={"Total Number of Students"}
-              title={"School"}
-              number={activeStudents?.length ? activeStudents.length : 0}
-            />
-            <StudentStatsTile
-              legendtitle={"Total Number of Students"}
-              title={"School"}
-              number={activeStudents?.length ? activeStudents.length : 0}
+          <Box display={"flex"} flexDirection={"column"} gap={"11vh"}>
+          <TransactionStatsTile
+            legendtitle={"Total Amount"}
+            title={"Expenses"}
+            number={0}
+          />
+            <TransactionStatsTile
+            legendtitle={""}
+            title={"Monthly Salaries"}
+            number={0}
             />
           </Box>
           <Box
             bgcolor={colors.primary[400]}
             width={"35vw"}
-            height={"37vh"}
+            height={"35vh"}
             padding={"20px"}
+            marginLeft={"2rem"}
           >
             <StudentsBarChart data={studChartdata} />
           </Box>
-          <Box
-            width={"13vw"}
-            borderRadius={"10px"}
-            border={`solid 1px ${colors.greenAccent[400]}`}
-            display={"flex"}
-            flexDirection={"column"}
-            alignItems={"center"}
-            padding={"12px 0px"}
-            gap={"10px"}
-            marginTop={"8rem"}
-            marginLeft={"1rem"}
-          >
-            <AddBtn btnName={"Students"} handleEdit={handleStudents} />
-            <AddBtn btnName={"Student Finance"} handleEdit={handleFees} />
-            <AddBtn btnName={"Expenses"} handleEdit={handleExpense} />
-            <AddBtn btnName={"Salaries"} handleEdit={handleSalaries} />
-          </Box>
+
+          <fieldset style={{ height: "25vh", borderColor: colors.greenAccent[400], borderRadius:"10px",display: "flex", justifyContent: "end",alignItems: "end", justifySelf: "end", alignSelf: "end" }}>
+              <legend style={{ color: colors.grey[100], fontSize: "18px", fontWeight: 600 }}>Menu</legend>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              alignItems={"start"}
+              padding={"12px 0px"}
+              gap={"10px"}
+              marginTop={"7rem"}
+              marginLeft={"1rem"}
+            >
+              <AddBtn btnName={"Students"} handleEdit={handleStudents} />
+              <AddBtn btnName={"Student Finance"} handleEdit={handleFees} />
+              <AddBtn btnName={"Expenses"} handleEdit={handleExpense} />
+              <AddBtn btnName={"Salaries"} handleEdit={handleSalaries} />
+            </Box>
+          </fieldset>
         </Box>
       </>
     );
   }
 
   return (
-    <Box padding={"20px"}>
+    <Box padding={"10px"}>
       <Header title={"Statistics"} subtitle={"System Statistics"} />
       <Box
-        padding={"5px"}
-        height={"80vh"}
+        padding={"3px"}
+        height={"68vh"}
         display={"flex"}
         flexDirection={"column"}
+        // justifyContent={"center"}
+        alignItems={"start"}
         gap={"2vw"}
-        marginTop={"2rem"}
+        marginTop={"4.5rem"}
       >
         {content}
       </Box>

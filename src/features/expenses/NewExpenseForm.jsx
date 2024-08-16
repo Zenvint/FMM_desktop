@@ -78,7 +78,7 @@ const NewExpenseForm = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={onSaveClassClicked}style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto"}}>
+      <form onSubmit={onSaveClassClicked}style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto", justifyContent: "center", alignItems: "center"}}>
         <div className="input-container">
           <label htmlFor="classname">Benefactor:</label>
           <input

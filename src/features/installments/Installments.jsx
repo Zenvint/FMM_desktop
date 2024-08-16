@@ -79,22 +79,24 @@ const Installments = () => {
 
     content = (
       <Box m={"10px"}>
-         <Header title="Installments" subtitle="List of all Intallments." />
-        <Box
+          <Box display={"flex"} justifyContent={"space-between"}>
+            <Header title="Installments" subtitle="List of all Intallments." />
+            <Link to={"/dash/settings"} style={{ color: colors.grey[100] }}>
+              <ArrowBackOutlinedIcon className="li_icon" />
+            </Link>
+          </Box>
+          <Box
           display={"flex"}
           flexDirection={"row"}
-          justifyContent={"space-between"}
+          marginTop={"2rem"}
         >
-          <Link to={"/dash/settings"} style={{ color: colors.grey[100] }}>
-            <ArrowBackOutlinedIcon className="li_icon" />
-          </Link>
           <Box display={"flex"}>
             <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
           </Box>
         </Box>
         <Box
           m="0 0 0"
-          height="70vh"
+          height="75vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",

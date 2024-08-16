@@ -238,7 +238,7 @@ const EditStaffForm = () => {
           </div>
         </fieldset>
 
-        <Link to={"/dash/finance/expenses"} style={{ marginLeft: "6rem"}}>
+        <Link to={"/dash/finance/expenses"} style={{ marginLeft: "8rem"}}>
           <button className="submit-button" variant="contained" style={{ background:colors.grey[400]}}>
             Cancel
           </button>
@@ -251,7 +251,7 @@ const EditStaffForm = () => {
         >
           Save
         </button>
-        <button className="submit-button" onClick={onDeleteClicked} style={{marginLeft: "1rem", background: "red"}}>
+        <button className="submit-button" onClick={onDeleteClicked} style={{marginLeft: "1rem", background: colors.redAccent[400]}}>
           Delete
         </button>
       </form>

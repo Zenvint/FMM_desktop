@@ -11,7 +11,7 @@ const StudentsPieChart = ({data}) => {
         responsive: true,
         plugins: {
           legend: {
-            position: 'top'
+            position: 'right'
           },
           title: {
             display: true,
@@ -21,7 +21,7 @@ const StudentsPieChart = ({data}) => {
       };
     
       return (
-        <Box bgcolor={"white"} height={"40vh"} width={"35vw"} display={"grid"} justifyItems={"center"} >
+        <Box bgcolor={"none"} height={"40vh"} width={"35vw"} display={"grid"} justifyItems={"start"} marginLeft={"30px"} >
             <Pie data={data} options={options} />
         </Box>
       );

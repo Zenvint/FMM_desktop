@@ -58,7 +58,6 @@ const Staffs = () => {
           >
             <Box display={"flex"}>
               <AddBtn handleEdit={handleAdd} btnName="+ Add Staff" />
-  
               <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
             </Box>
           </Box>
@@ -86,7 +85,6 @@ const Staffs = () => {
           >
             <Box display={"flex"}>
               <AddBtn handleEdit={handleAdd} btnName="+ Add Staff" />
-  
               <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
             </Box>
           </Box>

@@ -362,7 +362,7 @@ const EditStudentForm = () => {
             <button className="submit-button" type="submit" style={{ marginLeft: "1rem" }}>
               Save
             </button>
-            <button className="submit-button" onClick={onDeleteSectionClicked} style={{ marginLeft: "1rem", background: "red" }}>
+            <button className="submit-button" onClick={onDeleteSectionClicked} style={{ marginLeft: "1rem", background: colors.redAccent[400] }}>
               Delete
             </button>
           </form>

@@ -5,7 +5,7 @@ import { tokens } from "../../hooks/theme";
 import { useTheme } from "@mui/material";
 
 
-const StudentStatsTile = ({legendtitle, title, number}) => {
+const StudentStatsTile = ({ title, number}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 

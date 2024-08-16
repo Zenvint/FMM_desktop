@@ -113,7 +113,7 @@ const FeesStats = () => {
 
     content = (
       <>
-        <Box display={"flex"} gap={"5vw"}>
+        <Box display={"flex"} gap={"3vw"}>
           <TransactionStatsTile
             legendtitle={"Total Transactions"}
             title={"Fee"}
@@ -135,38 +135,33 @@ const FeesStats = () => {
             number={feerecieved}
           />
         </Box>
-
-        <FeeBarChart data1={countfeeData} data2={countregistration} />
+        <Box backgroundColor={colors.primary[400]} height={"60vh"}>
+          <FeeBarChart data1={countfeeData} data2={countregistration} />
+        </Box>
       </>
     );
   }
 
   return (
     <Box padding={"20px"}>
-      <Header title={"Statistics"} subtitle={"Student Finance Statistics"} />
+      <Box display={"flex"} justifyContent={"space-between"}>
+        <Header title={"Statistics"} subtitle={"Student Finance Statistics"} />
+        <Link to={"/dash/stats"} style={{ color: colors.grey[100] }}>
+            <ArrowBackOutlinedIcon className="li_icon" />
+        </Link>
+      </Box>
 
       <Box
         padding={"10px"}
-        height={"80vh"}
-        bgcolor={colors.primary[400]}
+        height={"70vh"}
       >
-        <Box
-          display={"flex"}
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-        >
-          <Link to={"/dash/stats"} style={{ color: colors.grey[100] }}>
-            <ArrowBackOutlinedIcon className="li_icon" />
-          </Link>
-          <Box display={"flex"}></Box>
-        </Box>
-
         <Box
           height={"77vh"}
           overflow={"auto"}
           display={"flex"}
           flexDirection={"column"}
-          alignItems={"center"}
+          justifyContent={"center"}
+          alignItems={"start"}
           gap={"5vh"}
         >
           {content}

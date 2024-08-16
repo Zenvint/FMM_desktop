@@ -7,6 +7,7 @@ import { AddBtn } from "../../components/Button.jsx";
 import { useNavigate } from "react-router-dom";
 import { useGetStudentsQuery } from "../students/studentsApiSlice.js";
 import { useGetTransactionsQuery } from "../transactions/transactionApiSlice.js";
+import { useGetStaffsQuery } from "../staff/staffsApiSlice.js";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import StudentStatsTile from "../students/StudentStatsTile.jsx";
 import StudentsBarChart from "../students/StudentsBarChart.jsx";
@@ -24,6 +25,10 @@ const Dashboard = () => {
 
   const handleStudents = () => {
     navigate("/dash/students/new");
+  };
+
+  const handleStaffs = () => {
+    navigate("/dash/staff/new");
   };
 
   const handleFees = () => {
@@ -131,27 +136,38 @@ const Dashboard = () => {
         >
           <Box display={"flex"} flexDirection={"row"} gap={"3rem"} >
             <StudentStatsTile
-              legendtitle={"Total Number of Students:"}
-              title={"School"}
+              title={"Students:"}
               number={activeStudents?.length ? activeStudents.length : 0}
             />
             <TransactionStatsTile
-              legendtitle={"Total Transactions:"}
-              title={"Fee"}
+              title={"Fee:"}
               number={totalfeetransaction}
             />
             <TransactionStatsTile
-              legendtitle={"Total Transactions:"}
-              title={"Registration"}
+              title={"Registration:"}
               number={totalregistrationTrans}
             />
           </Box>
 
-          <Box display={"flex"} flexDirection={"row"} gap={"4.5rem"}>
+          <Box display={"flex"} flexDirection={"row"} gap={"2.5rem"}>
+            <Box display={"flex"} flexDirection={"column"} gap={"2rem"}>
+              <StudentStatsTile // TO BE CHANCHED
+                title={"Classes:"}
+                number={0}
+              />
+              <StudentStatsTile //TO BE CHANCHED
+                title={"Staffs:"}
+                number={0}
+              />
+              <TransactionStatsTile //TO BE CHANCHED
+                title={"Staff Salary:"}
+                number={0}
+              />
+            </Box>
             <Box
-              width={"39vw"}
-              height={"45vh"}
-              padding={"15px"}
+              width={"35vw"}
+              height={"45.5vh"}
+              padding={"5px"}
               display={"flex"}
               alignItems={"center"}
               justifyContent={"center"}
@@ -160,22 +176,23 @@ const Dashboard = () => {
               <StudentsBarChart data={studChartdata} />
             </Box>
 
-            <Box
-            width={"13vw"}
-            borderRadius={"5px"}
-            display={"flex"}
-            flexDirection={"column"}
-            justifyContent={"end"}
-            alignItems={"start"}
-            padding={"2px"}
-            gap={"15px"}
-          >
-            <AddBtn btnName={"+ Add Student"} handleEdit={handleStudents} />
-            <AddBtn btnName={"Student Finance"} handleEdit={handleFees} />
-            <AddBtn btnName={"+ Add Expense"} handleEdit={handleExpense} />
-          </Box>
-
-
+            <fieldset style={{ height: "25vh", borderColor: colors.greenAccent[400], borderRadius:"10px",display: "flex", justifyContent: "end",alignItems: "end", justifySelf: "end", alignSelf: "end" }}>
+              <legend style={{ color: colors.grey[100], fontSize: "18px", fontWeight: 600 }}>Quick links</legend>
+              <Box
+              width={"10vw"}
+              display={"flex"}
+              flexDirection={"column"}
+              justifyContent={"end"}
+              alignItems={"start"}
+              padding={"2px"}
+              gap={"15px"}
+            >
+              <AddBtn btnName={"+ Add Student"} handleEdit={handleStudents} />
+              <AddBtn btnName={"+ Add Staff"} handleEdit={handleStaffs} />
+              <AddBtn btnName={"Student Finance"} handleEdit={handleFees} />
+              <AddBtn btnName={"+ Add Expense"} handleEdit={handleExpense} />
+            </Box>
+          </fieldset>
           </Box>
 
         </Box>
@@ -187,13 +204,16 @@ const Dashboard = () => {
     <Box padding={"10px"}>
       <Header title={"Dashboard"} subtitle={"Welcome to your dashboard"} />
       <Box
-        paddingLeft={"50px"}
-        height={"80vh"}
+        height={"70vh"}
         bgcolor={"none"}
         display={"flex"}
         gap={"1vw"}
         margin={"auto"}
         border={"none"}
+        justifyContent={"start"}
+        alignItems={"center"}
+        marginTop={"5vh"}
+        marginLeft={"1vw"}
       >
         {content}
       </Box>
