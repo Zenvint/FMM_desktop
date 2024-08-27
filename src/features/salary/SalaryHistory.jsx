@@ -24,9 +24,9 @@ const SalaryHistory = ({ id }) => {
     ));
   }
   return (
-    <fieldset>
+    <fieldset style={{padding: "15px", height: "45vh", overflow: "auto"}}>
       <legend>Salary History</legend>
-      <Box width={"45vw"} height={"33vh"} overflow={"auto"}>
+      <Box>
         {salary?.history ? (
           salaryhistorycontent
         ) : (

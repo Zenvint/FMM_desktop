@@ -11,10 +11,15 @@ import {
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
+
 
 const EditExpenseForn = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const { expense } = useGetExpensesQuery("expensesList", {
     selectFromResult: ({ data }) => ({
@@ -91,7 +96,7 @@ const EditExpenseForn = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()}style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto"}}>
         <div className="input-container">
           <label htmlFor="classname">Benefactor:</label>
           <input
@@ -105,7 +110,7 @@ const EditExpenseForn = () => {
           />
         </div>
 
-        <div className="input-container">
+        <div className="input-container" style={{ marginBottom: "25px"}}>
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
@@ -132,19 +137,20 @@ const EditExpenseForn = () => {
           />
         </div>
 
+        <Link to={"/dash/finance/expenses"}style={{ marginLeft: "10rem"}}>
+          <button className="submit-button" variant="contained" style={{ background:colors.grey[400]}}>
+            Cancel
+          </button>
+        </Link>
         <button
           className="submit-button"
           onClick={onSaveExpenseClicked}
           disabled={!canSave}
+          style={{marginLeft: "1rem"}}
         >
           Save
         </button>
-        <Link to={"/dash/finance/expenses"}>
-          <button className="submit-button" variant="contained">
-            Cancel
-          </button>
-        </Link>
-        <button className="submit-button" onClick={onDeleteExpenseClicked}>
+        <button className="submit-button" onClick={onDeleteExpenseClicked} style={{marginLeft: "1rem", background:"red"}}>
           Delete
         </button>
       </form>

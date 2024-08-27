@@ -7,10 +7,15 @@ import { useAddNewSectionMutation } from "./sectionsApiSlice.js";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useSnackbar } from "notistack";
+import { useTheme } from "@mui/material";
+import { tokens } from "../../hooks/theme.js";
+
 
 const NewSectionForm = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [addNewSection, { isLoading, isSuccess, isError, error }] = useAddNewSectionMutation();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const navigate = useNavigate();
 
@@ -56,7 +61,7 @@ const NewSectionForm = () => {
 
       <p className={errClass}>{error?.data?.message}</p>
 
-      <form onSubmit={onSaveUserClicked}>
+      <form onSubmit={onSaveUserClicked} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto", justifyContent: "center", alignItems: "center" }}>
         <div className="input-container">
           <label htmlFor="sectionname">Section Name:</label>
           <input
@@ -70,11 +75,11 @@ const NewSectionForm = () => {
           />
         </div>
 
-        <button className="submit-button" type="submit" disabled={!canSave}>
+        <button className="submit-button" type="submit" disabled={!canSave} style={{marginLeft: "16rem"}}>
           Save
         </button>
-        <Link to={"/dash/settings/sections"}>
-          <button className="submit-button" variant="contained">
+        <Link to={"/dash/settings/sections"} style={{ marginLeft: "20px"}}>
+          <button className="submit-button" variant="contained" style={{ backgroundColor: colors.grey[400]}}>
             Cancel
           </button>
         </Link>

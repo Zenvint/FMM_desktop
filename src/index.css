@@ -171,6 +171,7 @@ body,
   font-Weight: 600;
   height: 20px;
   align-Items: center;
+  border: "none";
 }
 
 .btn:hover {
@@ -195,6 +196,7 @@ body,
   display: flex;
   flex-direction: row;
   gap: 20px;
+  color: "white";
 }
 
 .input-container {
@@ -215,7 +217,7 @@ body,
 .input-container select {
   width: 100%;
   border-radius: 5px;
-  background-color: #a7a8b2;
+  background-color: #e6e7f2;
   color: #080808;
 }
 
@@ -223,6 +225,13 @@ body,
   display: flex;
   flex-direction: row;
   gap: 20px;
+  color: "white";
+  font-weight: 600;
+}
+
+legend {
+  color: "white";
+  font-weight: 600;
 }
 
 .submit-button {
@@ -236,6 +245,7 @@ body,
   font-weight: bold;
   align-self: end;
   cursor: pointer;
+  border: "none";
 }
 
 .nowrap {
@@ -391,23 +401,22 @@ body,
 
 .fee-complete,
 .fee-incomplete {
-  padding: 5px;
-  font-size: x-large;
-  font-weight: bold;
-  background-color: white;
-  width: 150px;
+  font-size: 14px;
+  font-weight: 600;
+  width: 75px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 20px;
 }
 
 .fee-complete {
-  background-color: #9cf4d1;
+  color: #0fd02f;
 }
 
 .fee-incomplete {
-  background-color: crimson;
+  color: crimson;
 }
 
 .submit-button:disabled {

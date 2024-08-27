@@ -58,7 +58,6 @@ const Staffs = () => {
           >
             <Box display={"flex"}>
               <AddBtn handleEdit={handleAdd} btnName="+ Add Staff" />
-  
               <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
             </Box>
           </Box>
@@ -82,16 +81,16 @@ const Staffs = () => {
             display={"flex"}
             flexDirection={"row"}
             justifyContent={"space-between"}
+            marginTop={"30px"}
           >
             <Box display={"flex"}>
               <AddBtn handleEdit={handleAdd} btnName="+ Add Staff" />
-  
               <AddBtn btnName="Edit" handleEdit={handleEdit} enabled={!canEdit} />
             </Box>
           </Box>
           <Box
             m="0 0 0"
-            height="73vh"
+            height="76.25vh"
             sx={{
               "& .MuiDataGrid-root": {
                 border: "none",
@@ -129,6 +128,12 @@ const Staffs = () => {
               checkboxSelection
               onSelectionModelChange={handleSelectionModelChange}
               selectionModel={selectedRows}
+              sortModel={[
+                {
+                  field: "createdAt",
+                  sort: "desc",
+                }
+              ]}
             />
           </Box>
         </Box>

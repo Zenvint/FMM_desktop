@@ -32,7 +32,7 @@ const FeeBarChart = ({ data1, data2 }) => {
       {
         label: "Tuition Fee",
         data: dataset1,
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
+        backgroundColor: "#70d8bd",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
       },
@@ -55,7 +55,7 @@ const FeeBarChart = ({ data1, data2 }) => {
   };
 
   return (
-    <Box bgcolor={"white"} height={"60vh"} width={"70vw"} >
+    <Box bgcolor={"none"} height={"55vh"} width={"70vw"} >
       <Bar data={chartData} options={options} />
     </Box>
   );

@@ -9,6 +9,9 @@ import { useSnackbar } from "notistack";
 import useConfirmSnackbar from "../../hooks/useConfirmSnackbar.js";
 import TRANSACTIONTYPE from "../../configs/transactiontype.js";
 import PulseLoader from "react-spinners/PulseLoader.js";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
+
 
 const FeeHistoryTile = ({ id, record, yearstring }) => {
   const navigate = useNavigate();
@@ -26,6 +29,9 @@ const FeeHistoryTile = ({ id, record, yearstring }) => {
       error: transError,
     },
   ] = useAddNewTransactionMutation();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
 
   const proceedPayment = async() => {
     console.log("proceeding")
@@ -60,10 +66,10 @@ const FeeHistoryTile = ({ id, record, yearstring }) => {
 
   const errContent = (error?.data?.message || transError?.data?.message) ?? "";
   return (
-    <Box>
-      <fieldset>
+    <Box padding={"5px 0"} margin={"auto 0"} borderRadius={"15px"}>
+      <fieldset style={{height: "20vh", width: "95%", margin: "auto", justifyContent: "space-between", alignItems: "center", borderRadius: "15px"}}>
         <legend>Records Session: {yearstring}</legend>
-        <Box display={"flex"} justifyContent={"space-between"}>
+        <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} alignItems={"center"} >
           <Box
             display={"flex"}
             flexDirection={"column"}
@@ -75,7 +81,7 @@ const FeeHistoryTile = ({ id, record, yearstring }) => {
             <div className="">Amount Paid: {record.amountPaid} FCFA</div>
             <div className="">Balance: {record.balance} FCFA</div>
           </Box>
-          <fieldset>
+          <fieldset style={{ display: "flex", width: "10vw", height: "5vh", justifyContent: "center", alignItems: "center" }}>
             <legend>TuitionFee</legend>
             <div
               className={`${record.status ? "fee-complete" : "fee-incomplete"}`}

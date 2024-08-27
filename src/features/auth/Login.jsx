@@ -9,6 +9,8 @@ import { useLoginMutation } from "./authApiSlice.js";
 import usePersist from "../../hooks/usePersist.js";
 import PulseLoader from "react-spinners/PulseLoader";
 
+import school_logo from "../../assets/images/school_logo.png";
+
 const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
@@ -64,7 +66,7 @@ const Login = () => {
     <main className="login__page">
       
       <div className="wrapper">
-      <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
+        <img src={school_logo} alt="logo" style={{ width: "120px", height: "100px", marginTop: "-200px", borderRadius: "50px" }} />
         <h1>FBMM Portal</h1>
         <form onSubmit={handleSubmit}>
           {/* <label htmlFor="email">Email</label> */}
@@ -78,6 +80,7 @@ const Login = () => {
             onChange={handleUserInput}
             required
           />
+          <p ref={errRef} /*className={errClass}*/ aria-live="assertive" style={{ color: "red", textAlign: "start", fontWeight: "600", marginLeft: "20px", marginTop: "-8px", fontSize: "12px" }}>{errMsg}</p>
           {/* <label htmlFor="password">Password</label> */}
           <input
             type="password"

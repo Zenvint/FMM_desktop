@@ -11,6 +11,8 @@ import {
 import { useGetSectionsQuery } from "../sections/sectionsApiSlice.js";
 import { useGetClassesQuery } from "../classes/classesApiSlice.js";
 import { useSnackbar } from "notistack";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
 
 import * as XLSX from "xlsx";
 
@@ -20,8 +22,9 @@ const AddMultiStudentsForm = () => {
   const [numStudent, setNumStudent] = useState(0)
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const [addNewStudent, { isLoading, isSuccess, isError, error }] =
-    useAddNewStudentMutation();
+  const [addNewStudent, { isLoading, isSuccess, isError, error }] = useAddNewStudentMutation();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const {
     data: sections,
@@ -75,6 +78,16 @@ const AddMultiStudentsForm = () => {
     selectFromResult: ({ data }) => ({
       students: data?.ids.map((id) => data?.entities[id]),
     }),
+  });
+
+  students.sort((a, b) => {
+    if (a.matricule < b.matricule) {
+      return -1;
+    }
+    if (a.matricule > b.matricule) {
+      return 1;
+    }
+    return 0; // a.matricule is equal to b.matricule
   });
 
   if (students) {
@@ -209,14 +222,15 @@ const AddMultiStudentsForm = () => {
         <>
           <p className={errClass}>{errContent}</p>
 
-          <form onSubmit={onSaveStudentClicked}>
+          <form onSubmit={onSaveStudentClicked} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "60%", margin: "auto"}}>
             <div className="class_container">
-              <div className="input-container">
+              <div className="input-container" style={{ marginButton: "10px"}}>
                 <label htmlFor="section" className="dropdown">
                   {" "}
                   Section:{" "}
                 </label>
                 <select
+                  style={{height: "27px"}}
                   id="section"
                   placeholder="Select the section"
                   value={sectionId}
@@ -228,12 +242,13 @@ const AddMultiStudentsForm = () => {
                 </select>
               </div>
 
-              <div className="input-container">
+              <div className="input-container" style={{ marginButton: "10px"}}>
                 <label htmlFor="className" className="dropdown">
                   {" "}
                   Class:{" "}
                 </label>
                 <select
+                  style={{height: "27px"}}
                   id="className"
                   placeholder="Select the className"
                   value={classId}
@@ -246,9 +261,9 @@ const AddMultiStudentsForm = () => {
               </div>
             </div>
 
-            <div className="class_container">
+            <div className="class_container" style={{ marginTop: "15px"}}>
               <div style={{ display: "grid" }}>
-                <label htmlFor="fileUpload">Upload an Excel file:</label>
+                <label htmlFor="fileUpload" style={{ fontWeight: "bold" }}>Upload an Excel file:</label>
                 <input
                   type="file"
                   id="fileUpload"
@@ -256,20 +271,22 @@ const AddMultiStudentsForm = () => {
                   accept=".xls,.xlsx"
                   onChange={handleFileChange}
                   required
+                  style={{ background: "none", border: "none", cursor: "pointer", width: "100%", height: "30px" }}
                 />
               </div>
             </div>
 
-            <Link to={"/dash/students"}>
+            <Link to={"/dash/students"} style={{ marginLeft: "9rem" }}>
               <button
                 className="submit-button"
                 type="cancel"
                 variant="contained"
+                style={{background:colors.grey[500]}}
               >
                 Cancel
               </button>
             </Link>
-            <button className="submit-button" type="submit" disabled={!canSave}>
+            <button className="submit-button" type="submit" disabled={!canSave} style={{ marginLeft: "1rem", cursor: "pointer" }}>
               Save
             </button>
           </form>

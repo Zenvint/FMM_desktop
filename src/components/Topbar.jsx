@@ -46,6 +46,7 @@ const Topbar = () => {
     navigate("/");
   };
 
+
   const errClass = isError ? "errmsg" : "offscreen";
 
   let buttonContent;
@@ -54,9 +55,6 @@ const Topbar = () => {
   } else {
     buttonContent = (
       <>
-        <IconButton>
-          <SignalWifi0BarOutlinedIcon />
-        </IconButton>
         <IconButton
           onClick={handleClick}
           sx={{ ml: 2 }}
@@ -78,7 +76,7 @@ const Topbar = () => {
   }
 
   return (
-    <Box display="flex" justifyContent=" space-between" p={1.5}>
+    <Box display="flex" justifyContent=" space-between" p={1}>
       {/* STATUS BAR */}
       <Box
         display="flex"
@@ -88,7 +86,6 @@ const Topbar = () => {
         width={"125px"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        marginLeft={"10px"}
       >
         <h5 style={{ marginLeft: "10px" }} id="academic_year">
           {formattedDate}
@@ -147,12 +144,7 @@ const Topbar = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>New academic year</MenuItem>
-        <MenuItem onClick={handleClose}>+ Add school</MenuItem>
-        <Link to="/dash/sections">
-          <MenuItem>Sections</MenuItem>
-        </Link>
-        <MenuItem onClick={handleClose}>+ Add class</MenuItem>
+       
         <Divider />
         <MenuItem onClick={onLogoutClicked}>
           <ListItemIcon>

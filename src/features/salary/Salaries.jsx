@@ -13,12 +13,8 @@ import PulseLoader from "react-spinners/PulseLoader.js";
 
 const Salaries = () => {
   const navigate = useNavigate();
-  const schoolFee = [];
-  const registrationFee = [];
-  const examinationFee = [];
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [currentTable, setCurrentTable] = useState("schoolFees");
   const [selectedRows, setSelectedRows] = useState([]);
 
   const {
@@ -47,33 +43,7 @@ const Salaries = () => {
 
   const canEdit = selectedRows?.length == 1;
 
-  const handleTableChange = (table) => {
-    setCurrentTable(table);
-  };
-
-  let rows;
-  switch (currentTable) {
-    case "schoolFees":
-      rows = schoolFee;
-      break;
-    case "registrationFees":
-      rows = registrationFee;
-      break;
-    case "examinationFees":
-      rows = examinationFee;
-      break;
-    default:
-      rows = schoolFee;
-  }
-
-  const buttonStyles = (isActive) => ({
-    backgroundColor: isActive ? colors.primary[400] : "transparent",
-    color: isActive ? colors.blueAccent[400] : colors.grey[100],
-    border: isActive ? `0 solid ${colors.primary[400]}` : "none",
-    "&:hover": {
-      backgroundColor: isActive ? colors.primary[400] : colors.blueAccent[800],
-    },
-  });
+ 
 
   let content;
 
@@ -111,7 +81,7 @@ const Salaries = () => {
 
       <Box
         m="0 0 0 0"
-        height="73vh"
+        height="76.75vh"
         width={"100%"}
         sx={{
           "& .MuiDataGrid-root": {
@@ -142,7 +112,7 @@ const Salaries = () => {
           },
         }}
       >
-        <Box display={"flex"} justifyContent={"space-between"}>
+        <Box display={"flex"} justifyContent={"space-between"} marginTop={"25px"}>
           <Box width={"30vw"} display={"flex"} justifyContent={"space-around"}>
             <AddBtn
               btnName="Pay Salary"
@@ -158,31 +128,7 @@ const Salaries = () => {
           </Box>
 
           <Box display={"flex"} mb={"-5px"} justifyContent={"center"}>
-            <Button
-              variant={currentTable === "schoolFees" ? "contained" : "outlined"}
-              onClick={() => handleTableChange("schoolFees")}
-              sx={buttonStyles(currentTable === "schoolFees")}
-            >
-              School Fees
-            </Button>
-            <Button
-              variant={
-                currentTable === "registrationFees" ? "contained" : "outlined"
-              }
-              onClick={() => handleTableChange("registrationFees")}
-              sx={buttonStyles(currentTable === "registrationFees")}
-            >
-              Registration Fees
-            </Button>
-            <Button
-              variant={
-                currentTable === "examinationFees" ? "contained" : "outlined"
-              }
-              onClick={() => handleTableChange("examinationFees")}
-              sx={buttonStyles(currentTable === "examinationFees")}
-            >
-              Examination Fees
-            </Button>
+          
           </Box>
         </Box>
 

@@ -12,6 +12,8 @@ import StudentStatsTile from "../students/StudentStatsTile.jsx";
 import StudentsBarChart from "../students/StudentsBarChart.jsx";
 import TRANSACTIONTYPE from "../../configs/transactiontype.js";
 import TransactionStatsTile from "../transactions/TransactionStatsTile.jsx";
+import { useGetStaffsQuery } from "../staff/staffsApiSlice.js";
+import { useGetExpensesQuery } from "../expenses/expensesApiSlice.js";
 
 const Statistics = () => {
   const navigate = useNavigate();
@@ -73,26 +75,72 @@ const Statistics = () => {
     refetchOnMountOrArgChange: true,
   });
 
+  const {
+    data: staffs,
+    isLoading: isstaffLoading,
+    isSuccess: isstaffSuccess,
+    isError: isstaffError,
+    error: errorStaff,
+  } = useGetStaffsQuery("staffsList", {
+    pollingInterval: 60000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+  });
+
+  const {
+    data: expenses,
+    isLoading: isepenseLoading,
+    isSuccess: isexpenseSuccess,
+    isError: isexpenseError,
+    error: errorExpense,
+  } = useGetExpensesQuery("expensesList", {
+    pollingInterval: 60000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+  });
+
   let content;
-  if (isStudLoading || isTransLoading) {
+  if (isStudLoading || isTransLoading || isstaffLoading || isepenseLoading) {
     content = <PulseLoader color={"#FFF"} />;
   }
 
-  if (isStudError || isTransError) {
+  if (isStudError || isTransError || isstaffError || isexpenseError) {
     content = (
       <Box m="0 0 0" display={"grid"} justifyItems={"center"}>
         <p className="errmsg">
-          {errorStud?.data?.message || errorTrans?.data?.message}
+          {errorStud?.data?.message || errorTrans?.data?.message || errorExpense?.data?.message}
         </p>
       </Box>
     );
   }
 
-  if (isStudSuccess && isTransSuccess) {
+  if (isStudSuccess && isTransSuccess && isstaffSuccess && isexpenseSuccess) {
     const { ids: transIds } = transactions;
     const transactionsData =
       transIds?.length &&
       transIds.map((transactionId) => transactions?.entities[transactionId]);
+
+    // Expenses
+    const { ids: expenseIds } = expenses;
+      const expenseList =
+      expenseIds?.length && expenseIds.map((expenseId) => expenses?.entities[expenseId]);
+
+    // getting the total expenses
+    let totalexpenses = 0;
+    expenseList.forEach((expense) => {
+      totalexpenses += expense.amount;
+    });
+
+    // staff
+    const { ids: staffIds } = staffs;
+    const stafflist =
+      staffIds?.length && staffIds.map((staffId) => staffs?.entities[staffId]);
+
+    // getting the total staff salary
+    let totalstaffsalary = 0;
+    stafflist.forEach((staff) => {
+      totalstaffsalary += staff.salary;
+    });
 
     // filtering fee transactions from the list of transactions
     const feeTransactionsData = transactionsData.filter(
@@ -123,64 +171,131 @@ const Statistics = () => {
     // data for the general chart for students enrolled every day
     const studChartdata = countStudentsByDate(studentsData);
 
+    const styleBox = {
+      backgroundColor: "yellow",
+    };
+
     content = (
       <>
         <Box
           display={"flex"}
           flexDirection={"column"}
           justifyContent={"center"}
-          alignItems={"center"}
-          gap={"5vh"}
+          alignItems={"start"}
+          gap={"1vh"}
         >
-          <Box
-            width={"13vw"}
-            borderRadius={"10px"}
-            border={`solid 2px ${colors.greenAccent[400]}`}
-            display={"flex"}
-            flexDirection={"column"}
-            alignItems={"center"}
-            padding={"20px 0px"}
-            gap={"10px"}
-          >
-            <AddBtn btnName={"Students"} handleEdit={handleStudents} />
-            <AddBtn btnName={"Student Finance"} handleEdit={handleFees} />
-            <AddBtn btnName={"Expenses"} handleEdit={handleExpense} />
-            <AddBtn btnName={"Salaries"} handleEdit={handleSalaries} />
-          </Box>
-          <Box display={"flex"} flexDirection={"column"} gap={"5vh"} >
+          <Box display={"flex"} flexDirection={"row"} gap={"7vh"}>
             <StudentStatsTile
-              legendtitle={"Total Number of Students"}
-              title={"School"}
+              legendtitle={"Number of Students"}
+              title={"Students:"}
               number={activeStudents?.length ? activeStudents.length : 0}
             />
             <TransactionStatsTile
               legendtitle={"Total Transactions"}
-              title={"Fee"}
+              title={"Tuition Fee:"}
               number={totalfeetransaction}
             />
             <TransactionStatsTile
               legendtitle={"Total Transactions"}
-              title={"Registration"}
+              title={"Registration Fee:"}
               number={totalregistrationTrans}
+            />
+            <TransactionStatsTile
+              legendtitle={"Total Transactions"}
+              title={"Total Fees:"}
+              number={totalregistrationTrans + totalfeetransaction}
+              sx={styleBox}
             />
           </Box>
         </Box>
-        <Box width={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"center"} >
-          <StudentsBarChart data={studChartdata} />
+
+        <Box
+          width={"70vw"}
+          display={"flex"}
+          flexDirection={"row"}
+          gap={"1.25vw"}
+          alignItems={"start"}
+          justifyContent={"center"}
+          marginTop={"3rem"}
+        >
+          <Box display={"flex"} flexDirection={"column"} gap={"11vh"}>
+            <TransactionStatsTile
+              legendtitle={"Total Amount"}
+              title={"Expenses"}
+              number={totalexpenses}
+            />
+            <TransactionStatsTile
+              legendtitle={""}
+              title={"Monthly Salaries"}
+              number={totalstaffsalary}
+            />
+          </Box>
+          <Box
+            bgcolor={colors.primary[400]}
+            width={"35vw"}
+            height={"35vh"}
+            padding={"20px"}
+            marginLeft={"2rem"}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <StudentsBarChart data={studChartdata} />
+          </Box>
+
+          <fieldset
+            style={{
+              height: "25vh",
+              borderColor: colors.greenAccent[400],
+              borderRadius: "10px",
+              display: "flex",
+              justifyContent: "end",
+              alignItems: "end",
+              justifySelf: "end",
+              alignSelf: "end",
+            }}
+          >
+            <legend
+              style={{
+                color: colors.grey[100],
+                fontSize: "18px",
+                fontWeight: 600,
+              }}
+            >
+              Menu
+            </legend>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              alignItems={"start"}
+              padding={"12px 0px"}
+              gap={"10px"}
+              marginTop={"7rem"}
+              marginLeft={"1rem"}
+            >
+              <AddBtn btnName={"Students"} handleEdit={handleStudents} />
+              <AddBtn btnName={"Student Finance"} handleEdit={handleFees} />
+              <AddBtn btnName={"Expenses"} handleEdit={handleExpense} />
+              <AddBtn btnName={"Salaries"} handleEdit={handleSalaries} />
+            </Box>
+          </fieldset>
         </Box>
       </>
     );
   }
 
   return (
-    <Box padding={"20px"}>
+    <Box padding={"10px"}>
       <Header title={"Statistics"} subtitle={"System Statistics"} />
       <Box
-        padding={"10px"}
-        height={"83vh"}
-        bgcolor={colors.primary[400]}
+        padding={"3px"}
+        height={"68vh"}
         display={"flex"}
+        flexDirection={"column"}
+        // justifyContent={"center"}
+        alignItems={"start"}
         gap={"2vw"}
+        marginTop={"4.5rem"}
       >
         {content}
       </Box>

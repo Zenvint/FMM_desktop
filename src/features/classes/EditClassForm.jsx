@@ -12,10 +12,14 @@ import { useGetSectionsQuery } from "../sections/sectionsApiSlice";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
+import { useTheme } from "@mui/material";
+import { tokens } from "../../hooks/theme.js";
 
 const EditClassForm = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const { classObj } = useGetClassesQuery("classesList", {
     selectFromResult: ({ data }) => ({
@@ -127,7 +131,7 @@ const EditClassForm = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto", justifyContent: "center", alignItems: "center"}} >
         <div className="input-container">
           <label htmlFor="classname">Class Name:</label>
           <input
@@ -168,6 +172,7 @@ const EditClassForm = () => {
                 value={selectedSection}
                 onChange={handleSectionChange}
                 required
+                style={{ height: "30px" }}
               >
                 <option value="">Select the section</option>
                 {sectionsListOptions}
@@ -180,15 +185,16 @@ const EditClassForm = () => {
           className="submit-button"
           onClick={onSaveClassClicked}
           disabled={!canSave}
+          style={{ marginLeft: "10rem"}}
         >
           Save
         </button>
-        <Link to={"/dash/settings/classes"}>
-          <button className="submit-button" variant="contained">
+        <Link to={"/dash/settings/classes"} style={{ marginLeft: "1rem"}} >
+          <button className="submit-button" variant="contained" style={{backgroundColor: colors.grey[400]}}>
             Cancel
           </button>
         </Link>
-        <button className="submit-button" onClick={onDeleteClassClicked}>
+        <button className="submit-button" onClick={onDeleteClassClicked} style={{marginLeft: "1rem", backgroundColor: colors.redAccent[400]}}>
           Delete
         </button>
       </form>

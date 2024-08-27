@@ -11,10 +11,15 @@ import {
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
 
 const EditStaffForm = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
+
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const { staff } = useGetStaffsQuery("staffsList", {
     selectFromResult: ({ data }) => ({
@@ -112,7 +117,7 @@ const EditStaffForm = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto"}}>
         <div className="input-container">
           <label htmlFor="name">Name:</label>
           <input
@@ -172,6 +177,7 @@ const EditStaffForm = () => {
             autoComplete="off"
             value={role}
             onChange={onRoleChanged}
+            style={{ height: "30px", marginBottom: "10px" }}
           />
         </div>
 
@@ -185,6 +191,7 @@ const EditStaffForm = () => {
             autoComplete="off"
             value={description}
             onChange={onDescriptionChanged}
+            style={{ height: "30px", marginBottom: "10px" }}
           />
         </div>
 
@@ -231,19 +238,20 @@ const EditStaffForm = () => {
           </div>
         </fieldset>
 
+        <Link to={"/dash/staff"} style={{ marginLeft: "8rem"}}>
+          <button className="submit-button" variant="contained" style={{ background:colors.grey[400]}}>
+            Cancel
+          </button>
+        </Link>
         <button
           className="submit-button"
           onClick={onSaveClicked}
           disabled={!canSave}
+          style={{marginLeft: "1rem"}}
         >
           Save
         </button>
-        <Link to={"/dash/finance/expenses"}>
-          <button className="submit-button" variant="contained">
-            Cancel
-          </button>
-        </Link>
-        <button className="submit-button" onClick={onDeleteClicked}>
+        <button className="submit-button" onClick={onDeleteClicked} style={{marginLeft: "1rem", background: colors.redAccent[400]}}>
           Delete
         </button>
       </form>

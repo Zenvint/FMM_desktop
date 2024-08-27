@@ -50,22 +50,23 @@ const Students = () => {
 
   if (isError) {
     content = (
-      <Box m="8px">
+      <Box m="10px">
         <Header title="Students" subtitle="List of all Students." />
-        <Box display={"flex"} width={"50vw"} >
+        <Box display={"flex"} width={"50vw"}>
           <Link to="/dash/students/new">
             <AddBtn btnName="+ Add Student" />
           </Link>
 
           <AddBtn btnName="Edit" enabled={!canEdit} handleEdit={handleEdit} />
-          <AddBtn btnName="Dismiss" enabled={!canEdit} handleEdit={handleDismiss} />
+          <AddBtn
+            btnName="Dismiss"
+            enabled={!canEdit}
+            handleEdit={handleDismiss}
+          />
 
           <Link to="/dash/students/newmulti">
             <AddBtn btnName=" + Add Multiple Student" />
           </Link>
-
-          
-          
         </Box>
 
         <Box m="0 0 0" display={"grid"} justifyItems={"center"}>
@@ -80,16 +81,31 @@ const Students = () => {
     const tableContent =
       ids?.length && ids.map((userId) => students?.entities[userId]);
 
+    tableContent.sort((a, b) => {
+      if (a.matricule < b.matricule) {
+        return -1;
+      }
+      if (a.matricule > b.matricule) {
+        return 1;
+      }
+      return 0; // a.matricule is equal to b.matricule
+    });
+
     content = (
-      <Box m="8px" >
+      <Box m="10px">
         <Header title="Students" subtitle="List of all Students." />
-        <Box display={"flex"} width={"50vw"}>
+
+        <Box display={"flex"} width={"50vw"} marginTop={"30px"}>
           <Link to="/dash/students/new">
             <AddBtn btnName="+ Add Student" />
           </Link>
 
           <AddBtn btnName="Edit" enabled={!canEdit} handleEdit={handleEdit} />
-          <AddBtn btnName="Dismiss" enabled={!canEdit} handleEdit={handleDismiss} />
+          <AddBtn
+            btnName="Dismiss"
+            enabled={!canEdit}
+            handleEdit={handleDismiss}
+          />
 
           <Link to="/dash/students/newmulti">
             <AddBtn btnName=" + Add Multiple Student" />
@@ -97,7 +113,7 @@ const Students = () => {
         </Box>
         <Box
           m="0 0 0"
-          height="73vh"
+          height="75.5vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -135,6 +151,12 @@ const Students = () => {
             checkboxSelection
             onSelectionModelChange={handleSelectionModelChange}
             selectionModel={selectedRows}
+            sortModel={[
+              {
+                field: "matricule",
+                sort: "desc",
+              }
+            ]}
           />
         </Box>
       </Box>

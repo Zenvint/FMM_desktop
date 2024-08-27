@@ -13,8 +13,13 @@ import {
 import { useGetSectionsQuery } from "../sections/sectionsApiSlice.js";
 import { useGetClassesQuery } from "../classes/classesApiSlice.js";
 import { useSnackbar } from "notistack";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
+
 
 const EditStudentForm = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -190,7 +195,7 @@ const EditStudentForm = () => {
         <>
           <p className={errClass}>{errContent}</p>
 
-          <form onSubmit={onSaveStudentClicked}>
+          <form onSubmit={onSaveStudentClicked} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto"}}>
             <div className="input-container">
               <label htmlFor="studentName">Full Name:</label>
               <input
@@ -204,12 +209,13 @@ const EditStudentForm = () => {
             </div>
 
             <div className="class_container">
-              <div className="input-container">
+              <div className="input-container" style={{ marginBottom: "15px" }}>
                 <label htmlFor="section" className="dropdown">
                   {" "}
                   Section:{" "}
                 </label>
                 <select
+                  style={{height: "31px"}}
                   id="section"
                   placeholder="Select the section"
                   required
@@ -227,6 +233,7 @@ const EditStudentForm = () => {
                   Class:{" "}
                 </label>
                 <select
+                  style={{height: "31px"}}
                   id="className"
                   placeholder="Select the className"
                   required
@@ -246,6 +253,7 @@ const EditStudentForm = () => {
                   Date of birth:{" "}
                 </label>
                 <input
+                  style={{height: "32px"}}
                   id="DoB"
                   type="date"
                   value={dob}
@@ -341,19 +349,20 @@ const EditStudentForm = () => {
                 />
               </div>
             </div>
-            <Link to={"/dash/students"}>
+            <Link to={"/dash/students"} style={{ marginLeft: "9rem" }}>
               <button
                 className="submit-button"
                 type="cancel"
                 variant="contained"
+                style={{background:colors.grey[500]}}
               >
                 Cancel
               </button>
             </Link>
-            <button className="submit-button" type="submit">
+            <button className="submit-button" type="submit" style={{ marginLeft: "1rem" }}>
               Save
             </button>
-            <button className="submit-button" onClick={onDeleteSectionClicked}>
+            <button className="submit-button" onClick={onDeleteSectionClicked} style={{ marginLeft: "1rem", background: colors.redAccent[400] }}>
               Delete
             </button>
           </form>

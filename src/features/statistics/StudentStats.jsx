@@ -97,7 +97,7 @@ const StudentStats = () => {
 
     content = (
       <>
-        <Box display={"flex"} gap={"5vw"}>
+        <Box display={"flex"} justifyContent={"start"} alignItems={"start"} gap={"3vw"}>
           <StudentStatsTile
             legendtitle={"Total Number of Students"}
             title={"School"}
@@ -108,40 +108,41 @@ const StudentStats = () => {
             title={"Dismissed"}
             number={dismissedStudents?.length ? dismissedStudents.length : 0}
           />
+        </Box> 
+        <Box display={"flex"} gap={"20px"}>
+          <Box backgroundColor={colors.primary[400]} height={"40vh"} width={"35vw"} display={"flex"} justifyContent={"center"} alignItems={"start"}>
+            <StudentsPieChart data={piechart_data} />
+          </Box>
+          <Box backgroundColor={colors.primary[400]} height={"40vh"} width={"35vw"} display={"flex"} justifyContent={"center"} alignItems={"start"}>
+            <StudentsBarChart data={data} />
+          </Box>
         </Box>
-        <StudentsBarChart data={data} />
-        <StudentsPieChart data={piechart_data} />
       </>
     );
   }
 
   return (
-    <Box padding={"20px"}>
-      <Header title={"Statistics"} subtitle={"Students Statistics"} />
+    <Box padding={"10px"}>
 
-      <Box
-        padding={"10px"}
-        height={"83vh"}
-        bgcolor={colors.primary[400]}
-      >
-        <Box
-          display={"flex"}
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-        >
-          <Link to={"/dash/stats"} style={{ color: colors.grey[100] }}>
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <Header title={"Statistics"} subtitle={"Students Statistics"} />
+          <Link to={"/dash/stats"} style={{ color: colors.grey[100], hover: { color: colors.greenAccent[500], backgroundColor: colors.primary[400] } }}>
             <ArrowBackOutlinedIcon className="li_icon" />
           </Link>
-          <Box display={"flex"}></Box>
         </Box>
 
+      <Box
+        padding={"5px"}
+        height={"70vh"}
+      >
         <Box
-          height={"77vh"}
-          overflow={"auto"}
+          height={"78vh"}
           display={"flex"}
+          overflow={"auto"}
           flexDirection={"column"}
-          alignItems={"center"}
-          gap={"5vh"}
+          justifyContent={"center"}
+          alignItems={"start"}
+          gap={"30px"}
         >
           {content}
         </Box>

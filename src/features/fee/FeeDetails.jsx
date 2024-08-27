@@ -38,14 +38,15 @@ const FeeDetails = () => {
   };
 
   return (
-    <Box borderRadius={"10px"} m={"15px"} padding={"5px"} bgcolor={colors.primary[400]} display={"flex"} flexDirection={"column"} gap={"20px"} justifyContent={"center"} alignItems={"center"} >
-      <Header
+  <Box margin={"1rem"}>  
+    <Header
         title="Student Details"
         subtitle={`Matricule: ${fee.matricule}`}
       />
 
+    <Box style={{  padding: "15px", borderRadius: "10px", width: "100%", margin: "auto"}}>
       <Box>
-        <Box fontSize={"1.4rem"}>
+    <Box fontSize={"12px"} color={colors.grey[100]} backgroundColor={colors.primary[400]} padding={"15px"} mb={"10px"}>
           <div className="">Name: {fee.studentname}</div>
           <div className="">Section: {fee.sectionname}</div>
           <div className="">Class: {fee.classname}</div>
@@ -53,26 +54,26 @@ const FeeDetails = () => {
           <div className="">Discount: {fee.discount} FCFA</div>
           <div className="">Amount Paid: {fee.amountPaid} FCFA</div>
           <div className="">Balance: {fee.balance} FCFA</div>
-        </Box>
-        <Box display={"flex"} gap={"10vw"} >
-          <fieldset>
-            <legend>TuitionFee</legend>
-            <div
-              className={`${fee.status ? "fee-complete" : "fee-incomplete"}`}
-            >
-              <p>{fee.status ? "Completed" : "Incomplete"}</p>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Registration Fee</legend>
-            <div
-              className={`${
-                fee.registrationfee ? "fee-complete" : "fee-incomplete"
-              }`}
-            >
-              <p>{fee.registrationfee ? "Paid" : "Not Paid"}</p>
-            </div>
-          </fieldset>
+          <Box display={"flex"} gap={"0"} >
+            <fieldset style={{ display: "flex", width: "10vw", height: "5vh", justifyContent: "center", alignItems: "center" }}>
+              <legend>TuitionFee</legend>
+              <div
+                className={`${fee.status ? "fee-complete" : "fee-incomplete"}`}
+              >
+                <p>{fee.status ? "Completed" : "Incomplete"}</p>
+              </div>
+            </fieldset>
+            <fieldset style={{ display: "flex", width: "15vw", height: "5vh", justifyContent: "center", alignItems: "center" }}>
+              <legend>Registration Fee</legend>
+              <div
+                className={`${
+                  fee.registrationfee ? "fee-complete" : "fee-incomplete"
+                }`}
+              >
+                <p>{fee.registrationfee ? "Paid" : "Not Paid"}</p>
+              </div>
+            </fieldset>
+          </Box>
         </Box>
       </Box>
 
@@ -80,7 +81,7 @@ const FeeDetails = () => {
         <FeeHistory id={id} />
       </Box>
 
-      <Box marginTop={"5vh"} display={"flex"} width={"30vw"} justifyContent={"space-between"}>
+      <Box marginTop={"3vh"} display={"flex"} width={"30vw"} justifyContent={"end"}>
         <AddBtn
           btnName={"Pay Fee"}
           handleEdit={handleFee}
@@ -97,6 +98,7 @@ const FeeDetails = () => {
           enabled={fee.status}
         />
         <AddBtn btnName={"Back"} handleEdit={handleCancle} />
+      </Box>
       </Box>
     </Box>
   );

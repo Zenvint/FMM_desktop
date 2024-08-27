@@ -4,19 +4,20 @@ import PulseLoader from "react-spinners/PulseLoader.js";
 import { Formik } from "formik";
 import Header from "../../components/Header.jsx";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  useGetStudentsQuery,
-  useAddNewStudentMutation,
-} from "./studentsApiSlice.js";
+import { useGetStudentsQuery, useAddNewStudentMutation, } from "./studentsApiSlice.js";
 import { useGetSectionsQuery } from "../sections/sectionsApiSlice.js";
 import { useGetClassesQuery } from "../classes/classesApiSlice.js";
 import { useSnackbar } from "notistack";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
+
 
 const NewStudentForm = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const [addNewStudent, { isLoading, isSuccess, isError, error }] =
-    useAddNewStudentMutation();
+  const [addNewStudent, { isLoading, isSuccess, isError, error }] = useAddNewStudentMutation();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const {
     data: sections,
@@ -67,6 +68,16 @@ const NewStudentForm = () => {
     selectFromResult: ({ data }) => ({
       students: data?.ids.map((id) => data?.entities[id]),
     }),
+  });
+
+  students.sort((a, b) => {
+    if (a.matricule < b.matricule) {
+      return -1;
+    }
+    if (a.matricule > b.matricule) {
+      return 1;
+    }
+    return 0; // a.matricule is equal to b.matricule
   });
 
   const setUpMatricule = () => {
@@ -179,8 +190,8 @@ const NewStudentForm = () => {
         <>
           <p className={errClass}>{errContent}</p>
 
-          <form onSubmit={onSaveStudentClicked}>
-            <div className="input-container">
+          <form onSubmit={onSaveStudentClicked} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto"}}>
+            <div className="input-container" >
               <label htmlFor="studentName">Full Name:</label>
               <input
                 id="studentName"
@@ -193,12 +204,13 @@ const NewStudentForm = () => {
             </div>
 
             <div className="class_container">
-              <div className="input-container">
+              <div className="input-container" style={{ marginBottom: "15px"}}>
                 <label htmlFor="section" className="dropdown">
                   {" "}
                   Section:{" "}
                 </label>
                 <select
+                  style={{height: "31px"}}
                   id="section"
                   placeholder="Select the section"
                   required
@@ -216,6 +228,7 @@ const NewStudentForm = () => {
                   Class:{" "}
                 </label>
                 <select
+                  style={{height: "31px"}}
                   id="className"
                   placeholder="Select the className"
                   required
@@ -235,6 +248,7 @@ const NewStudentForm = () => {
                   Date of birth:{" "}
                 </label>
                 <input
+                  style={{height: "32px"}}
                   id="DoB"
                   type="date"
                   value={dob}
@@ -282,7 +296,7 @@ const NewStudentForm = () => {
                     onChange={onGenderChanged}
                     style={{ height: "16px", width: "30px" }}
                   />
-                  <label htmlFor="check-male" style={{ fontWeight: "100" }}>
+                  <label htmlFor="check-male" style={{ fontWeight: "300", color:colors.grey[100] }}>
                     {" "}
                     Male{" "}
                   </label>
@@ -297,7 +311,7 @@ const NewStudentForm = () => {
                     onChange={onGenderChanged}
                     style={{ height: "16px", width: "30px" }}
                   />
-                  <label htmlFor="check-female" style={{ fontWeight: "100" }}>
+                  <label htmlFor="check-female" style={{ fontWeight: "300", color: (colors.grey[100]) }}>
                     {" "}
                     Female{" "}
                   </label>
@@ -305,7 +319,7 @@ const NewStudentForm = () => {
               </div>
             </div>
 
-            <div className="input-container">
+            <div className="input-container" >
               <label htmlFor="parents">Parent Name:</label>
               <input
                 id="parents"
@@ -330,16 +344,17 @@ const NewStudentForm = () => {
                 />
               </div>
             </div>
-            <Link to={"/dash/students"}>
+            <Link to={"/dash/students"} style={{ marginLeft: "9rem" }}>
               <button
                 className="submit-button"
                 type="cancel"
                 variant="contained"
+                style={{background:colors.grey[500]}}
               >
                 Cancel
               </button>
             </Link>
-            <button className="submit-button" type="submit">
+            <button className="submit-button" type="submit" style={{ marginLeft: "1rem" }}>
               Save
             </button>
           </form>

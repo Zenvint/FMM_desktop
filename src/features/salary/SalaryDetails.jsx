@@ -33,17 +33,14 @@ const SalaryDetails = () => {
       borderRadius={"10px"}
       m={"15px"}
       padding={"5px"}
-      bgcolor={colors.primary[400]}
       display={"flex"}
       flexDirection={"column"}
       gap={"20px"}
-      justifyContent={"center"}
-      alignItems={"center"}
     >
       <Header title="Pay Details" subtitle={`Staff Named: ${salary.name}`} />
 
-      <Box>
-        <Box fontSize={"1.4rem"}>
+      <Box bgcolor={colors.primary[400]} padding={"15px"}>
+        <Box fontSize={"12px"}>
           <div className="">Name: {salary.name}</div>
           <div className="">Role: {salary.sectionname}</div>
           <div className="">Monthly Salary: {salary.salary} FCFA</div>
@@ -65,10 +62,10 @@ const SalaryDetails = () => {
       </Box>
 
       <Box
-        marginTop={"5vh"}
+        marginTop={"2vh"}
         display={"flex"}
         width={"30vw"}
-        justifyContent={"space-between"}
+        justifyContent={"end"}
       >
         <AddBtn
           btnName={"Pay Salary"}

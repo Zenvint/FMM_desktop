@@ -1,6 +1,6 @@
 {
   "name": "my-new-app",
-  "productName": "my-new-app",
+  "productName": "FONDATION BILINGUE MAGUERITE MARQUEZ",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".webpack/main",
@@ -26,7 +26,7 @@
     "@vercel/webpack-asset-relocator-loader": "1.7.3",
     "babel-loader": "^9.1.3",
     "css-loader": "^6.0.0",
-    "electron": "29.2.0",
+    "electron": "^29.2.0",
     "electron-hot-reload": "^0.1.4",
     "electron-reload": "^2.0.0-alpha.1",
     "file-loader": "^6.2.0",
@@ -35,8 +35,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "bungongtoto",
-    "email": "kingsley.bungong@ictuniversity.edu.cm"
+    "name": "Sennsei",
+    "email": "kboukeng@gmail.com"
   },
   "license": "MIT",
   "dependencies": {

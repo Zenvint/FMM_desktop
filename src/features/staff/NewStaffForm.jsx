@@ -6,6 +6,8 @@ import { useAddNewStaffMutation } from "./staffsApiSlice.js";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useSnackbar } from "notistack";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
 
 const NewStaffForm = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -21,6 +23,10 @@ const NewStaffForm = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [salary, setSalary] = useState(0);
+
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
 
   useEffect(() => {
     if (isSuccess) {
@@ -86,7 +92,7 @@ const NewStaffForm = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={onSaveStaffClicked}>
+      <form onSubmit={onSaveStaffClicked} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto"}}>
         <div className="input-container">
           <label htmlFor="name">Name:</label>
           <input
@@ -146,6 +152,7 @@ const NewStaffForm = () => {
             autoComplete="off"
             value={role}
             onChange={onRoleChanged}
+            style={{ height: "30px", marginBottom: "10px" }}
           />
         </div>
 
@@ -159,6 +166,7 @@ const NewStaffForm = () => {
             autoComplete="off"
             value={description}
             onChange={onDescriptionChanged}
+            style={{ height: "30px", marginBottom: "10px" }}
           />
         </div>
 
@@ -205,14 +213,14 @@ const NewStaffForm = () => {
           </div>
         </fieldset>
 
-        <button className="submit-button" type="submit" disabled={!canSave}>
-          Save
-        </button>
-        <Link to={"/dash/finance/expenses"}>
-          <button className="submit-button" variant="contained">
+        <Link to={"/dash/staff"} style={{ marginLeft: "8rem"}}>
+          <button className="submit-button" variant="contained" style={{ background:colors.grey[400]}}>
             Cancel
           </button>
         </Link>
+        <button className="submit-button" type="submit" disabled={!canSave} style={{marginLeft: "1rem"}}>
+          Save
+        </button>
       </form>
     </Box>
   );

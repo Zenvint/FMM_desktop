@@ -51,7 +51,8 @@ const Transactions = () => {
           <Header title="Transactions" subtitle="List of all Transactions." />
           <Box
             m="0 0 0"
-            height="73vh"
+            height="79vh"
+            marginTop={"30px"}
             sx={{
               "& .MuiDataGrid-root": {
                 border: "none",
@@ -87,6 +88,7 @@ const Transactions = () => {
               columns={TransactionTableColumns}
               components={{ Toolbar: GridToolbar }}
               checkboxSelection
+              sortModel={[{ field: "createdAt", sort: "desc" }]}
             />
           </Box>
         </Box>

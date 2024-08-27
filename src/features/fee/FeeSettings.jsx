@@ -87,25 +87,20 @@ const FeeSettings = () => {
   return (
     <Box>
       <Box p={2}>
-        <Header title="SETTINGS" subtitle="Fee Settings" />
-        <Box
-          display={"flex"}
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-        >
-          <Link to={"/dash/settings"} style={{ color: colors.grey[100] }}>
+        <Box display={"flex"} justifyContent={"space-between"}>
+        <Header title="SETTINGS" subtitle="System General Settings" />
+        <Link to={"/dash/settings"} style={{ color: colors.grey[100] }}>
             <ArrowBackOutlinedIcon className="li_icon" />
           </Link>
-          <Box display={"flex"}></Box>
         </Box>
-        <div className="box">
+        <div className="box" style={{ margin: "2rem auto", display: "flex", flexDirection: "column", gap: "3rem" }}>
           <fieldset>
             <Box
               display={"flex"}
               justifyContent={"space-between"}
               color={colors.grey[100]}
             >
-              <p className="text">Initialize a new Fee year</p>
+              <p className="text" style={{ fontWeight: "bold" }} >Start a new academic year</p>
               <AddBtn btnName={"Start"} handleEdit={handleStartNewFeeYear} />
             </Box>
             {(isLoading || isError) && (
@@ -122,7 +117,7 @@ const FeeSettings = () => {
               justifyContent={"space-between"}
               color={colors.grey[100]}
             >
-              <p className="text">Initialize a new Salary Month</p>
+              <p className="text" style={{ fontWeight: "bold" }}  > Start a new Salary Month</p>
               <AddBtn
                 btnName={"Start"}
                 handleEdit={handleStartNewSalaryMonth}

@@ -22,6 +22,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import useEnglish from "../hooks/useEnglish.js";
+import Login from "../features/auth/Login.jsx";
 // import Warnimg from "../../components/warning";
 
 // Item component to display each menu item in the sidebar
@@ -93,7 +94,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h6" color={colors.grey[300]}>
-                  Systen Admin
+                  FBMM Systen
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -128,7 +129,7 @@ const Sidebar = () => {
                   fontWeight={"bold"}
                 >
                   {" "}
-                  USER
+                  {Login.email}
                 </Typography>
               </Box>
             </Box>

@@ -103,7 +103,7 @@ const SalaryStats = () => {
 
     content = (
       <>
-        <Box display={"flex"} gap={"5vw"}>
+        <Box display={"flex"} gap={"3vw"}>
           <TransactionStatsTile
             legendtitle={"Total Monthly Salaries"}
             title={"Expected"}
@@ -115,43 +115,36 @@ const SalaryStats = () => {
             number={paidsalaries}
           />
         </Box>
-        <SalariesBarChart data={data} />
+        <Box backgroundColor={colors.primary[400]} height={"55vh"}>
+          <SalariesBarChart data={data} />
+        </Box>      
       </>
     );
   }
 
   return (
-    <Box padding={"20px"}>
-      <Header title={"Statistics"} subtitle={"Salary Statistics"} />
-
-      <Box
-        padding={"10px"}
-        height={"83vh"}
-        bgcolor={colors.primary[400]}
-      >
-        <Box
-          display={"flex"}
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-        >
-          <Link to={"/dash/stats"} style={{ color: colors.grey[100] }}>
+    <Box padding={"10px"}>
+      <Box display={"flex"} justifyContent={"space-between"}>
+        <Header title={"Statistics"} subtitle={"Salary Statistics"} />
+        <Link to={"/dash/stats"} style={{ color: colors.grey[100] }}>
             <ArrowBackOutlinedIcon className="li_icon" />
           </Link>
-          <Box display={"flex"}></Box>
-        </Box>
+      </Box>
 
         <Box
-          height={"77vh"}
+          height={"70vh"}
           overflow={"auto"}
           display={"flex"}
           flexDirection={"column"}
-          alignItems={"center"}
-          gap={"5vh"}
+          justifyContent={"center"}
+          alignItems={"start"}
+          gap={"3vh"}
+          marginTop={"50px"}
+          marginLeft={"30px"}
         >
           {content}
         </Box>
       </Box>
-    </Box>
   );
 };
 

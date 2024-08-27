@@ -20,7 +20,7 @@ const Settings = () => {
         <div className="box">
           <ul>
             
-              <Link
+              {/* <Link
                 to={""}
                 style={{ textDecoration: "none", color: colors.grey[100] }}
               >
@@ -28,7 +28,7 @@ const Settings = () => {
                   <PendingActionsOutlinedIcon className="li_icon" /> Academic
                   year
                 </li>
-              </Link>
+              </Link> */}
               <Link
                 to={"/dash/settings/sections"}
                 style={{ textDecoration: "none", color: colors.grey[100] }}

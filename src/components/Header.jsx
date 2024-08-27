@@ -12,6 +12,7 @@ const Header = ({ title, subtitle }) => {
                 variant="h5"
                 color={colors.grey[100]}
                 fontWeight="bold"
+                textTransform={"uppercase"}
                 sx={{ mb: "3px" }}
             >
                 {title}

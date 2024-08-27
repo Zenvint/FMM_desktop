@@ -8,8 +8,14 @@ import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useSnackbar } from "notistack";
 import { AddBtn } from "../../components/Button.jsx";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
+
 
 const DismissedStudentForm = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
   const { student } = useGetStudentsQuery("studentsList", {
@@ -85,7 +91,7 @@ const DismissedStudentForm = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={onSaveClassClicked}>
+      <form onSubmit={onSaveClassClicked} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto"}}>
         <div className="input-container">
           <label htmlFor="description">Reason:</label>
           <textarea
@@ -96,10 +102,11 @@ const DismissedStudentForm = () => {
             autoComplete="off"
             value={descriptions}
             onChange={onDescriptionsChanged}
+            style={{height: "100px"}}
           />
         </div>
 
-        <button className="submit-button" type="submit" disabled={!canSave || student.dismissed}>
+        <button className="submit-button" type="submit" disabled={!canSave || student.dismissed} style={{background:"red"}}>
           Dismiss
         </button>
 

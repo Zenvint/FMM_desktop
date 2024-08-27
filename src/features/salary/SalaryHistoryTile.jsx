@@ -58,8 +58,8 @@ const SalaryHistoryTile = ({ id, record, datestring }) => {
   
     const errContent = (error?.data?.message || transError?.data?.message) ?? "";
     return (
-      <Box>
-        <fieldset>
+      <Box >
+        <fieldset style={{borderRadius:"15px", margin:"5px", padding:"10px", width:"85%"}}>
           <legend>Records Session: {datestring}</legend>
           <Box display={"flex"} justifyContent={"space-between"}>
             <Box

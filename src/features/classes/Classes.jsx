@@ -82,15 +82,17 @@ const Classes = () => {
 
     content = (
       <Box m="8px">
-        <Header title="Classes" subtitle="List of all Classes." />
-        <Box
-          display={"flex"}
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-        >
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <Header title="Classes" subtitle="List of all Classes." />
           <Link to={"/dash/settings"} style={{ color: colors.grey[100] }}>
             <ArrowBackOutlinedIcon className="li_icon" />
           </Link>
+        </Box>
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          marginTop={"2rem"}
+        >
           <Box display={"flex"}>
             <AddBtn handleEdit={handleAdd} btnName="+ Add Section" />
 
@@ -99,7 +101,7 @@ const Classes = () => {
         </Box>
         <Box
           m="0 0 0"
-          height="73vh"
+          height="75vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",

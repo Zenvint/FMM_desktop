@@ -1,6 +1,8 @@
+import school_logo from './assets/images/school_logo.png';
+
 const { app, BrowserWindow, screen } = require('electron');
 const path = require('node:path');
-const {mainReloader, rendererReloader} = require('electron-hot-reload')
+const { mainReloader, rendererReloader } = require('electron-hot-reload')
 
 const mainFile = path.join(app.getAppPath(), 'dist', 'main.js');
 const rendererFile = path.join(app.getAppPath(), 'dist', 'renderer.js');
@@ -24,14 +26,16 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: width,
     height: height,
+    icon: school_logo,
     minHeight: 600,
     minWidth: 800,
     resizable: true,
+
     webPreferences: {
-      webPreferences: {
-        enableBlinkFeatures: 'ExecCommandInJavaScript'
-      }
-    },
+      enableBlinkFeatures: 'ExecCommandInJavaScript',
+      devTools: false,
+    }
+    ,
     autoHideMenuBar: true
   });
 
@@ -66,5 +70,3 @@ app.on('window-all-closed', () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.

@@ -1,5 +1,8 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
+
 import {
   Chart,
   CategoryScale,
@@ -9,20 +12,23 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Box } from "@mui/material";
+import { Box, colors } from "@mui/material";
+import { Height, Margin } from "@mui/icons-material";
 
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const StudentsBarChart = ({ data }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
   const chartData = {
     labels: data.map((item) => item.date),
     datasets: [
       {
         label: "Number of Students Enrollment per day",
         data: data.map((item) => item.count),
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
+        backgroundColor: "#70d8bd",
+        Margin: 1,
       },
     ],
   };
@@ -36,7 +42,7 @@ const StudentsBarChart = ({ data }) => {
   };
 
   return (
-    <Box bgcolor={"white"} width={"50vw"} >
+    <Box  height={"40vh"} width={"30vw"} marginTop={"30px"} justifyContent={"center"} alignItems={"center"} display={"flex"}>
       <Bar data={chartData} options={options} />
     </Box>
   );

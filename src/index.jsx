@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store.js";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
+import NetworkListener from "./components/NetworkListerner.js";
 
 const root = createRoot(document.body);
 root.render(
@@ -17,6 +18,7 @@ root.render(
             horizontal: "center",
           }}
         >
+          <NetworkListener />
           <Routes>
             <Route path="/*" element={<App />} />
           </Routes>

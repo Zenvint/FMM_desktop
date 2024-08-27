@@ -58,14 +58,14 @@ const RegistReceipt = () => {
       transform: "translate(-50%, -50%)",
       borderRadius: "15px",
       width: 600,
-      height: 450,
+      height: 500,
       bgcolor: { xs: colors.primary[400] },
       boxShadow: 24,
       p: 3,
     };
   
     return (
-      <Box sx={style}>
+      <Box sx={style} marginLeft={13}>
         <Header title={"Receipt"} subtitle={"Fee receipt"} />
         <body
           id="receipt"
@@ -451,21 +451,23 @@ const RegistReceipt = () => {
           </div>
         </body>
   
-        <Box display={"flex"} justifyContent={"center"} >
+        <Box display={"flex"} justifyContent={"end"} marginTop={"10px"} gap={"5px"} alignItems={"center"} width={"100%"} >
           <Button
             onClick={printReceipt}
             sx={{
               color: colors.grey[100],
-              fontSize: "12px",
+              fontSize: "10px",
               gap: "5px",
-              marginTop: "15px",
+              // marginTop: "10px",
               ":hover": { color: colors.greenAccent[400] },
             }}
           >
             {" "}
             <PrintIcon /> Print
           </Button>
-          <AddBtn btnName={"Done"} handleEdit={handleDone} />
+          <Button sx={{ fontSize: "12px", marginTop: "10px", marginBottom: "10px"}}>
+            <AddBtn btnName={"Done"} handleEdit={handleDone} />
+          </Button>
         </Box>
       </Box>
     );

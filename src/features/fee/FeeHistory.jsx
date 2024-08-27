@@ -25,9 +25,9 @@ const FeeHistory = ({ id }) => {
     ));
   }
   return (
-    <fieldset>
+    <fieldset style={{height: "43vh", width:"70vw", maxHeight:"42vh", overflow:"auto", margin:"auto" }}>
       <legend>Fee History</legend>
-      <Box width={"45vw"} height={"33vh"} overflow={"auto"}>
+      <Box >
         {fee?.history ? (
           feehistorycontent
         ) : (

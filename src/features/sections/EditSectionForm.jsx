@@ -7,10 +7,15 @@ import { useUpdateSectionMutation, useDeleteSectionMutation, useGetSectionsQuery
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
+import { useTheme } from "@mui/material";
+import { tokens } from "../../hooks/theme.js";
+
 
 const EditSectionForm = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const { section } = useGetSectionsQuery("sectionsList", {
     selectFromResult: ({ data }) => ({
@@ -80,7 +85,7 @@ const EditSectionForm = () => {
 
       <p className={errClass}>{errContent}</p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} style={{ background:colors.primary[400], padding: "25px", borderRadius: "10px", width: "70%", margin: "auto", justifyContent: "center", alignItems: "center"}} >
       <div className="input-container">
           <label htmlFor="sectionname">Section Name:</label>
           <input
@@ -98,15 +103,16 @@ const EditSectionForm = () => {
           className="submit-button"
           onClick={onSaveSectionClicked}
           disabled={!canSave}
+          style={{marginLeft: "10rem"}}
         >
           Save
         </button>
-        <Link to={"/dash/settings/sections"}>
-          <button className="submit-button" variant="contained">
+        <Link to={"/dash/settings/sections"} style={{ marginLeft: "1rem"}}>
+          <button className="submit-button" variant="contained" style={{backgroundColor: colors.grey[400]}}>
             Cancel
           </button>
         </Link>
-        <button className="submit-button" onClick={onDeleteSectionClicked}>
+        <button className="submit-button" onClick={onDeleteSectionClicked} style={{marginLeft: "1rem", backgroundColor: colors.redAccent[400]}}>
           Delete
         </button>
       </form>

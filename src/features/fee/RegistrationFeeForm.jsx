@@ -10,12 +10,15 @@ import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
 import { AddBtn } from "../../components/Button.jsx";
 import TRANSACTIONTYPE from "../../configs/transactiontype.js";
+import { tokens } from "../../hooks/theme";
+import { useTheme } from "@mui/material";
 
 const RegistrationFeeForm = () => {
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
     const { id } = useParams();
-
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);  
   
     const { fee } = useGetFeesQuery("feesList", {
       selectFromResult: ({ data }) => ({
@@ -91,6 +94,7 @@ const RegistrationFeeForm = () => {
             subtitle={`${fee.studentname} with matricule: ${fee.matricule}`}
           />
   
+          <div style={{ background:colors.primary[400], display: "flex", flexDirection: "row", padding: "25px", borderRadius: "10px", width: "70%", marginLeft: "2rem", gap:"3rem", justifyContent:"cent1", alignItems:"center", mar1ginTop:"2rem"}}>
           <div className={`class_container}`}>
             <div className="">Total Fee: {fee.tuition} FCFA</div>
             <div className="">Discount: {fee.discount} FCFA</div>
@@ -121,13 +125,14 @@ const RegistrationFeeForm = () => {
   
             <Box>
               <AddBtn
-                btnName={"Save"}
+                btnName={"Pay Registration Fee"}
                 handleEdit={onSaveSectionClicked}
                 enabled={!canSave}
               />
               <AddBtn btnName={"Cancel"} handleEdit={handleCancle} />
             </Box>
           </form>
+        </div>
         </Box>
         
     );
