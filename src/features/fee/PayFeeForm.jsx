@@ -112,7 +112,7 @@ const PayFeeForm = () => {
 
   const errContent = (error?.data?.message || transError?.data?.message) ?? "";
 
-  if (!fee || isLoading || isTransLoading) return <PulseLoader color={"#FFF"} />;
+  if (!fee || isLoading || isTransLoading) return <PulseLoader color={"orange"} />;
 
   return (
 

@@ -80,7 +80,7 @@ const PaySalaryForm = () => {
   const errContent = (error?.data?.message || transError?.data?.message) ?? "";
 
   if (!salary || isLoading || isTransLoading)
-    return <PulseLoader color={"#FFF"} />;
+    return <PulseLoader color={"orange"} />;
 
   return (
     <Box m="20px">

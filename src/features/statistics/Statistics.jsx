@@ -101,7 +101,7 @@ const Statistics = () => {
 
   let content;
   if (isStudLoading || isTransLoading || isstaffLoading || isepenseLoading) {
-    content = <PulseLoader color={"#FFF"} />;
+    content = <PulseLoader color={"orange"} />;
   }
 
   if (isStudError || isTransError || isstaffError || isexpenseError) {

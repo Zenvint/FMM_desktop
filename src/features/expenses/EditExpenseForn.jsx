@@ -88,7 +88,7 @@ const EditExpenseForn = () => {
   const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 
   if (!expense || isLoading || isDelLoading)
-    return <PulseLoader color={"#FFF"} />;
+    return <PulseLoader color={"orange"} />;
 
   return (
     <Box m="20px">

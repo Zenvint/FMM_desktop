@@ -46,6 +46,8 @@ import StudentStats from "./features/statistics/StudentStats.jsx";
 import FeesStats from "./features/statistics/FeesStats.jsx";
 import SalaryStats from "./features/statistics/SalaryStats.jsx";
 import DismissedStudentForm from "./features/students/DismissedStudentForm.jsx";
+import ROLES from "./configs/roles.js";
+import RequireAuth from "./features/auth/RequireAuth.jsx";
 
 const App = () => {
   return (
@@ -53,88 +55,102 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Login />} />
         <Route element={<PersistLogin />}>
-          <Route element={<Prefetch />}>
-            <Route path="dash" element={<DashLayout />}>
-              <Route index element={<Dashboard />} />
+          <Route
+            element={
+              <RequireAuth
+                allowedRoles={[ROLES.Admin, ROLES.Manager, ROLES.Finance]}
+              />
+            }
+          >
+            <Route element={<Prefetch />}>
+              <Route path="dash" element={<DashLayout />}>
+                <Route index element={<Dashboard />} />
 
-              <Route path="users">
-                <Route index element={<Users />} />
-                <Route path="new" element={<NewUserForm />} />
-                <Route path=":id" element={<EditUserForm />} />
-              </Route>
+                <Route path="users">
+                  <Route index element={<Users />} />
+                  <Route path="new" element={<NewUserForm />} />
+                  <Route path=":id" element={<EditUserForm />} />
+                </Route>
 
-              <Route path="settings">
-                <Route index element={<Settings />} />
-                <Route path="sections">
-                  <Route index element={<Sections />} />
-                  <Route path="new" element={<NewSectionForm />} />
-                  <Route path=":id" element={<EditSectionForm />} />
+                <Route path="settings">
+                  <Route index element={<Settings />} />
+                  <Route path="sections">
+                    <Route index element={<Sections />} />
+                    <Route path="new" element={<NewSectionForm />} />
+                    <Route path=":id" element={<EditSectionForm />} />
+                  </Route>
+                  <Route path="classes">
+                    <Route index element={<Classes />} />
+                    <Route path="new" element={<NewClassForm />} />
+                    <Route path=":id" element={<EditClassForm />} />
+                  </Route>
+                  <Route path="installments">
+                    <Route index element={<Installments />} />
+                    <Route path=":id" element={<EditInstallmentForm />} />
+                  </Route>
+                  <Route path="fees">
+                    <Route index element={<FeeSettings />} />
+                  </Route>
                 </Route>
-                <Route path="classes">
-                  <Route index element={<Classes />} />
-                  <Route path="new" element={<NewClassForm />} />
-                  <Route path=":id" element={<EditClassForm />} />
-                </Route>
-                <Route path="installments">
-                  <Route index element={<Installments />} />
-                  <Route path=":id" element={<EditInstallmentForm />} />
-                </Route>
-                <Route path="fees">
-                  <Route index element={<FeeSettings />} />
-                </Route>
-              </Route>
 
-              <Route path="students">
-                <Route index element={<Students />} />
-                <Route path="new" element={<NewStudentForm />} />
-                <Route path="newmulti" element={<AddMultiStudentsForm />} />
-                <Route path=":id" element={<EditStudentForm />} />
-                <Route path="dismiss/:id" element={<DismissedStudentForm />} />
-              </Route>
-              <Route path="staff">
-                <Route index element={<Staffs />} />
-                <Route path="new" element={<NewStaffForm />} />
-                <Route path=":id" element={<EditStaffForm />} />
-              </Route>
-              <Route path="academics">
-                <Route />
-              </Route>
-              <Route path="finance">
-                <Route path="fees">
-                  <Route index element={<Fees />} />
-                  <Route path="pay/:id" element={<PayFeeForm />} />
-                  <Route path="discount/:id" element={<FeeDiscountForm />} />
+                <Route path="students">
+                  <Route index element={<Students />} />
+                  <Route path="new" element={<NewStudentForm />} />
+                  <Route path="newmulti" element={<AddMultiStudentsForm />} />
+                  <Route path=":id" element={<EditStudentForm />} />
                   <Route
-                    path="registration/:id"
-                    element={<RegistrationFeeForm />}
+                    path="dismiss/:id"
+                    element={<DismissedStudentForm />}
                   />
-                  <Route path="feereceipt/:id/:deposit" element={<Receipt />} />
-                  <Route
-                    path="registrationreceipt/:id/:deposit"
-                    element={<RegistReceipt />}
-                  />
-                  <Route path="details/:id" element={<FeeDetails />} />
                 </Route>
-                <Route path="expenses">
-                  <Route index element={<Expenses />} />
-                  <Route path="new" element={<NewExpenseForm />} />
-                  <Route path=":id" element={<EditExpenseForn />} />
+                <Route path="staff">
+                  <Route index element={<Staffs />} />
+                  <Route path="new" element={<NewStaffForm />} />
+                  <Route path=":id" element={<EditStaffForm />} />
                 </Route>
-                <Route path="salaries">
-                  <Route index element={<Salaries />} />
-                  <Route path="pay/:id" element={<PaySalaryForm />} />
-                  <Route path="details/:id" element={<SalaryDetails />} />
+                <Route path="academics">
+                  <Route />
                 </Route>
-              </Route>
-              <Route path="transactions">
-                <Route index element={<Transactions />} />
-              </Route>
-              <Route path="stats">
-                <Route index element={<Statistics />} />
-                <Route path="expenses" element={<ExpensesStats />} />
-                <Route path="students" element={<StudentStats />} />
-                <Route path="fees" element={<FeesStats />} />
-                <Route path="salaries" element={<SalaryStats />} />
+                <Route path="finance">
+                  <Route path="fees">
+                    <Route index element={<Fees />} />
+                    <Route path="pay/:id" element={<PayFeeForm />} />
+                    <Route path="discount/:id" element={<FeeDiscountForm />} />
+                    <Route
+                      path="registration/:id"
+                      element={<RegistrationFeeForm />}
+                    />
+                    <Route
+                      path="feereceipt/:id/:deposit"
+                      element={<Receipt />}
+                    />
+                    <Route
+                      path="registrationreceipt/:id/:deposit"
+                      element={<RegistReceipt />}
+                    />
+                    <Route path="details/:id" element={<FeeDetails />} />
+                  </Route>
+                  <Route path="expenses">
+                    <Route index element={<Expenses />} />
+                    <Route path="new" element={<NewExpenseForm />} />
+                    <Route path=":id" element={<EditExpenseForn />} />
+                  </Route>
+                  <Route path="salaries">
+                    <Route index element={<Salaries />} />
+                    <Route path="pay/:id" element={<PaySalaryForm />} />
+                    <Route path="details/:id" element={<SalaryDetails />} />
+                  </Route>
+                </Route>
+                <Route path="transactions">
+                  <Route index element={<Transactions />} />
+                </Route>
+                <Route path="stats">
+                  <Route index element={<Statistics />} />
+                  <Route path="expenses" element={<ExpensesStats />} />
+                  <Route path="students" element={<StudentStats />} />
+                  <Route path="fees" element={<FeesStats />} />
+                  <Route path="salaries" element={<SalaryStats />} />
+                </Route>
               </Route>
             </Route>
           </Route>

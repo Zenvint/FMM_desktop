@@ -75,7 +75,7 @@ const NewUserForm = () => {
     : "";
 
     if (isLoading){
-      return <PulseLoader color={"#FFF"} />;
+      return <PulseLoader color={"orange"} />;
     }
 
   return (

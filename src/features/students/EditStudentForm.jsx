@@ -15,9 +15,11 @@ import { useGetClassesQuery } from "../classes/classesApiSlice.js";
 import { useSnackbar } from "notistack";
 import { tokens } from "../../hooks/theme";
 import { useTheme } from "@mui/material";
+import useAuth from "../../hooks/useAuth.js";
 
 
 const EditStudentForm = () => {
+  const {isAdmin} = useAuth()
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -144,7 +146,7 @@ const EditStudentForm = () => {
     isErrorClass || isErrorSection || isError || isDelError  ? "errmsg" : "offscreen";
 
   if (isLoadingClasses || isLoadingSections || isLoading  || isDelLoading ) {
-    return <PulseLoader color={"#FFF"} />;
+    return <PulseLoader color={"orange"} />;
   }
 
   let sectionsListOptions;
@@ -362,9 +364,9 @@ const EditStudentForm = () => {
             <button className="submit-button" type="submit" style={{ marginLeft: "1rem" }}>
               Save
             </button>
-            <button className="submit-button" onClick={onDeleteSectionClicked} style={{ marginLeft: "1rem", background: colors.redAccent[400] }}>
+           { isAdmin && <button className="submit-button" onClick={onDeleteSectionClicked} style={{ marginLeft: "1rem", background: colors.redAccent[400] }}>
               Delete
-            </button>
+            </button>}
           </form>
         </>
       </Formik>

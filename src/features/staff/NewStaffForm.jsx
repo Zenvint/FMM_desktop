@@ -81,7 +81,7 @@ const NewStaffForm = () => {
   const errClass = isError ? "errmsg" : "offscreen";
 
   if (isLoading) {
-    return <PulseLoader color={"#FFF"} />;
+    return <PulseLoader color={"orange"} />;
   }
 
   const errContent = error?.data?.message ?? "";

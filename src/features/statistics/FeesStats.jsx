@@ -56,7 +56,7 @@ const FeesStats = () => {
 
   let content;
   if (isFeesLoading || isTransLoading) {
-    content = <PulseLoader color={"#FFF"} />;
+    content = <PulseLoader color={"orange"} />;
   }
 
   if (isFeesError || isTransError) {

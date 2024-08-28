@@ -138,7 +138,7 @@ const NewStudentForm = () => {
     isErrorClass || isErrorSection || isError ? "errmsg" : "offscreen";
 
   if (isLoadingClasses || isLoadingSections || isLoading) {
-    return <PulseLoader color={"#FFF"} />;
+    return <PulseLoader color={"orange"} />;
   }
 
   let sectionsListOptions;

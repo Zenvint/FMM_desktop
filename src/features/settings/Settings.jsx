@@ -8,8 +8,10 @@ import Header from "../../components/Header.jsx";
 import PendingActionsOutlinedIcon from "@mui/icons-material/PendingActionsOutlined";
 import CreditScoreOutlinedIcon from "@mui/icons-material/CreditScoreOutlined";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth.js";
 
 const Settings = () => {
+  const {isAdmin} = useAuth()
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -58,14 +60,14 @@ const Settings = () => {
                   Installments Settings
                 </li>
               </Link>
-              <Link
+              {isAdmin && <Link
                 to={"/dash/settings/fees"}
                 style={{ textDecoration: "none", color: colors.grey[100] }}
               >
                 <li>
                   <CreditScoreOutlinedIcon className="li_icon" /> General settings
                 </li>
-              </Link>
+              </Link>}
            
           </ul>
         </div>

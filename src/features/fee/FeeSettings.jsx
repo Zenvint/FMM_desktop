@@ -105,7 +105,7 @@ const FeeSettings = () => {
             </Box>
             {(isLoading || isError) && (
               <Box>
-                {isLoading && <PulseLoader color={"#FFF"} />}
+                {isLoading && <PulseLoader color={"orange"} />}
                 <p className={errClass}>{errContent}</p>
               </Box>
             )}
@@ -125,7 +125,7 @@ const FeeSettings = () => {
             </Box>
             {(isNSMLoading || isNSMError) && (
               <Box>
-                {isNSMLoading && <PulseLoader color={"#FFF"} />}
+                {isNSMLoading && <PulseLoader color={"orange"} />}
                 <p className={errClass}>{errContent}</p>
               </Box>
             )}

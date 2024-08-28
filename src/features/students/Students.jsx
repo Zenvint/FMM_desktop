@@ -46,7 +46,7 @@ const Students = () => {
 
   let content;
 
-  if (isLoading) content = <PulseLoader color={"#FFF"} />;
+  if (isLoading) content = <PulseLoader color={"orange"} />;
 
   if (isError) {
     content = (

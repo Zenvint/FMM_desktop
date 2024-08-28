@@ -93,7 +93,7 @@ const FeeHistoryTile = ({ id, record, yearstring }) => {
         </Box>
         {(isLoading || isError || isTransLoading || isTransError) && (
           <Box>
-            {(isLoading || isTransLoading) && <PulseLoader color={"#FFF"} />}
+            {(isLoading || isTransLoading) && <PulseLoader color={"orange"} />}
             <p className={errClass}>{errContent}</p>
           </Box>
         )}

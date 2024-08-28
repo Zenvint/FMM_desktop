@@ -22,11 +22,12 @@ import PersonIcon from "@mui/icons-material/Person";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import useEnglish from "../hooks/useEnglish.js";
-import Login from "../features/auth/Login.jsx";
+import useAuth from "../hooks/useAuth.js";
 // import Warnimg from "../../components/warning";
 
 // Item component to display each menu item in the sidebar
 const Item = ({ title, to, icon, selected, setSelected }) => {
+  
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -47,6 +48,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 // Sidebar component
 const Sidebar = () => {
+  const { email, status, isAdmin } = useAuth();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -94,7 +96,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h6" color={colors.grey[300]}>
-                  FBMM Systen
+                  FBMM {status}
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -129,7 +131,7 @@ const Sidebar = () => {
                   fontWeight={"bold"}
                 >
                   {" "}
-                  {Login.email}
+                  {email}
                 </Typography>
               </Box>
             </Box>
@@ -195,14 +197,16 @@ const Sidebar = () => {
                 setSelected={setSelected}
               />
             </SubMenu>
-            <Item
-              title={"Users"}
-              to="/dash/users"
-              icon={<PersonIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              onClick={() => setSelected("Users")}
-            />
+            {isAdmin && (
+              <Item
+                title={"Users"}
+                to="/dash/users"
+                icon={<PersonIcon />}
+                selected={selected}
+                setSelected={setSelected}
+                onClick={() => setSelected("Users")}
+              />
+            )}
             <Item
               title={"Transactions"}
               to="/dash/transactions"

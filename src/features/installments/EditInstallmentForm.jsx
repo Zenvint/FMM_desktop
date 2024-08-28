@@ -94,7 +94,7 @@ const EditInstallmentForm = () => {
 
   const errContent = error?.data?.message ?? "";
 
-  if (!installment || isLoading) return <PulseLoader color={"#FFF"} />;
+  if (!installment || isLoading) return <PulseLoader color={"orange"} />;
 
   return (
     <Box m="20px">
