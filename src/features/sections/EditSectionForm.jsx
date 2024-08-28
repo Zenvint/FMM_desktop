@@ -77,7 +77,7 @@ const EditSectionForm = () => {
 
   const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 
-  if (!section || isLoading || isDelLoading) return <PulseLoader color={"#FFF"} />;
+  if (!section || isLoading || isDelLoading) return <PulseLoader color={"orange"} />;
 
   return (
     <Box m="20px">

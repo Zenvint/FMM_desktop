@@ -65,7 +65,7 @@ const NewExpenseForm = () => {
   const errClass = isError  ? "errmsg" : "offscreen";
 
   if (isLoading ) {
-    return <PulseLoader color={"#FFF"} />;
+    return <PulseLoader color={"orange"} />;
   }
 
 

@@ -13,10 +13,12 @@ import PulseLoader from "react-spinners/PulseLoader.js";
 import { useSnackbar } from "notistack";
 import { tokens } from "../../hooks/theme";
 import { useTheme } from "@mui/material";
+import useAuth from "../../hooks/useAuth.js";
 
 const EditStaffForm = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
+  const {isAdmin} = useAuth();
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -109,7 +111,7 @@ const EditStaffForm = () => {
   const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 
   if (!staff || isLoading || isDelLoading)
-    return <PulseLoader color={"#FFF"} />;
+    return <PulseLoader color={"orange"} />;
 
   return (
     <Box m="20px">
@@ -251,9 +253,9 @@ const EditStaffForm = () => {
         >
           Save
         </button>
-        <button className="submit-button" onClick={onDeleteClicked} style={{marginLeft: "1rem", background: colors.redAccent[400]}}>
+        {isAdmin && <button className="submit-button" onClick={onDeleteClicked} style={{marginLeft: "1rem", background: colors.redAccent[400]}}>
           Delete
-        </button>
+        </button>}
       </form>
     </Box>
   );

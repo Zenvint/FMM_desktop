@@ -41,7 +41,7 @@ const Users = () => {
 
   let content;
 
-  if (isLoading) content = <PulseLoader color={"#FFF"} />;
+  if (isLoading) content = <PulseLoader color={"orange"} />;
 
   if (isError) {
     content = <p className="errmsg">{error?.data?.message}</p>;

@@ -56,7 +56,7 @@ const SalaryStats = () => {
 
   let content;
   if (isLoading || isTransLoading) {
-    content = <PulseLoader color={"#FFF"} />;
+    content = <PulseLoader color={"orange"} />;
   }
 
   if (isError || isTransError) {

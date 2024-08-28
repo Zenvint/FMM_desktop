@@ -166,7 +166,7 @@ const AddMultiStudentsForm = () => {
             {count} of {numStudent} added{" "}
           </p>
         )}
-        <PulseLoader color={"#FFF"} />
+        <PulseLoader color={"orange"} />
       </div>
     );
   }

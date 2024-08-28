@@ -101,7 +101,7 @@ const Dashboard = () => {
 
   let content;
   if (isStudLoading || isTransLoading || isclassLoading || isstaffLoading) {
-    content = <PulseLoader color={"#FFF"} />;
+    content = <PulseLoader color={"orange"} />; 
   }
 
   if (isStudError || isTransError || isclassError || isstaffError) {

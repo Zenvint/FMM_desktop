@@ -123,7 +123,7 @@ const EditClassForm = () => {
     "";
 
   if (!classObj || isLoading || isLoadingSections || isDelLoading)
-    return <PulseLoader color={"#FFF"} />;
+    return <PulseLoader color={"orange"} />;
 
   return (
     <Box m="20px">

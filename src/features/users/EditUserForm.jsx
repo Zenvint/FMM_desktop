@@ -104,7 +104,7 @@ const EditUserForm = () => {
 
   const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
-  if (!user || isLoading ) return <PulseLoader color={"#FFF"} />;
+  if (!user || isLoading ) return <PulseLoader color={"orange"} />;
 
   return (
     <Box m="20px">

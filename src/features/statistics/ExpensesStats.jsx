@@ -42,7 +42,7 @@ const ExpensesStats = () => {
 
   let content;
   if (isLoading) {
-    content = <PulseLoader color={"#FFF"} />;
+    content = <PulseLoader color={"orange"} />;
   }
 
   if (isError) {
