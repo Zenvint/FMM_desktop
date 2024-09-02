@@ -80,6 +80,7 @@ const AddMultiStudentsForm = () => {
     }),
   });
 
+ if (students) {
   students.sort((a, b) => {
     if (a.matricule < b.matricule) {
       return -1;
@@ -89,6 +90,7 @@ const AddMultiStudentsForm = () => {
     }
     return 0; // a.matricule is equal to b.matricule
   });
+ }
 
   if (students) {
     const lastStudentMatricule = students[students.length - 1].matricule;

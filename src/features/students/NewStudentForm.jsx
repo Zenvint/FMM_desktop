@@ -70,15 +70,17 @@ const NewStudentForm = () => {
     }),
   });
 
-  students.sort((a, b) => {
-    if (a.matricule < b.matricule) {
-      return -1;
-    }
-    if (a.matricule > b.matricule) {
-      return 1;
-    }
-    return 0; // a.matricule is equal to b.matricule
-  });
+  if (students) {
+    students.sort((a, b) => {
+      if (a.matricule < b.matricule) {
+        return -1;
+      }
+      if (a.matricule > b.matricule) {
+        return 1;
+      }
+      return 0; // a.matricule is equal to b.matricule
+    });
+  }
 
   const setUpMatricule = () => {
     const today = new Date();
