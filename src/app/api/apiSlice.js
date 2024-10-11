@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "../../features/auth/authSlice.js";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://fmm-backend.onrender.com/",
+  baseUrl: "https://fmm-backend.vercel.app/",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
